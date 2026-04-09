@@ -6,7 +6,7 @@
 
 `1º semestre/2026`
 
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+O trabalho interdisciplinar da matéria de Desenvolvimento de Aplicações Web, tem como objetivo visualizar e compreender as dificuldades sociais e comunicativas de grupos específicos durante o processo de adaptação - e continuidade - da vida acadêmica. Dessa forma buscamos entender quais as principais dificudades grupos como: calouros, mulheres, terceira idade e pessoas atípicas enfrentam no ambiente universitário como um todo.
 
 ## Integrantes
 
