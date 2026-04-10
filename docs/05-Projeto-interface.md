@@ -21,7 +21,7 @@ O fluxo contempla:
 
 O fluxo completo pode ser visualizado no arquivo abaixo:
 
-[📄 Visualizar User Flow do PucMeet (PDF)](../files/userflowPucMeet.pdf)
+[📄 Visualizar User Flow do PucMeet (PDF)](files/userflowPucMeet.pdf)
 
 
 ## Wireframes
@@ -31,67 +31,67 @@ O fluxo completo pode ser visualizado no arquivo abaixo:
 
 A primeira tela que o usuário irá visualizar, podendo entrar com uma conta já existente ou apertar em criar conta.
 
-![Tela de Login](../images/teladelogin.png)
+![Tela de Login](images/teladelogin.png)
 
 ##### Tela de Criar Conta
 
 Se o usuário optar por criar uma conta, a seguinte tela será exibida.
 
-![Tela de Criar Conta](../images/teladecriarconta.png)
+![Tela de Criar Conta](images/teladecriarconta.png)
 
 ##### Tela Inicial
 
 A tela do feed do PucMeet, onde o usuário poderá navegar pelos posts.
 
-![Tela Inicial](../images/telainicial.png)
+![Tela Inicial](images/telainicial.png)
 
 ##### Tela de Criar Post
 
 Se o usuário quiser criar um post, a seguinte tela será exibida, com instruções.
 
-![Tela de Criar Post](../images/telacriarpost.png)
+![Tela de Criar Post](images/telacriarpost.png)
 
 ##### Tela de Perfil
 
 A tela que será exibida se o usuário optar por ver seu perfil.
 
-![Tela de Perfil](../images/teladoperfil.png)
+![Tela de Perfil](images/teladoperfil.png)
 
 ##### Tela de Ver Seus Posts
 
 Tela que exibe todos os posts criados pelo usuário.
 
-![Tela de Ver Seus Posts](../images/telaverseusposts.png)
+![Tela de Ver Seus Posts](images/telaverseusposts.png)
 
 ##### Tela de Ver Seu Post
 
 Tela que exibe um post especifico do usuário, exibida ao clicar em um post.
 
-![Tela de Ver Seu Post](../images/telaverseupost.png)
+![Tela de Ver Seu Post](images/telaverseupost.png)
 
 ##### Tela de Ver Seus Comentários
 
 Tela que exibe todos os comentários feitos pelo usuário em posts alheios.
 
-![Tela de Ver Seus Comentários](../images/telaverseuscomentarios.png)
+![Tela de Ver Seus Comentários](images/telaverseuscomentarios.png)
 
 ##### Tela de Ver Um Post
 
 Ao clicar em um post no feed, a tela com o post será exibida.
 
-![Tela de Ver Um Post](../images/telaverumpost.png)
+![Tela de Ver Um Post](images/telaverumpost.png)
 
 ##### Tela de Editar Perfil
 
 Se o usuário decidir dar uma cara nova ao seu perfil, a tela abaixo será mostrada.
 
-![Tela de Editar Perfil](../images/telaeditarperfileinteresses.png)
+![Tela de Editar Perfil](images/telaeditarperfileinteresses.png)
 
 ##### Tela de Alterar Senha
 
 Tela exibida quando o usuário decide mudar sua senha.
 
-![Tela de Alterar Senha](../images/telaalterarsenha.png)
+![Tela de Alterar Senha](images/telaalterarsenha.png)
  
 
 ### Protótipo Interativo
