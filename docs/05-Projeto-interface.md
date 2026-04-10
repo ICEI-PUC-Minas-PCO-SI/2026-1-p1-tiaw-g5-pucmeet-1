@@ -10,50 +10,98 @@
  ## User flow
 
 
-> ⚠️ **APAGUE ESTA PARTE ANTES DE ENTREGAR SEU TRABALHO**
+O fluxo de navegação do PucMeet representa o caminho do usuário dentro da aplicação, desde o acesso inicial até a interação com posts e funcionalidades do sistema.
 
-Fluxo de usuário (user flow) é uma técnica que permite ao desenvolvedor mapear todo o fluxo de navegação do usuário na aplicação. Essa técnica serve para alinhar os caminhos e as possíveis ações que o usuário pode realizar junto com os membros da equipe.
+O fluxo contempla:
+- Login e acesso ao sistema
+- Navegação pelo feed
+- Criação de posts
+- Interação com publicações
+- Acesso ao perfil e configurações
 
-**✳️✳️✳️ COLOQUE AQUI O USER FLOW ✳️✳️✳️**
+O fluxo completo pode ser visualizado no arquivo abaixo:
 
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
-
-> **Links úteis**:
-> - [User flow: o quê é e como fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User flow vs site maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 user flow tools & templates for smooth](https://www.mockplus.com/blog/post/user-flow-tools)
+[📄 Visualizar User Flow do PucMeet (PDF)](../files/userflowPucMeet.pdf)
 
 
 ## Wireframes
 
-> ⚠️ **APAGUE ESTA PARTE ANTES DE ENTREGAR SEU TRABALHO**
 
-São protótipos usados no design de interface para sugerir a estrutura de um site web e seu relacionamento entre suas páginas. Um wireframe web é uma ilustração que mostra o layout dos elementos fundamentais na interface.
+##### Tela de Login
 
-**✳️✳️✳️ COLOQUE AQUI OS PROTÓTIPOS DE TELAS COM TÍTULO E DESCRIÇÃO ✳️✳️✳️**
+A primeira tela que o usuário irá visualizar, podendo entrar com uma conta já existente ou apertar em criar conta.
 
-##### TELA XPTO ⚠️ EXEMPLO ⚠️
+![Tela de Login](../images/teladelogin.png)
 
-Descrição para a tela XPTO
+##### Tela de Criar Conta
 
-![Exemplo de wireframe](images/exemplo-wireframe.png)
+Se o usuário optar por criar uma conta, a seguinte tela será exibida.
 
+![Tela de Criar Conta](../images/teladecriarconta.png)
+
+##### Tela Inicial
+
+A tela do feed do PucMeet, onde o usuário poderá navegar pelos posts.
+
+![Tela Inicial](../images/telainicial.png)
+
+##### Tela de Criar Post
+
+Se o usuário quiser criar um post, a seguinte tela será exibida, com instruções.
+
+![Tela de Criar Post](../images/telacriarpost.png)
+
+##### Tela de Perfil
+
+A tela que será exibida se o usuário optar por ver seu perfil.
+
+![Tela de Perfil](../images/teladoperfil.png)
+
+##### Tela de Ver Seus Posts
+
+Tela que exibe todos os posts criados pelo usuário.
+
+![Tela de Ver Seus Posts](../images/telaverseusposts.png)
+
+##### Tela de Ver Seu Post
+
+Tela que exibe um post especifico do usuário, exibida ao clicar em um post.
+
+![Tela de Ver Seu Post](../images/telaverseupost.png)
+
+##### Tela de Ver Seus Comentários
+
+Tela que exibe todos os comentários feitos pelo usuário em posts alheios.
+
+![Tela de Ver Seus Comentários](../images/telaverseuscomentarios.png)
+
+##### Tela de Ver Um Post
+
+Ao clicar em um post no feed, a tela com o post será exibida.
+
+![Tela de Ver Um Post](../images/telaverumpost.png)
+
+##### Tela de Editar Perfil
+
+Se o usuário decidir dar uma cara nova ao seu perfil, a tela abaixo será mostrada.
+
+![Tela de Editar Perfil](../images/telaeditarperfileinteresses.png)
+
+##### Tela de Alterar Senha
+
+Tela exibida quando o usuário decide mudar sua senha.
+
+![Tela de Alterar Senha](../images/telaalterarsenha.png)
  
-> **Links úteis**:
-> - [Protótipos: baixa, média ou alta fidelidade?](https://medium.com/ladies-that-ux-br/prot%C3%B3tipos-baixa-m%C3%A9dia-ou-alta-fidelidade-71d897559135)
-> - [Protótipos vs wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-
 
 ### Protótipo Interativo
 
-> ⚠️ **APAGUE ESTA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Um protótipo interativo apresenta o projeto das interfaces e permite ao usuário navegar pelas funcionalidades como se estivesse utilizando o software finalizado. Utilize as mesmas ferramentas de criação de wireframes para a montagem do seu protótipo interativo. Inclua o link para o protótipo interativo do projeto.
+O protótipo interativo foi desenvolvido no Figma e permite simular a navegação entre as telas do PucMeet.
 
-**✳️✳️✳️ COLOQUE AQUI UM IFRAME COM SEU PROTÓTIPO INTERATIVO ✳️✳️✳️**
+Através dele, é possível testar:
+- Navegação entre telas
+- Criação de posts
+- Interação com comentários
+- Acesso ao perfil e configurações
 
-✅ [Protótipo interativo](https://marvelapp.com/prototype/4hd6091?emb=1&iosapp=false&frameless=false)  ⚠️ EXEMPLO ⚠️
+[🔗 Acessar Protótipo Interativo](https://www.figma.com/proto/HdOaFuO3P1CTXk7BGMphWl/F%C3%B3rum-PucMeet?node-id=2-218&t=JBgt1GKutSFKXqwA-1&starting-point-node-id=2%3A218)
