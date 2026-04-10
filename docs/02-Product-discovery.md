@@ -74,6 +74,9 @@ Vamos entender cada parte desse instrumento e como preencher.
 - Criadores de Ganhos: Descrição de como os produtos e serviços criam ganhos para o cliente, ajudando-os a obter os benefícios desejados.
 - Aliviadores de Dores: Descrição de como os produtos e serviços aliviam as dores do cliente, eliminando ou reduzindo fatores incômodos.
 
+Segue abaixo um exemplo de proposta de valor:
+
+![ExemploPropostaValor](images/ExemploPropostaValor.png)
 Segue abaixo alguns exemplos de propostas de valores do projeto:
 
 ![PropostaValor01](images/PropostaValor01.jpg)
