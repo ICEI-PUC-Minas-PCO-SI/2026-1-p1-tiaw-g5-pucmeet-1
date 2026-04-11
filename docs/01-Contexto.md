@@ -1,43 +1,44 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+O trabalho interdisciplinar da matéria de Desenvolvimento de Aplicações Web, tem como objetivo visualizar e compreender as dificuldades sociais e comunicativas de grupos específicos durante o processo de adaptação - e continuidade - da vida acadêmica. Dessa forma buscamos entender quais as principais dificudades de grupos como: calouros, mulheres, terceira idade e pessoas atípicas enfrentam no ambiente universitário como um todo.
+
+Com base na comprensão dessas dificuldades, busca-se desenvolver uma aplicação que facilite a comunicação e socialização no ambiente universitário da Pontíficia Universidade Católica. Devido aos benefícios de se possuir habilidades comunicativas desenvolvidas.
 
 ## Problema
-Aqui, a equipe deve fornecer uma descrição detalhada do problema a ser resolvido. Não é o momento adequado para abordar questões técnicas relacionadas ao desenvolvimento da aplicação. O objetivo é compreender e comunicar de maneira precisa qual é o desafio ou necessidade que motiva a criação da aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
+A principal motivação para crição desta aplicação é a **dificuldade na comunicação com pessoas na faculdade**. Esta dificuldade afeta diversos aspectos da vida de quem a enfrenta, pois está diretamente relacionada com o desempenho acadêmico, saúde mental e física, oportunidades futuras no mercado de trabalho. Sendo assim, desenvolver a habilidade de comunição traz diversos benefícios para o indivíduo.
 
-O grupo pode optar por fazer uso de ferramentas como Design Thinking, que permite uma visão completa do problema.
+Nossa aplicação terá como foco o ambiente universitário da Pontíficia Universidade Católica. Tendo como público alvo, calouros dos mais diversos perfis socioeconômicos.
 
-> **Links úteis**:
-> - [Objetivos, problema de pesquisa e justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz certezas, suposições e dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Segue abaixo nossa matriz CSD, por meio dela pode-se ter uma ampla visão do problema:
+
+![MatrizCSD](images/MatrizCSD.jpg)
 
 ## Objetivos
 
-Aqui, você deve descrever os objetivos do trabalho, indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima.
+O principal objetivo do trabalho é desenvolver uma aplicação que facilite a comunicação e socialização no ambiente universitário.
 
-Além disso, apresente alguns (pelo menos 3) objetivos específicos, dependendo de onde você pretende concentrar sua prática investigativa ou como deseja aprofundar seu trabalho.
- 
-> **Links úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Os objetivos específicos do trabalho são:
+- Elaborar uma interface acessível.
+- Disponibilizar a aplicação para aparelhos móveis.
+- Construir uma aplicação responsiva.
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+Habilidades de comunicação e socialização desenvolvidas impactam diversos aspectos da vida do indíviduo. Pessoas solitárias são impactadas de diversas formas negativas, por exemplo: na vida acadêmica, profissional e na saúde. Observando isto, a elaboração de uma aplicação acessível, que facilite a comunicação e socialização, pode ser uma grande aliada para pessoas com dificuldades de comunicação. 
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+O extrato abaixo da matéria "OMS: uma em cada seis pessoas no mundo é afetada pela solidão" de Paula Laboissière (2025), vinculada no site Agência Brasil, sintetiza os impactos dessa solidão:
 
-> **Links úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+"O documento destaca, também, que a conexão social pode proteger a saúde ao longo da vida, reduzindo inflamações, diminuindo o risco de problemas graves de saúde, promovendo saúde mental e prevenindo a morte precoce, além de contribuir para tornar as comunidades mais saudáveis, seguras e prósperas.
+
+Ao mesmo tempo, a solidão e o isolamento social aumentam o risco de acidente vascular cerebral (AVC), doenças cardíacas, diabetes, declínio cognitivo e morte prematura e também afetam a saúde mental – pessoas solitárias têm o dobro de probabilidade de desenvolver depressão.
+
+“A solidão também pode levar à ansiedade e a pensamentos de automutilação ou suicídio”, ressaltou a OMS.
+
+Os impactos se estendem ainda à aprendizagem e ao emprego. Adolescentes que se sentem solitários têm 22% mais chances de obter notas ou qualificações mais baixas, enquanto adultos solitários podem ter mais dificuldade para encontrar ou manter um emprego e ganhar menos ao longo do tempo.
+
+“Em nível comunitário, a solidão prejudica a coesão social e custa bilhões em perda de produtividade e atenção à saúde. Comunidades com fortes laços sociais tendem a ser mais seguras, saudáveis ​​e resilientes, inclusive em resposta a desastres”, acrescenta a OMS."
 
 ## Público-alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação, mas sim oferecer uma visão detalhada do perfil de cada grupo de usuários. Isso inclui informações sobre seu nível de conhecimento prévio, familiaridade com tecnologia, e suas relações hierárquicas ou contextos de uso. Dessa forma, será possível entender melhor as necessidades e expectativas dos diferentes tipos de usuários, garantindo uma experiência mais eficiente e adaptada.
-
-> **Links úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público-alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Nosso público alvo são os alunos calouros da Pontíficia Universidade Católica dos mais diversos perfis socioeconômicos, tais como: mulheres, idosos e pessoas atípicas. Observando que cada grupo socioeconômico possui um nível diferente de dificuldade na comunicação. A aplicação tem como foco a plataforma mobile, pois grande maioria dos alunos possui um aparelho movél e uma certa familiaridade com esta tecnologia. Para ser mais acessível para o público alvo, a aplicação terá uma interface simples de fácil navegação. Desta forma, alunos com dificuldade na comunição terão uma forma de se comunicar de maneira mais fácil.
