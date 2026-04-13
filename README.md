@@ -1,4 +1,4 @@
-# Nome do projeto
+# PucMeet
 
 `CURSO: Sistemas de Informação`
 
