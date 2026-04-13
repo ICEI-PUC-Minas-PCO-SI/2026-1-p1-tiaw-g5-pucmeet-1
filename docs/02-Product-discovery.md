@@ -55,30 +55,3 @@ Segue abaixo alguns exemplos de personas do projeto:
 ![Persona01](images/Persona01.jpg)
 ![Persona02](images/Persona02.jpg)
 ![Persona03](images/Persona03.jpg)
-
-### Propostas de Valor
-
-O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente. Ele é composto de duas partes principais: o Perfil do Cliente e o Mapa de Valor. Cada uma dessas partes possui elementos específicos que devem ser cuidadosamente analisados e preenchidos.
-
-Vamos entender cada parte desse instrumento e como preencher.
-
-#### Perfil do cliente
-
-- Tarefas do Cliente: Refere-se às tarefas que os clientes estão tentando realizar, os problemas que estão tentando resolver ou as necessidades que estão tentando satisfazer.
-- Ganhos do Cliente: Resultados desejados e benefícios que os clientes esperam ou desejam ao realizar suas tarefas.
-- Dores do Cliente: Todos os fatores que incomodam os clientes antes, durante ou após a realização de suas tarefas. Inclui riscos, problemas e obstáculos.
-
-#### Mapa de Valor
-
-- Produtos e Serviços: Lista de todos os produtos e serviços que a empresa oferece que ajudam o cliente a realizar suas tarefas.
-- Criadores de Ganhos: Descrição de como os produtos e serviços criam ganhos para o cliente, ajudando-os a obter os benefícios desejados.
-- Aliviadores de Dores: Descrição de como os produtos e serviços aliviam as dores do cliente, eliminando ou reduzindo fatores incômodos.
-
-Segue abaixo um exemplo de proposta de valor:
-
-![ExemploPropostaValor](images/ExemploPropostaValor.png)
-Segue abaixo alguns exemplos de propostas de valores do projeto:
-
-![PropostaValor01](images/PropostaValor01.jpg)
-![PropostaValor02](images/PropostaValor02.jpg)
-![PropostaValor03](images/PropostaValor03.jpg)
