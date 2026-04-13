@@ -1,21 +1,9 @@
 # Referências
 
-Inclua todas as referências (livros, artigos, sites, etc.) utilizadas no desenvolvimento do trabalho.
-
-> ⚠️ **APAGUE ESTA PARTE ANTES DE ENTREGAR SEU TRABALHO**
-
-⚠️ EXEMPLO ⚠️
-
-- BENYON, David. **Interação humano-computador**. 2. ed. São Paulo: Pearson Prentice Hall, 2011.
-
-- CORMEN, Thomas H et al. **Algoritmos:** teoria e prática. 4. ed. Rio de Janeiro: GEN LTC, 2024.
- 
-- ELMASRI, Ramez; NAVATHE, Sham. **Sistemas de banco de dados**. 7. ed. São Paulo: Pearson, c2019.
-
-- RUSSELL, Stuart J.; NORVIG, Peter. **Inteligência artificial:** uma abordagem moderna. 4. ed. Rio de Janeiro, RJ: LTC, 2022.
-
-- SUTHERLAND, Jeffrey Victor; SUTHERLAND, J. J. **Scrum:** a arte de fazer o dobro do trabalho na metade do tempo. Rio de Janeiro, RJ: Sextante, 2019. 254 p.
-
-> **Links úteis**:
-> - [Padrão PUC Minas de normalização ABNT](https://www.pucminas.br/biblioteca/DocumentoBiblioteca/ABNT-GUIA-COMPLETO-Elaborar-formatar-trabalho-cientifico.pdf)
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/)
+- ARAÚJO, M. A.; PINHEIRO, L. V. de S.; CASTRO, M. M. B. de. Cabelos grisalhos, mentes brilhantes. Revista Gestão em Análise, v. 14, n. 3, p. 115–130, 20 out. 2025.
+- BEATRIZ et al. Desafios enfrentados no processo de inclusão de indivíduos com transtorno do espectro autista no âmbito universitário. Research, Society and Development, v. 10, n. 4, p. e31010414189, 12 abr. 2021.
+- LABOISSIÈRE, Paula. OMS: uma em cada seis pessoas no mundo é afetada pela solidão. Disponível em: https://agenciabrasil.ebc.com.br/geral/noticia/2025-07/oms-uma-em-cada-seis-pessoas-no-mundo-e-afetada-pela-solidao
+- SANTOS, Renata Karla Araújo dos. Barreiras enfrentadas por mulheres nas profissões de Tecnologia da Informação e Comunicação. 2024. Trabalho de Conclusão de Curso (Graduação) – Universidade Federal do Rio Grande do Norte, Natal, 2024. Disponível em: https://repositorio.ufrn.br/server/api/core/bitstreams/5b032e31-7d2b-4f06-9961-7af15551203f/content
+- SILVA, G.; LOURENÇO, Mariane Lemos. Déficit de habilidades sociais: análise da percepção de estudantes universitários. Revista Eletrônica Ciências da Administração e Turismo, v. 7, n. 1, p. 1–12, 2019.
+‌
+‌

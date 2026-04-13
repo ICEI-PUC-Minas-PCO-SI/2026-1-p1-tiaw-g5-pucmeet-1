@@ -22,8 +22,8 @@ A equipe utiliza o Scrum como base para definição do processo de desenvolvimen
 
 - Scrum Master: Luiz 
 - Product Owner: Alessandro
-- Equipe de Desenvolvimento: Alessandro, Anna, Gabriel e Luiz. 
-- Equipe de Design: Alessandro, Anna, Gabriel e Luiz.
+- Equipe de Desenvolvimento: Alessandro, Anna, Gabriel e Luiz
+- Equipe de Design: Alessandro, Anna, Gabriel e Luiz
 
 ### Processo
 
