@@ -3,7 +3,7 @@
 
 Consulte os slides de apresentação logo abaixo:
 
-[Slides de apresentação do projeto](files/g5-PucMeet-Apresentacao.pdf)
+[Slides de apresentação do projeto](docs/files/g5-PucMeet-Apresentacao.pdf)
 
 ## Vídeo
 
