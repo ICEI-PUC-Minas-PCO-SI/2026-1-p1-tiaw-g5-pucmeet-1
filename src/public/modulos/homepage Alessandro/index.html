@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PucMeet</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h2><img id="logo" src="../../assets/images/LogoPucMeet.png" alt="Logo PucMeet">PucMeet</h2>
+            <p>Fórum universitário</p>
+        </div>
+        <a href="../template files/index.html" id="linkAvatar">
+            <img src="../../assets/images/Avatar.png" alt="Avatar perfil">
+        </a>
+    </header>
+
+    <main class="container">
+        <section id="barraPesquisa">
+            <form>
+                <label for="pesquisa">🔍</label>
+                <input type="text" id="pesquisa" name="fname" placeholder="Procure por posts, autores...">
+            </form>
+        </section>
+
+        <section id="postSuggestions">
+            <h3>💡 Sugestões para começar</h3>
+            <div>
+                <button onclick="window.location.href='../../index.html'">Alguém pra grupo?</button>
+                <button onclick="window.location.href='../../index.html'">Preciso de ajuda...</button>
+                <button onclick="window.location.href='../../index.html'">Quero fazer amigos</button>
+                <button onclick="window.location.href='../../index.html'">Vamos estudar?</button>
+            </div>
+        </section>
+
+        <button onclick="window.location.href='../../index.html'" id="btnCriarPost">+ Criar Post</button>
+
+        <button id="btnAdicionar">
+            Publicar
+        </button>
+        <section id="miniPostsSection">
+            <h3>Post Recentes</h3>
+            <div id="miniPostsList">
+
+                <div class="miniPost" onclick="window.location.href='../../index.html'">
+                    <h3>Alguém pra grupo?</h3>
+                    <p>Conteúdoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                    <div class="miniPostFooter">
+                        <div class="miniAutorPost">Fulano</div>
+                        <div class="miniQtdComentariosPost">💬 5</div>
+                        <div class="miniDataPost">5 min atrás</div>
+                    </div>
+                    <div class="miniPostCategorias">
+                        <div>Estudos</div>
+                        <div>Estudos</div>
+                        <div>Estudos</div>
+                    </div>
+                </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
