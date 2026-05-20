@@ -235,7 +235,6 @@ header h2 {
 #barraPesquisa input {
   border: 0;
   font-size: larger;
-  width: 92%;
   outline: none;
 }
 
@@ -302,6 +301,10 @@ header h2 {
   text-overflow: ellipsis;
 }
 
+.miniPost div {
+  margin-top: 2%;
+}
+
 .miniPostFooter {
   margin-top: 10px;
   display: flex;
@@ -319,6 +322,25 @@ header h2 {
 
 .miniPostCategorias div {
   background-color: #b39a9a;
+  border: 2px black solid;
+  margin: 1%;
+}
+
+#postSectionTitle {
+  text-align: center;
+  margin-top: 5%;
+}
+
+#filtrosPosts {
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  justify-content: center;
+}
+
+#filtrosPosts button {
+  background-color: #c7c7c7;
   border: 2px black solid;
   margin: 1%;
 }

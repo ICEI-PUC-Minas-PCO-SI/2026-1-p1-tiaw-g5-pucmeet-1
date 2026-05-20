@@ -11,7 +11,7 @@
 <body>
     <header>
         <div>
-            <h2><img id="logo" src="../../assets/images/LogoPucMeet.png" alt="Logo PucMeet">PucMeet</h2>
+            <h1><img id="logo" src="../../assets/images/LogoPucMeet.png" alt="Logo PucMeet">PucMeet</h1>
             <p>Fórum universitário</p>
         </div>
         <a href="../template files/index.html" id="linkAvatar">
@@ -28,7 +28,7 @@
         </section>
 
         <section id="postSuggestions">
-            <h3>💡 Sugestões para começar</h3>
+            <h2>💡 Sugestões para começar</h2>
             <div>
                 <button onclick="window.location.href='../../index.html'">Alguém pra grupo?</button>
                 <button onclick="window.location.href='../../index.html'">Preciso de ajuda...</button>
@@ -39,11 +39,19 @@
 
         <button onclick="window.location.href='../../index.html'" id="btnCriarPost">+ Criar Post</button>
 
-        <button id="btnAdicionar">
+        <button id="btnAdicionar" onclick="adicionarPost()">
             Publicar
         </button>
         <section id="miniPostsSection">
-            <h3>Post Recentes</h3>
+            <h2 id="postSectionTitle">Post Recentes</h2>
+            <div id="filtrosPosts">
+                <button id="filtroData" onclick="toggleOrdenarPostsPorData()">⏳</button>
+                <button id="filtroAlfabeticoNomeAutor" onclick="toggleOrdenarPostsPorNomeAutorAlfabeticamente()">👤
+                    ABC</button>
+                <button id="filtroQtdComentarios" onclick="toggleOrdenarPostsPorComentarios()">💬</button>
+            </div>
+
+
             <div id="miniPostsList">
 
                 <div class="miniPost" onclick="window.location.href='../../index.html'">
@@ -52,8 +60,8 @@
                     <div class="miniPostFooter">
                         <div class="miniAutorPost">Fulano</div>
                         <div class="miniQtdComentariosPost">💬 5</div>
-                        <div class="miniDataPost">5 min atrás</div>
                     </div>
+                    <div class="miniDataPost">5 min atrás</div>
                     <div class="miniPostCategorias">
                         <div>Estudos</div>
                         <div>Estudos</div>
