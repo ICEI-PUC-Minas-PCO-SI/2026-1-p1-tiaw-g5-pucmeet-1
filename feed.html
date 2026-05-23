@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade - Feed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="feed-header">
+            <a href="index.html" class="btn-criar-post" style="text-decoration: none; font-weight: bold; color: #333;">Criar Novo Post</a>
+            <h2 style="margin-top: 10px;">Feed da Comunidade</h2>
+            <p class="subtitle">Selecione uma linha abaixo para visualizar o post.</p>
+        </div>
+
+        <ol id="lista-links-posts" class="Lista-numerada"></ol>
+
+        <div id="area-visualizacao" class="area-edicao" style="display: none;">
+            <hr>
+            <h3>Visualizar / Modificar Post</h3>
+
+            <div class="input-group">
+                <label><strong>Título do Post:</strong></label>
+                <input type="text" id="edit-titulo">
+            </div> 
+
+            <div class="input-group">
+                <label><strong>Conteúdo do Post:</strong></label>
+                <textarea id="edit-conteudo" rows="5"></textarea>
+            </div> 
+
+            <p class="meta-info">
+                <strong>Categoria:</strong> <span id="view-categoria"></span>
+                <strong>Autor:</strong> <span id="view-autor"></span>
+            </p>
+
+            <div class="botoes-acoes">
+                <button id="btn-salvar-edicao" class="btn-salvar">Salvar Modificações (Update)</button>
+                <button id="btn-excluir-post" class="btn-excluir">Excluir Post (Delete)</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>  
+</body>
+</html>

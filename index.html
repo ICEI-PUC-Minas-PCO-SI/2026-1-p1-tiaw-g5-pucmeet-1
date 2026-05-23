@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <a href="feed.html" class="btn-voltar">Voltar para a Página Inicial</a>
+        
+        <h2>Criar Post</h2>
+        <p class="subtitle">Compartilhe suas ideias com a comunidade!</p>
+
+        <div class="card-dicas">
+            <h3>Dicas para o seu post</h3>
+            <ul>
+                <li>Seja claro e específicono título.</li>
+                <li>Use um tom acolhedor e respeitoso.</li>
+                <li>Marque a categoria correta.</li>
+                <li>Você pode postar anonimamente se preferir.</li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <div class="input-group">
+                <label for="post-title">Título do Post:</label>
+                <input type="text" id="post-title" placeholder="Ex: Alguém pra grupo de estudos?">
+            </div> 
+
+            <div class="input-group">
+                <label for="post-content">Conteúdo do Post:</label>
+                <textarea id="post-content" rows="6" placeholder="Descreva o que você está buscando, suas dúvidas ou o que gostaria de compartilhar..."></textarea>
+            </div>
+
+            <div class="categorias-section">
+                <p class="label-style">Marques as categorias
+                <div class="categorias-grid">
+                    <button class="btn-categoria" data-categoria="Tecnologia">Tecnologia</button>
+                    <button class="btn-categoria" data-categoria="Jogos">Jogos</button>
+                    <button class="btn-categoria" data-categoria="Estudos">Estudos</button>
+                    <button class="btn-categoria" data-categoria="Música">Música</button>
+                    <button class="btn-categoria" data-categoria="Esportes">Esportes</button>
+                    <button class="btn-categoria" data-categoria="Arte">Arte</button>
+                    <button class="btn-categoria" data-categoria="Cinema">Cinema</button>
+                    <button class="btn-categoria" data-categoria="Livros">Livros</button>
+                </div>
+            </div>
+
+            <button id="btn-anonimo" class="btn-anonimo">Postar Anonimamente: <span>Não</span></button>
+        </div>
+
+        <button id="btn-publicar" class="btn-publicar">Publicar Post</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
