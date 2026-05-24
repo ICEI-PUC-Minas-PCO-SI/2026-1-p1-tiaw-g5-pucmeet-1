@@ -21,9 +21,9 @@
 
     <main class="container">
         <section id="barraPesquisa">
-            <form>
+            <form onsubmit="pesquisarPost(event)">
                 <label for="pesquisa">🔍</label>
-                <input type="text" id="pesquisa" name="fname" placeholder="Procure por posts, autores...">
+                <input type="text" id="pesquisa" name="fPesquisa" placeholder="Títulos, autores, categorias...">
             </form>
         </section>
 
@@ -37,11 +37,10 @@
             </div>
         </section>
 
-        <button onclick="window.location.href='../../index.html'" id="btnCriarPost">+ Criar Post</button>
+        <!-- <button onclick="window.location.href='../../index.html'" id="btnCriarPost">+ Criar Post</button> -->
 
-        <button id="btnAdicionar" onclick="adicionarPost()">
-            Publicar
-        </button>
+        <button id="btnAdicionar" onclick="adicionarPost()">+ Criar Post Debug</button>
+
         <section id="miniPostsSection">
             <h2 id="postSectionTitle">Post Recentes</h2>
             <div id="filtrosPosts">
@@ -52,23 +51,7 @@
             </div>
 
 
-            <div id="miniPostsList">
-
-                <div class="miniPost" onclick="window.location.href='../../index.html'">
-                    <h3>Alguém pra grupo?</h3>
-                    <p>Conteúdoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <div class="miniPostFooter">
-                        <div class="miniAutorPost">Fulano</div>
-                        <div class="miniQtdComentariosPost">💬 5</div>
-                    </div>
-                    <div class="miniDataPost">5 min atrás</div>
-                    <div class="miniPostCategorias">
-                        <div>Estudos</div>
-                        <div>Estudos</div>
-                        <div>Estudos</div>
-                    </div>
-                </div>
-
+            <div id="miniPostsList"></div>
         </section>
 
     </main>

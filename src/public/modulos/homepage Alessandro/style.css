@@ -344,3 +344,15 @@ header h2 {
   border: 2px black solid;
   margin: 1%;
 }
+
+#btnAdicionar{
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #ddd;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  animation: btnCriarPost 3s infinite;
+}

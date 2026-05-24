@@ -1,42 +1,45 @@
 function povoaPostsLocalStorage() {
-    var data = new Date();
+    let data = new Date();
     let posts = [
-        { titulo: "Grupo de estudos", conteudo: "Estou a procura por um grupo de estudos de programação", categorias: ["Tecnologia", "Programação", "Ciência"], autor: "João", comentarios: 2, dataReal: (data = new Date(2025, 11, 25, 16, 50, 33)), dataVisual: formatarDataHora(data) },
-        { titulo: "Ciência", conteudo: "Falando sobre ciência", categorias: ["Ciência"], autor: "Maria", comentarios: 5, dataReal: (data = new Date(2025, 4, 20, 10, 30, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Nova ferremanta", conteudo: "Novidades do mundo tech", categorias: ["Tecnologia"], autor: "Carlos", comentarios: 0, dataReal: (data = new Date(2026, 4, 19, 14, 0, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "ATP", conteudo: "Dicas de estudo para programação", categorias: ["Educação", "Programação"], autor: "Ana", comentarios: 3, dataReal: (data = new Date(2026, 4, 18, 9, 15, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Sem querer quase explodi o laboratório", conteudo: "Experimentos recentes em laboratório", categorias: ["Ciência"], autor: "Bruno", comentarios: 1, dataReal: (data = new Date(2026, 4, 17, 11, 45, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "PC pra facul", conteudo: "Como montar um PC para estudos", categorias: ["Tecnologia"], autor: "Laura", comentarios: 4, dataReal: (data = new Date(2026, 4, 16, 18, 20, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Arte de na PUC", conteudo: "Exposição de arte local", categorias: ["Artes", "Cultura"], autor: "Mariana", comentarios: 2, dataReal: (data = new Date(2026, 4, 15, 17, 0, 5)), dataVisual: formatarDataHora(data) },
-        { titulo: "Almoço", conteudo: "Receita rápida para o almoço", categorias: ["Gastronomia"], autor: "Pedro", comentarios: 6, dataReal: (data = new Date(2026, 4, 14, 12, 30, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Campeonato de truco", conteudo: "Notícias do campeonato", categorias: ["Esportes"], autor: "Rafael", comentarios: 8, dataReal: (data = new Date(2026, 4, 13, 20, 0, 23)), dataVisual: formatarDataHora(data) },
-        { titulo: "Como moggar com estilo", conteudo: "Tendências de moda 2026", categorias: ["Moda"], autor: "Sofia", comentarios: 0, dataReal: (data = new Date(2026, 4, 12, 15, 10, 45)), dataVisual: formatarDataHora(data) },
-        { titulo: "Rota de viagem", conteudo: "Guia de viagem: 5 destinos", categorias: ["Viagem"], autor: "Marcos", comentarios: 2, dataReal: (data = new Date(2026, 4, 5, 8, 0, 7)), dataVisual: formatarDataHora(data) },
-        { titulo: "Investimento", conteudo: "Economia em foco: mercado local", categorias: ["Economia"], autor: "Patrícia", comentarios: 3, dataReal: (data = new Date(2026, 3, 28, 10, 0, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Filme ruim dms slk", conteudo: "Filme em cartaz: críticas", categorias: ["Cinema", "Entretenimento"], autor: "Felipe", comentarios: 5, dataReal: (data = new Date(2026, 3, 1, 19, 30, 33)), dataVisual: formatarDataHora(data) },
-        { titulo: "Preservação do meio ambiente", conteudo: "Como preservar o meio ambiente", categorias: ["Meio Ambiente"], autor: "Clara", comentarios: 1, dataReal: (data = new Date(2026, 2, 20, 9, 0, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Nikola Tesla era o brabo", conteudo: "História: grandes descobertas", categorias: ["História"], autor: "Luiz", comentarios: 0, dataReal: (data = new Date(2026, 2, 15, 14, 0, 23)), dataVisual: formatarDataHora(data) },
-        { titulo: "Como não surtar?", conteudo: "Saúde mental na universidade", categorias: ["Saúde", "Educação"], autor: "Isabela", comentarios: 7, dataReal: (data = new Date(2026, 1, 25, 16, 0, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Só sei que nada sei", conteudo: "Introdução à filosofia", categorias: ["Filosofia"], autor: "Eduardo", comentarios: 0, dataReal: (data = new Date(2026, 0, 10, 11, 0, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Resenha detected", conteudo: "Lançamento de livro: resenha", categorias: ["Literatura"], autor: "Renata", comentarios: 2, dataReal: (data = new Date(2025, 11, 5, 13, 0, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Alguém manja de uma playlist boa?", conteudo: "Playlist: músicas para estudar", categorias: ["Música"], autor: "Vitor", comentarios: 9, dataReal: (data = new Date(2025, 10, 20, 18, 30, 0)), dataVisual: formatarDataHora(data) },
-        { titulo: "Matématica é legal pô", conteudo: "Técnicas de resolução de problemas em matemática", categorias: ["Matemática", "Educação"], autor: "Fernanda", comentarios: 4, dataReal: (data = new Date(2025, 9, 1, 9, 0, 4)), dataVisual: formatarDataHora(data) }
+        { postId: 1, titulo: "Grupo de estudos", conteudo: "Estou a procura por um grupo de estudos de programação", categorias: ["Tecnologia", "Programação", "Ciência"], autor: "João", comentarios: 2, dataReal: (data = new Date(2025, 11, 25, 16, 50, 33)), dataVisual: formatarDataHora(data) },
+        { postId: 2, titulo: "Ciência", conteudo: "Falando sobre ciência", categorias: ["Ciência"], autor: "Maria", comentarios: 5, dataReal: (data = new Date(2025, 4, 20, 10, 30, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 3, titulo: "Nova ferremanta", conteudo: "Novidades do mundo tech", categorias: ["Tecnologia"], autor: "Carlos", comentarios: 0, dataReal: (data = new Date(2026, 4, 19, 14, 0, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 4, titulo: "ATP", conteudo: "Dicas de estudo para programação", categorias: ["Educação", "Programação"], autor: "Ana", comentarios: 3, dataReal: (data = new Date(2026, 4, 18, 9, 15, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 5, titulo: "Sem querer quase explodi o laboratório", conteudo: "Experimentos recentes em laboratório", categorias: ["Ciência"], autor: "Bruno", comentarios: 1, dataReal: (data = new Date(2026, 4, 17, 11, 45, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 6, titulo: "PC pra facul", conteudo: "Como montar um PC para estudos", categorias: ["Tecnologia"], autor: "Laura", comentarios: 4, dataReal: (data = new Date(2026, 4, 16, 18, 20, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 7, titulo: "Arte de na PUC", conteudo: "Exposição de arte local", categorias: ["Artes", "Cultura"], autor: "Mariana", comentarios: 2, dataReal: (data = new Date(2026, 4, 15, 17, 0, 5)), dataVisual: formatarDataHora(data) },
+        { postId: 8, titulo: "Almoço", conteudo: "Receita rápida para o almoço", categorias: ["Gastronomia"], autor: "Pedro", comentarios: 6, dataReal: (data = new Date(2026, 4, 14, 12, 30, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 9, titulo: "Campeonato de truco", conteudo: "Notícias do campeonato", categorias: ["Esportes"], autor: "Rafael", comentarios: 8, dataReal: (data = new Date(2026, 4, 13, 20, 0, 23)), dataVisual: formatarDataHora(data) },
+        { postId: 10, titulo: "Como moggar com estilo", conteudo: "Tendências de moda 2026", categorias: ["Moda"], autor: "Sofia", comentarios: 0, dataReal: (data = new Date(2026, 4, 12, 15, 10, 45)), dataVisual: formatarDataHora(data) },
+        { postId: 11, titulo: "Rota de viagem", conteudo: "Guia de viagem: 5 destinos", categorias: ["Viagem"], autor: "Marcos", comentarios: 2, dataReal: (data = new Date(2026, 4, 5, 8, 0, 7)), dataVisual: formatarDataHora(data) },
+        { postId: 12, titulo: "Investimento", conteudo: "Economia em foco: mercado local", categorias: ["Economia"], autor: "Patrícia", comentarios: 3, dataReal: (data = new Date(2026, 3, 28, 10, 0, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 13, titulo: "Filme ruim dms slk", conteudo: "Filme em cartaz: críticas", categorias: ["Cinema", "Entretenimento"], autor: "Felipe", comentarios: 5, dataReal: (data = new Date(2026, 3, 1, 19, 30, 33)), dataVisual: formatarDataHora(data) },
+        { postId: 14, titulo: "Preservação do meio ambiente", conteudo: "Como preservar o meio ambiente", categorias: ["Meio Ambiente"], autor: "Clara", comentarios: 1, dataReal: (data = new Date(2026, 2, 20, 9, 0, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 15, titulo: "Nikola Tesla era o brabo", conteudo: "História: grandes descobertas", categorias: ["História"], autor: "Luiz", comentarios: 0, dataReal: (data = new Date(2026, 2, 15, 14, 0, 23)), dataVisual: formatarDataHora(data) },
+        { postId: 16, titulo: "Como não surtar?", conteudo: "Saúde mental na universidade", categorias: ["Saúde", "Educação"], autor: "Isabela", comentarios: 7, dataReal: (data = new Date(2026, 1, 25, 16, 0, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 17, titulo: "Só sei que nada sei", conteudo: "Introdução à filosofia", categorias: ["Filosofia"], autor: "Eduardo", comentarios: 0, dataReal: (data = new Date(2026, 0, 10, 11, 0, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 18, titulo: "Resenha detected", conteudo: "Lançamento de livro: resenha", categorias: ["Literatura"], autor: "Renata", comentarios: 2, dataReal: (data = new Date(2025, 11, 5, 13, 0, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 19, titulo: "Alguém manja de uma playlist boa?", conteudo: "Playlist: músicas para estudar", categorias: ["Música"], autor: "Vitor", comentarios: 9, dataReal: (data = new Date(2025, 10, 20, 18, 30, 0)), dataVisual: formatarDataHora(data) },
+        { postId: 20, titulo: "Matématica é legal pô", conteudo: "Técnicas de resolução de problemas em matemática", categorias: ["Matemática", "Educação"], autor: "Fernanda", comentarios: 4, dataReal: (data = new Date(2025, 9, 1, 9, 0, 4)), dataVisual: formatarDataHora(data) }
     ];
 
     localStorage.setItem("listaPosts", JSON.stringify(posts));
 }
 
-var listaPosts = getPostsLocalStorage();
+let listaPosts = getPostsLocalStorage();
 
-function renderizarPost() {
+function renderizarPost(postsRenderizados) {
     const miniPostsList = document.getElementById("miniPostsList");
-    listaPosts = getPostsLocalStorage();
+    const lista = postsRenderizados || getPostsLocalStorage();
 
     miniPostsList.innerHTML = "";
 
-    listaPosts.forEach(post => {
+    lista.forEach(post => {
         const miniPost = document.createElement("div");
         miniPost.classList.add("miniPost")
+        miniPost.onclick = function () {
+            window.location.href = "teste.html?postId=" + encodeURIComponent(post.postId);
+        };
 
         const h3MiniPost = document.createElement("h3");
         h3MiniPost.textContent = post.titulo;
@@ -89,9 +92,11 @@ function getRandomIntInclusive(min, max) {
 function adicionarPost() { // Função somente de teste
     const btnAdicionar = document.getElementById("btnAdicionar");
     const listaPosts = JSON.parse(localStorage.getItem("listaPosts")) || [];
-    let data = new Date();
 
+    let data = new Date();
+    
     const novoPost = {
+        postId: 1000,
         titulo: "Teste",
         conteudo: "Conteúdo exemplo",
         categorias: ["Teste"],
@@ -102,11 +107,11 @@ function adicionarPost() { // Função somente de teste
     };
 
     listaPosts.push(novoPost);
+    localStorage.setItem("listaPosts", JSON.stringify(listaPosts));
 
-    localStorage.setItem(
-        "listaPosts",
-        JSON.stringify(listaPosts)
-    );
+    if (pesquisaAtiva) {
+        pesquisarPost();
+    }
     ordenarPostsPorData(true);
 }
 
@@ -123,22 +128,24 @@ function formatarDataHora(data) {
 
 function ordenarPostsPorData(desc) {
     const posts = getPostsLocalStorage();
-    let valorRetorno = false;
+    let alvo = pesquisaAtiva ? filtrados : posts;
 
-    posts.sort((a, b) => {
+    alvo.sort((a, b) => {
         const tempoA = new Date(a.dataReal).getTime();
         const tempoB = new Date(b.dataReal).getTime();
         if (desc) {
-            valorRetorno = tempoB - tempoA;
+            return tempoB - tempoA;
         }
         else {
-            valorRetorno = tempoA - tempoB;
+            return tempoA - tempoB;
         }
-        return valorRetorno;
     });
 
-    localStorage.setItem("listaPosts", JSON.stringify(posts));
-    renderizarPost();
+    if (!pesquisaAtiva) {
+        localStorage.setItem("listaPosts", JSON.stringify(posts));
+    }
+
+    renderizarPost(pesquisaAtiva ? filtrados : undefined);
 }
 
 function toggleOrdenarPostsPorData() {
@@ -163,8 +170,9 @@ function toggleOrdenarPostsPorData() {
 
 function ordenarPostsPorNomeAutorAlfabeticamente(desc) {
     const posts = getPostsLocalStorage();
+    let alvo = pesquisaAtiva ? filtrados : posts;
 
-    posts.sort((a, b) => {
+    alvo.sort((a, b) => {
         const nomeA = (a.autor || "").toString().trim().toLocaleLowerCase('pt-BR');
         const nomeB = (b.autor || "").toString().trim().toLocaleLowerCase('pt-BR');
         if (desc) {
@@ -175,8 +183,11 @@ function ordenarPostsPorNomeAutorAlfabeticamente(desc) {
         }
     });
 
-    localStorage.setItem("listaPosts", JSON.stringify(posts));
-    renderizarPost();
+    if (!pesquisaAtiva) {
+        localStorage.setItem("listaPosts", JSON.stringify(posts));
+    }
+
+    renderizarPost(pesquisaAtiva ? filtrados : undefined);
 }
 
 function toggleOrdenarPostsPorNomeAutorAlfabeticamente() {
@@ -201,8 +212,9 @@ function toggleOrdenarPostsPorNomeAutorAlfabeticamente() {
 
 function ordenarPostsPorComentarios(desc) {
     const posts = getPostsLocalStorage();
+    let alvo = pesquisaAtiva ? filtrados : posts;
 
-    posts.sort((a, b) => {
+    alvo.sort((a, b) => {
         const qtdComentariosA = Number(a.comentarios) || 0;
         const qtdComentariosB = Number(b.comentarios) || 0;
         if (desc) {
@@ -213,8 +225,11 @@ function ordenarPostsPorComentarios(desc) {
         }
     });
 
-    localStorage.setItem("listaPosts", JSON.stringify(posts));
-    renderizarPost();
+    if (!pesquisaAtiva) {
+        localStorage.setItem("listaPosts", JSON.stringify(posts));
+    }
+
+    renderizarPost(pesquisaAtiva ? filtrados : undefined);
 }
 
 function toggleOrdenarPostsPorComentarios() {
@@ -239,14 +254,55 @@ function toggleOrdenarPostsPorComentarios() {
     }
 }
 
+
+function pesquisarPost(event) {
+    if (event && typeof event.preventDefault === 'function') {
+        event.preventDefault();
+    }
+
+    const campoPesquisa = document.getElementById('pesquisa');
+
+    if (!campoPesquisa) return;
+
+    const valorPesquisado = campoPesquisa.value.trim().toLowerCase();
+
+    if (!valorPesquisado) {
+        pesquisaAtiva = false;
+        renderizarPost();
+        return;
+    }
+
+    pesquisaAtiva = true;
+    const posts = getPostsLocalStorage();
+    filtrados = posts.filter(post => {
+        if (!post) return false;
+        const titulo = (post.titulo || '').toString().toLowerCase();
+        const autor = (post.autor || '').toString().toLowerCase();
+        const categorias = (post.categorias || []).join(' ').toLowerCase();
+
+        return titulo.includes(valorPesquisado) || autor.includes(valorPesquisado) || categorias.includes(valorPesquisado);
+    });
+
+    renderizarPost(filtrados);
+}
+
 if (!localStorage.getItem("listaPosts")) {
     povoaPostsLocalStorage();
+}
+
+const pesquisaInput = document.getElementById('pesquisa');
+if (pesquisaInput) {
+    pesquisaInput.addEventListener('input', function (event) {
+        pesquisarPost();
+    });
 }
 
 function getPostsLocalStorage() {
     return JSON.parse(localStorage.getItem("listaPosts")) || [];
 }
 
+let filtrados = [];
+let pesquisaAtiva = false;
 let postsOrdenacaoDataDesc = false;
 let postsOrdenacaoNomeDesc = false;
 let postsOrdenacaoComentariosDesc = false;
