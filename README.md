@@ -14,7 +14,6 @@ Com base na comprensão dessas dificuldades, busca-se desenvolver uma aplicaçã
 
 * Alessandro Kennedy Soares Ribeiro
 * Anna Flávia de Oliveira Guimarães
-* Gabriel Silva Neves
 * Luiz Felipe de Almeida Brito
 
 ## Professor
