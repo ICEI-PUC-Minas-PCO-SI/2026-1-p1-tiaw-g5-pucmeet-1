@@ -1,0 +1,90 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "login": "admin",
+      "senha": "123",
+      "nome": "Administrador do Sistema",
+      "email": "admin@abc.com"
+    },
+    {
+      "id": 2,
+      "login": "user",
+      "senha": "123",
+      "nome": "Usuario Comum",
+      "email": "user@abc.com"
+    },
+    {
+      "id": 3,
+      "login": "rommel",
+      "senha": "123",
+      "nome": "Rommel",
+      "email": "rommel@gmail.com"
+    },
+    {
+      "id": 4,
+      "login": "Alessandro",
+      "senha": "123",
+      "nome": "Alessandro Kennedy",
+      "email": "alessandro@gmail.com"
+    }
+  ],
+  "posts": [
+    {
+      "postId": 1,
+      "titulo": "Grupo de estudos",
+      "conteudo": "Estou a procura por um grupo de estudos de programação",
+      "categorias": [
+        "Tecnologia",
+        "Programação",
+        "Ciência"
+      ],
+      "autor": "João",
+      "comentarios": 2,
+      "dataReal": "2025-12-25T16:50:33",
+      "dataVisual": "25/12/2025 16:50:33"
+    },
+    {
+      "postId": 2,
+      "titulo": "Ciência",
+      "conteudo": "Falando sobre ciência",
+      "categorias": [
+        "Ciência"
+      ],
+      "autor": "Maria",
+      "comentarios": 5,
+      "dataReal": "2025-05-20T10:30:00",
+      "dataVisual": "20/05/2025 10:30:00"
+    },
+    {
+      "postId": 3,
+      "titulo": "Nova ferremanta",
+      "conteudo": "Novidades do mundo tech",
+      "categorias": [
+        "Tecnologia"
+      ],
+      "autor": "Carlos",
+      "comentarios": 0,
+      "dataReal": "2026-05-19T14:00:00",
+      "dataVisual": "19/05/2026 14:00:00"
+    }
+  ],
+  "comentarios": [
+    {
+      "id": 1,
+      "autor": "Maria Santos",
+      "conteudo": "Eu também tenho dificuldade! Podemos formar um grupo no Whatsapp?",
+      "data": "3 min atrás",
+      "postId": 1,
+      "dono": false
+    },
+    {
+      "id": 2,
+      "autor": "Carlos Silva",
+      "conteudo": "Posso ajudar com integrais, tive essa matéria no semestre passado 👍",
+      "data": "4 min atrás",
+      "postId": 1,
+      "dono": false
+    }
+  ]
+}

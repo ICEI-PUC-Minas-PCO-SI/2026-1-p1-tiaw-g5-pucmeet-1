@@ -12,7 +12,6 @@ Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
 
 * Alessandro Kennedy Soares Ribeiro
 * Anna Flávia de Oliveira Guimarães
-* Gabriel Silva Neves
 * Luiz Felipe de Almeida Brito
 
 ## Professor
