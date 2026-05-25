@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PucMeet - CRUD de Comentários</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <main class="container">
+
+    <a href="#" class="voltar">← Voltar</a>
+
+    <h1>Post</h1>
+    <h3>Posts Recentes</h3>
+
+    <section class="post-card">
+      <h2>Alguém pra grupo?</h2>
+
+      <p>
+        Olá pessoal! Tô procurando pessoas para estudar cálculo 2 juntos.
+        Tenho dificuldade com integrais e gostaria de ter um grupo pra trocar ideias
+        e resolver exercícios. Horário flexível, podemos combinar nos intervalos ou antes da aula.
+        Quem tiver interesse, comenta aqui!
+      </p>
+
+      <div class="post-info">
+        <span>Estudos</span>
+        <span>Anônimo</span>
+        <span>❤ 8</span>
+        <span>5 min atrás</span>
+      </div>
+    </section>
+
+    <section class="comentario-form">
+      <h2>💬 Adicionar Comentário</h2>
+
+      <textarea 
+        id="campoComentario" 
+        placeholder="Escreva seu comentário aqui... Seja respeitoso e acolhedor.">
+      </textarea>
+
+      <button id="btnResponder">➤ Responder</button>
+    </section>
+
+    <section class="comentarios-area">
+      <div class="comentarios-topo">
+        <span>↕</span>
+        <span>⚗</span>
+        <strong>💬 Comentários</strong>
+        <span>🔎</span>
+      </div>
+
+      <div id="listaComentarios"></div>
+    </section>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
