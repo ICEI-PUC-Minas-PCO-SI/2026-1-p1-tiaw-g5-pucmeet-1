@@ -197,6 +197,8 @@ header {
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 420px;
+  margin: auto;
 }
 
 header div {
@@ -345,7 +347,7 @@ header h2 {
   margin: 1%;
 }
 
-#btnAdicionar{
+#btnAdicionar {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
