@@ -79,6 +79,8 @@ function adicionarPost() { // Função somente de teste
         comentarios: getRandomIntInclusive(1, 100),
         dataReal: data,
         dataVisual: formatarDataHora(data),
+        likes: 33,
+        favoritos: 1
     };
 
     listaPosts.push(novoPost);

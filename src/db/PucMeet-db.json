@@ -42,7 +42,9 @@
       "autor": "João",
       "comentarios": 2,
       "dataReal": "2025-12-25T16:50:33",
-      "dataVisual": "25/12/2025 16:50:33"
+      "dataVisual": "25/12/2025 16:50:33",
+      "likes": 27,
+      "favoritos": 12
     },
     {
       "postId": 2,
@@ -54,7 +56,9 @@
       "autor": "Maria",
       "comentarios": 5,
       "dataReal": "2025-05-20T10:30:00",
-      "dataVisual": "20/05/2025 10:30:00"
+      "dataVisual": "20/05/2025 10:30:00",
+      "likes": 64,
+      "favoritos": 8
     },
     {
       "postId": 3,
@@ -66,7 +70,9 @@
       "autor": "Carlos",
       "comentarios": 0,
       "dataReal": "2026-05-19T14:00:00",
-      "dataVisual": "19/05/2026 14:00:00"
+      "dataVisual": "19/05/2026 14:00:00",
+      "likes": 9,
+      "favoritos": 1
     },
     {
       "postId": 4,
@@ -79,7 +85,9 @@
       "autor": "Ana",
       "comentarios": 3,
       "dataReal": "2026-05-18T09:15:00",
-      "dataVisual": "18/05/2026 09:15:00"
+      "dataVisual": "18/05/2026 09:15:00",
+      "likes": 43,
+      "favoritos": 5
     },
     {
       "postId": 5,
@@ -91,7 +99,9 @@
       "autor": "Bruno",
       "comentarios": 1,
       "dataReal": "2026-05-17T11:45:00",
-      "dataVisual": "17/05/2026 11:45:00"
+      "dataVisual": "17/05/2026 11:45:00",
+      "likes": 2,
+      "favoritos": 0
     },
     {
       "postId": 6,
@@ -103,7 +113,9 @@
       "autor": "Laura",
       "comentarios": 4,
       "dataReal": "2026-05-16T18:20:00",
-      "dataVisual": "16/05/2026 18:20:00"
+      "dataVisual": "16/05/2026 18:20:00",
+      "likes": 51,
+      "favoritos": 11
     },
     {
       "postId": 7,
@@ -116,7 +128,9 @@
       "autor": "Mariana",
       "comentarios": 2,
       "dataReal": "2026-05-15T17:00:05",
-      "dataVisual": "15/05/2026 17:00:05"
+      "dataVisual": "15/05/2026 17:00:05",
+      "likes": 15,
+      "favoritos": 3
     },
     {
       "postId": 8,
@@ -128,7 +142,9 @@
       "autor": "Pedro",
       "comentarios": 6,
       "dataReal": "2026-05-14T12:30:00",
-      "dataVisual": "14/05/2026 12:30:00"
+      "dataVisual": "14/05/2026 12:30:00",
+      "likes": 78,
+      "favoritos": 22
     },
     {
       "postId": 9,
@@ -140,7 +156,9 @@
       "autor": "Rafael",
       "comentarios": 8,
       "dataReal": "2026-05-13T20:00:23",
-      "dataVisual": "13/05/2026 20:00:23"
+      "dataVisual": "13/05/2026 20:00:23",
+      "likes": 34,
+      "favoritos": 7
     },
     {
       "postId": 10,
@@ -152,7 +170,9 @@
       "autor": "Sofia",
       "comentarios": 0,
       "dataReal": "2026-05-12T15:10:45",
-      "dataVisual": "12/05/2026 15:10:45"
+      "dataVisual": "12/05/2026 15:10:45",
+      "likes": 0,
+      "favoritos": 0
     },
     {
       "postId": 11,
@@ -164,7 +184,9 @@
       "autor": "Marcos",
       "comentarios": 2,
       "dataReal": "2026-05-05T08:00:07",
-      "dataVisual": "05/05/2026 08:00:07"
+      "dataVisual": "05/05/2026 08:00:07",
+      "likes": 19,
+      "favoritos": 4
     },
     {
       "postId": 12,
@@ -176,7 +198,9 @@
       "autor": "Patrícia",
       "comentarios": 3,
       "dataReal": "2026-04-28T10:00:00",
-      "dataVisual": "28/04/2026 10:00:00"
+      "dataVisual": "28/04/2026 10:00:00",
+      "likes": 6,
+      "favoritos": 2
     },
     {
       "postId": 13,
@@ -189,7 +213,9 @@
       "autor": "Felipe",
       "comentarios": 5,
       "dataReal": "2026-04-01T19:30:33",
-      "dataVisual": "01/04/2026 19:30:33"
+      "dataVisual": "01/04/2026 19:30:33",
+      "likes": 88,
+      "favoritos": 30
     },
     {
       "postId": 14,
@@ -201,7 +227,9 @@
       "autor": "Clara",
       "comentarios": 1,
       "dataReal": "2026-03-20T09:00:00",
-      "dataVisual": "20/03/2026 09:00:00"
+      "dataVisual": "20/03/2026 09:00:00",
+      "likes": 5,
+      "favoritos": 1
     },
     {
       "postId": 15,
@@ -213,7 +241,9 @@
       "autor": "Luiz",
       "comentarios": 0,
       "dataReal": "2026-03-15T14:00:23",
-      "dataVisual": "15/03/2026 14:00:23"
+      "dataVisual": "15/03/2026 14:00:23",
+      "likes": 12,
+      "favoritos": 2
     },
     {
       "postId": 16,
@@ -226,7 +256,9 @@
       "autor": "Isabela",
       "comentarios": 7,
       "dataReal": "2026-02-25T16:00:00",
-      "dataVisual": "25/02/2026 16:00:00"
+      "dataVisual": "25/02/2026 16:00:00",
+      "likes": 47,
+      "favoritos": 9
     },
     {
       "postId": 17,
@@ -238,7 +270,9 @@
       "autor": "Eduardo",
       "comentarios": 0,
       "dataReal": "2026-01-10T11:00:00",
-      "dataVisual": "10/01/2026 11:00:00"
+      "dataVisual": "10/01/2026 11:00:00",
+      "likes": 3,
+      "favoritos": 0
     },
     {
       "postId": 18,
@@ -250,7 +284,9 @@
       "autor": "Renata",
       "comentarios": 2,
       "dataReal": "2025-12-05T13:00:00",
-      "dataVisual": "05/12/2025 13:00:00"
+      "dataVisual": "05/12/2025 13:00:00",
+      "likes": 29,
+      "favoritos": 6
     },
     {
       "postId": 19,
@@ -262,7 +298,9 @@
       "autor": "Vitor",
       "comentarios": 9,
       "dataReal": "2025-11-20T18:30:00",
-      "dataVisual": "20/11/2025 18:30:00"
+      "dataVisual": "20/11/2025 18:30:00",
+      "likes": 55,
+      "favoritos": 14
     },
     {
       "postId": 20,
@@ -275,7 +313,9 @@
       "autor": "Fernanda",
       "comentarios": 4,
       "dataReal": "2025-10-01T09:00:04",
-      "dataVisual": "01/10/2025 09:00:04"
+      "dataVisual": "01/10/2025 09:00:04",
+      "likes": 10,
+      "favoritos": 1
     }
   ],
   "comentarios": [
