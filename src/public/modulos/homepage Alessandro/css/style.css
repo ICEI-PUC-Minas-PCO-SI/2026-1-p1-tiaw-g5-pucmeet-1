@@ -37,6 +37,8 @@ h3 {
   margin-bottom: 18px;
 }
 
+
+
 .post-card {
   background: white;
   border: 8px solid #ddd;
@@ -357,4 +359,60 @@ header h2 {
   font-weight: bold;
   color: #222;
   animation: btnCriarPost 3s infinite;
+}
+
+#carrosselPosts {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  background: white;
+  border: 8px solid #ddd;
+  padding: 10px;
+  margin-bottom: 18px;
+  flex-direction: column;
+}
+
+#carrosselPosts h2 {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+
+#postSemana {
+  background: white;
+  border: 8px solid #ddd;
+  padding: 10px;
+  margin-bottom: 18px;
+  width: 80%;
+  height: 400px;
+  margin: auto;
+}
+
+#carrosselDiv {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+#setaEsquerda,
+#setaDireita {
+  font-size: 50px;
+  animation: btnPulse 5s infinite ease-in-out;
+}
+
+@keyframes btnPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
