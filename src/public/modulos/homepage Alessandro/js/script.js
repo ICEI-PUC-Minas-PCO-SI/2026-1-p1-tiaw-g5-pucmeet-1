@@ -14,6 +14,7 @@ function carregaJSONLocalStorage() {
 }
 
 function renderizarPost(postsRenderizados) {
+    postsSemana = getPostSemana();
     const miniPostsList = document.getElementById("miniPostsList");
     const lista = postsRenderizados || getPostsLocalStorage();
 
