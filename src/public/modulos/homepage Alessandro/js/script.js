@@ -5,6 +5,10 @@ function carregaJSONLocalStorage() {
             localStorage.setItem("PucMeet-db", JSON.stringify(data));
             ordenarPostsPorData(true);
             renderizarPost();
+            postsSemana = getPostSemana();
+            i = 0;
+            renderizarCarrossel(i);
+            iniciarCarrosselAutomatico();
         })
         .catch(error => console.error("Erro ao carregar posts:", error));
 }
@@ -268,6 +272,120 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getPostSemana() {
+    const posts = getPostsLocalStorage();
+    const agora = new Date();
+    const seteDiasAtras = new Date(agora.getTime() - (7 * 24 * 60 * 60 * 1000));
+
+    const ordenarPorRelevancia = (lista) => lista.sort((a, b) => {
+        const likesA = Number(a.likes) || 0;
+        const likesB = Number(b.likes) || 0;
+        const comentariosA = Number(a.comentarios) || 0;
+        const comentariosB = Number(b.comentarios) || 0;
+
+        const scoreA = likesA + comentariosA;
+        const scoreB = likesB + comentariosB;
+
+        if (scoreB !== scoreA) {
+            return scoreB - scoreA;
+        }
+
+        const dataA = new Date(a.dataReal).getTime();
+        const dataB = new Date(b.dataReal).getTime();
+        return dataB - dataA;
+    });
+
+    const postsUltimos7Dias = posts.filter(post => {
+        if (!post || !post.dataReal) return false;
+        const dataPost = new Date(post.dataReal);
+        if (Number.isNaN(dataPost.getTime())) return false;
+        return dataPost >= seteDiasAtras && dataPost <= agora;
+    });
+
+    const postsDaSemana = ordenarPorRelevancia([...postsUltimos7Dias]).slice(0, 7);
+
+    if (postsDaSemana.length > 0) {
+        return postsDaSemana;
+    }
+
+    return ordenarPorRelevancia([...posts]).slice(0, 7);
+}
+
+function btnCarrossel(acao) {
+    if (!postsSemana.length) return;
+
+    if (acao === 1) {
+        i = (i + 1) % postsSemana.length;
+    }
+
+    if (acao === -1) {
+        i = (i - 1 + postsSemana.length) % postsSemana.length;
+    }
+
+    renderizarCarrossel(i);
+    iniciarCarrosselAutomatico();
+}
+
+function renderizarCarrossel(id) {
+    const idPost = document.createElement("p");
+    idPost.classList.add("topBar");
+    idPost.textContent = "Top: " + (id + 1);
+
+    const postSemanaDiv = document.getElementById("postSemana");
+
+    if (!postSemanaDiv || !postsSemana.length) return;
+
+    const postAtual = postsSemana[id];
+
+    postSemanaDiv.innerHTML = "";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = postAtual.titulo;
+
+    const conteudo = document.createElement("p");
+    conteudo.textContent = postAtual.conteudo;
+
+    const miniPostFooter = document.createElement("div");
+    miniPostFooter.classList.add("miniPostFooter");
+
+    const autor = document.createElement("p");
+    autor.textContent = postAtual.autor;
+
+    const qtdComentarios = document.createElement("p");
+    qtdComentarios.textContent = postAtual.comentarios + " 💬";
+
+    const data = document.createElement("p");
+    data.textContent = postAtual.dataVisual;
+
+    const likes = document.createElement("p");
+    likes.textContent = postAtual.likes + " 👍";
+
+    const miniPostCategorias = document.createElement("div");
+    miniPostCategorias.classList.add("miniPostCategorias");
+
+    (postAtual.categorias || []).forEach(categoria => {
+        const categoriaDiv = document.createElement("div");
+        categoriaDiv.textContent = categoria;
+        miniPostCategorias.appendChild(categoriaDiv);
+    });
+
+    miniPostFooter.appendChild(autor);
+    miniPostFooter.appendChild(qtdComentarios);
+    miniPostFooter.appendChild(likes);
+
+    postSemanaDiv.appendChild(idPost)
+    postSemanaDiv.appendChild(h2);
+    postSemanaDiv.appendChild(conteudo);
+    postSemanaDiv.appendChild(miniPostFooter);
+    postSemanaDiv.appendChild(data);
+    postSemanaDiv.appendChild(miniPostCategorias);
+
+    postSemanaDiv.classList.remove("carrossel-animado");
+    void postSemanaDiv.offsetWidth;
+    postSemanaDiv.classList.add("carrossel-animado");
+
+}
+
 const pesquisaInput = document.getElementById('pesquisa');
 if (pesquisaInput) {
     pesquisaInput.addEventListener('input', function (event) {
@@ -285,10 +403,28 @@ let pesquisaAtiva = false;
 let postsOrdenacaoDataDesc = false;
 let postsOrdenacaoNomeDesc = false;
 let postsOrdenacaoComentariosDesc = false;
+let postsSemana = getPostSemana();
+let i = 0;
+let carrosselInterval = null;
+
+function iniciarCarrosselAutomatico() {
+    if (carrosselInterval) {
+        clearInterval(carrosselInterval);
+    }
+
+    if (!postsSemana.length) return;
+
+    carrosselInterval = setInterval(() => {
+        btnCarrossel(1);
+    }, 10000);
+}
 
 if (!localStorage.getItem("PucMeet-db")) {
     carregaJSONLocalStorage();
 } else {
     ordenarPostsPorData(true);
     renderizarPost();
+    postsSemana = getPostSemana();
+    renderizarCarrossel(i);
+    iniciarCarrosselAutomatico();
 }

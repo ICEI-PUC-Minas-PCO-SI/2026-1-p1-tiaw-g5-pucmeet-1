@@ -30,9 +30,13 @@
         <section id="carrosselPosts">
             <h2>Posts da Semana</h2>
             <div id="carrosselDiv">
-                <div id="setaEsquerda">◄</div>
+
+                <div id="setaEsquerda" onclick="btnCarrossel(-1)">◄</div>
+
                 <div id="postSemana"></div>
-                <div id="setaDireita">►</div>
+
+                <div id="setaDireita" onclick="btnCarrossel(1)">►</div>
+
             </div>
         </section>
 
@@ -58,7 +62,6 @@
                     ABC</button>
                 <button id="filtroQtdComentarios" onclick="toggleOrdenarPostsPorComentarios()">💬</button>
             </div>
-
 
             <div id="miniPostsList"></div>
         </section>
