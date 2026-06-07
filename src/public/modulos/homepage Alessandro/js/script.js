@@ -94,6 +94,8 @@ function adicionarPost() { // Função somente de teste
     if (pesquisaAtiva) {
         pesquisarPost();
     }
+    postsSemana = getPostSemana();
+    renderizarCarrossel(0);
     ordenarPostsPorData(true);
 }
 
