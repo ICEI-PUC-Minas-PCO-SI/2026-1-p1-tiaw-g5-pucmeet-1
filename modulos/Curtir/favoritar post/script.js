@@ -335,8 +335,17 @@ function curtirPost(postId) {
     let post = posts.find(post => post.postId === postId);
 
     if (post) {
+        if (post.jaCurtiu === undefined) post.jaCurtiu = false;
         if (post.curtidas === undefined) post.curtidas = 0;
-        post.curtidas ++;
+
+        if (post.jaCurtiu === false) {
+            post.curtidas++;
+            post.jaCurtiu = true;
+        }
+        else { 
+            post.curtidas--;
+            post.jaCurtiu = false;
+        }
         localStorage.setItem("listaPosts", JSON.stringify(posts));
         renderizarPost();
     }
