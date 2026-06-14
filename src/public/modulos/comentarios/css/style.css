@@ -121,6 +121,62 @@ button {
   margin-bottom: 10px;
 }
 
+.botao-ferramenta {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.botao-ferramenta:hover {
+  background-color: #d1d1d1;
+  border-radius: 4px;
+}
+
+.painel-controle {
+  background: white;
+  border: 4px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.painel-controle label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.painel-controle input,
+.painel-controle select {
+  width: 100%;
+  padding: 8px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 14px;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+.painel-controle input:focus,
+.painel-controle select:focus {
+  border-color: #9faee4;
+}
+
+.oculto {
+  display: none;
+}
+
+.resumo-filtros {
+  background: #f8f8f8;
+  border: 2px solid #ccc;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .comentario-card {
   background: white;
   padding: 12px;
@@ -157,6 +213,29 @@ button {
   flex: 1;
 }
 
+.info-comentario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #555;
+}
+
+.btn-curtir {
+  padding: 6px 10px;
+  background-color: #eee;
+  border: 2px solid #ccc;
+  font-size: 13px;
+  font-weight: bold;
+  color: #222;
+}
+
+.btn-curtir:hover {
+  background-color: #dcdcdc;
+}
+
 .acoes {
   display: flex;
   flex-direction: column;
@@ -184,4 +263,21 @@ button {
   padding: 15px;
   font-weight: bold;
   color: #555;
+  background: white;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  .post-info {
+    font-size: 11px;
+    gap: 5px;
+  }
+
+  #btnResponder {
+    font-size: 20px;
+  }
 }
