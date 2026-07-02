@@ -44,6 +44,24 @@ function renderizarPost(postsRenderizados) {
         miniQtdComentariosPost.classList.add("miniQtdComentariosPost");
         miniQtdComentariosPost.textContent = "💬" + " " + post.comentarios;
 
+        const miniCurtidasPost = document.createElement("button");
+        miniCurtidasPost.classList.add("miniCurtidasPost");
+        miniCurtidasPost.textContent = "👍" + " " + (post.curtidas || 0);
+
+        miniCurtidasPost.onclick = function (event) {
+            event.stopPropagation();
+            curtirPost(post.postId);
+        };
+
+        const miniFavoritarPost = document.createElement("button");
+        miniFavoritarPost.classList.add("miniFavoritarPost");
+        miniFavoritarPost.textContent = post.favorito ? "⭐" : "☆";
+
+        miniFavoritarPost.onclick = function (event) {
+            event.stopPropagation();
+            favoritarPost(post.postId);
+        };
+
         const miniDataPost = document.createElement("div");
         miniDataPost.classList.add("miniDataPost");
         miniDataPost.textContent = post.dataVisual;
@@ -64,7 +82,8 @@ function renderizarPost(postsRenderizados) {
         miniPost.appendChild(miniPostCategorias);
         miniPostFooter.appendChild(miniAutorPost);
         miniPostFooter.appendChild(miniQtdComentariosPost);
-
+        miniPostFooter.appendChild(miniCurtidasPost);
+        miniPostFooter.appendChild(miniFavoritarPost);
         miniPostsList.appendChild(miniPost);
     });
 }
@@ -84,8 +103,9 @@ function adicionarPost() { // Função somente de teste
         comentarios: getRandomIntInclusive(1, 100),
         dataReal: data,
         dataVisual: formatarDataHora(data),
-        likes: 33,
-        favoritos: 1
+        curtidas: 33,
+        favoritos: 1,
+        favorito: false
     };
 
     listaPosts.push(novoPost);
@@ -281,13 +301,13 @@ function getPostSemana() {
     const seteDiasAtras = new Date(agora.getTime() - (7 * 24 * 60 * 60 * 1000));
 
     const ordenarPorRelevancia = (lista) => lista.sort((a, b) => {
-        const likesA = Number(a.likes) || 0;
-        const likesB = Number(b.likes) || 0;
+        const curtidasA = Number(a.curtidas) || 0;
+        const curtidasB = Number(b.curtidas) || 0;
         const comentariosA = Number(a.comentarios) || 0;
         const comentariosB = Number(b.comentarios) || 0;
 
-        const scoreA = likesA + comentariosA;
-        const scoreB = likesB + comentariosB;
+        const scoreA = curtidasA + comentariosA;
+        const scoreB = curtidasB + comentariosB;
 
         if (scoreB !== scoreA) {
             return scoreB - scoreA;
@@ -357,11 +377,26 @@ function renderizarCarrossel(id) {
     const qtdComentarios = document.createElement("p");
     qtdComentarios.textContent = postAtual.comentarios + " 💬";
 
+    const miniCurtidasPost = document.createElement("button");
+    miniCurtidasPost.classList.add("miniCurtidasPost");
+    miniCurtidasPost.textContent = "👍" + " " + (postAtual.curtidas || 0);
+
+    miniCurtidasPost.onclick = function (event) {
+        event.stopPropagation();
+        curtirPost(postAtual.postId);
+    };
+
+    const miniFavoritarPost = document.createElement("button");
+    miniFavoritarPost.classList.add("miniFavoritarPost");
+    miniFavoritarPost.textContent = postAtual.favorito ? "⭐" : "☆";
+
+    miniFavoritarPost.onclick = function (event) {
+        event.stopPropagation();
+        favoritarPost(postAtual.postId);
+    };
+
     const data = document.createElement("p");
     data.textContent = postAtual.dataVisual;
-
-    const likes = document.createElement("p");
-    likes.textContent = postAtual.likes + " 👍";
 
     const miniPostCategorias = document.createElement("div");
     miniPostCategorias.classList.add("miniPostCategorias");
@@ -374,7 +409,8 @@ function renderizarCarrossel(id) {
 
     miniPostFooter.appendChild(autor);
     miniPostFooter.appendChild(qtdComentarios);
-    miniPostFooter.appendChild(likes);
+    miniPostFooter.appendChild(miniCurtidasPost);
+    miniPostFooter.appendChild(miniFavoritarPost);
 
     postSemanaDiv.appendChild(idPost)
     postSemanaDiv.appendChild(h2);
@@ -400,15 +436,41 @@ function getPostsLocalStorage() {
     return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.posts || [];
 }
 
-let listaPosts = getPostsLocalStorage();
-let filtrados = [];
-let pesquisaAtiva = false;
-let postsOrdenacaoDataDesc = false;
-let postsOrdenacaoNomeDesc = false;
-let postsOrdenacaoComentariosDesc = false;
-let postsSemana = getPostSemana();
-let i = 0;
-let carrosselInterval = null;
+function curtirPost(postId) {
+    let postsAtuais = getPostsLocalStorage();
+    let post = postsAtuais.find(post => post.postId === postId);
+
+    if (post) {
+        if (post.jaCurtiu === undefined) post.jaCurtiu = false;
+        if (post.curtidas === undefined) post.curtidas = 0;
+
+        if (post.jaCurtiu === false) {
+            post.curtidas++;
+            post.jaCurtiu = true;
+        }
+        else {
+            post.curtidas--;
+            post.jaCurtiu = false;
+        }
+        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: postsAtuais }));
+        renderizarPost();
+        postsSemana = getPostSemana();
+        renderizarCarrossel(i);
+    }
+}
+
+function favoritarPost(postId) {
+    let postsAtuais = getPostsLocalStorage();
+    let post = postsAtuais.find(post => post.postId === postId);
+
+    if (post) {
+        post.favorito = !post.favorito;
+        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: postsAtuais }));
+        renderizarPost();
+        postsSemana = getPostSemana();
+        renderizarCarrossel(i);
+    }
+}
 
 function iniciarCarrosselAutomatico() {
     if (carrosselInterval) {
@@ -421,6 +483,16 @@ function iniciarCarrosselAutomatico() {
         btnCarrossel(1);
     }, 10000);
 }
+
+let listaPosts = getPostsLocalStorage();
+let filtrados = [];
+let pesquisaAtiva = false;
+let postsOrdenacaoDataDesc = false;
+let postsOrdenacaoNomeDesc = false;
+let postsOrdenacaoComentariosDesc = false;
+let postsSemana = getPostSemana();
+let i = 0;
+let carrosselInterval = null;
 
 if (!localStorage.getItem("PucMeet-db")) {
     carregaJSONLocalStorage();

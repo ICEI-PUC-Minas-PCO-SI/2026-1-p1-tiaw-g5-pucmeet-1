@@ -43,8 +43,9 @@
       "comentarios": 2,
       "dataReal": "2025-12-25T16:50:33",
       "dataVisual": "25/12/2025 16:50:33",
-      "likes": 27,
-      "favoritos": 12
+      "curtidas": 27,
+      "favoritos": 12,
+      "favorito": false
     },
     {
       "postId": 2,
@@ -57,8 +58,9 @@
       "comentarios": 5,
       "dataReal": "2025-05-20T10:30:00",
       "dataVisual": "20/05/2025 10:30:00",
-      "likes": 64,
-      "favoritos": 8
+      "curtidas": 64,
+      "favoritos": 8,
+      "favorito": false
     },
     {
       "postId": 3,
@@ -71,8 +73,9 @@
       "comentarios": 0,
       "dataReal": "2026-05-19T14:00:00",
       "dataVisual": "19/05/2026 14:00:00",
-      "likes": 9,
-      "favoritos": 1
+      "curtidas": 9,
+      "favoritos": 1,
+      "favorito": false
     },
     {
       "postId": 4,
@@ -86,8 +89,9 @@
       "comentarios": 3,
       "dataReal": "2026-05-18T09:15:00",
       "dataVisual": "18/05/2026 09:15:00",
-      "likes": 43,
-      "favoritos": 5
+      "curtidas": 43,
+      "favoritos": 5,
+      "favorito": false
     },
     {
       "postId": 5,
@@ -100,8 +104,9 @@
       "comentarios": 1,
       "dataReal": "2026-05-17T11:45:00",
       "dataVisual": "17/05/2026 11:45:00",
-      "likes": 2,
-      "favoritos": 0
+      "curtidas": 2,
+      "favoritos": 0,
+      "favorito": false
     },
     {
       "postId": 6,
@@ -114,8 +119,9 @@
       "comentarios": 4,
       "dataReal": "2026-05-16T18:20:00",
       "dataVisual": "16/05/2026 18:20:00",
-      "likes": 51,
-      "favoritos": 11
+      "curtidas": 51,
+      "favoritos": 11,
+      "favorito": false
     },
     {
       "postId": 7,
@@ -129,8 +135,9 @@
       "comentarios": 2,
       "dataReal": "2026-05-15T17:00:05",
       "dataVisual": "15/05/2026 17:00:05",
-      "likes": 15,
-      "favoritos": 3
+      "curtidas": 15,
+      "favoritos": 3,
+      "favorito": false
     },
     {
       "postId": 8,
@@ -143,8 +150,9 @@
       "comentarios": 6,
       "dataReal": "2026-05-14T12:30:00",
       "dataVisual": "14/05/2026 12:30:00",
-      "likes": 78,
-      "favoritos": 22
+      "curtidas": 78,
+      "favoritos": 22,
+      "favorito": false
     },
     {
       "postId": 9,
@@ -157,8 +165,9 @@
       "comentarios": 8,
       "dataReal": "2026-05-13T20:00:23",
       "dataVisual": "13/05/2026 20:00:23",
-      "likes": 34,
-      "favoritos": 7
+      "curtidas": 34,
+      "favoritos": 7,
+      "favorito": false
     },
     {
       "postId": 10,
@@ -171,8 +180,9 @@
       "comentarios": 0,
       "dataReal": "2026-05-12T15:10:45",
       "dataVisual": "12/05/2026 15:10:45",
-      "likes": 0,
-      "favoritos": 0
+      "curtidas": 0,
+      "favoritos": 0,
+      "favorito": false
     },
     {
       "postId": 11,
@@ -185,8 +195,9 @@
       "comentarios": 2,
       "dataReal": "2026-05-05T08:00:07",
       "dataVisual": "05/05/2026 08:00:07",
-      "likes": 19,
-      "favoritos": 4
+      "curtidas": 19,
+      "favoritos": 4,
+      "favorito": false
     },
     {
       "postId": 12,
@@ -199,8 +210,9 @@
       "comentarios": 3,
       "dataReal": "2026-04-28T10:00:00",
       "dataVisual": "28/04/2026 10:00:00",
-      "likes": 6,
-      "favoritos": 2
+      "curtidas": 6,
+      "favoritos": 2,
+      "favorito": false
     },
     {
       "postId": 13,
@@ -214,8 +226,9 @@
       "comentarios": 5,
       "dataReal": "2026-04-01T19:30:33",
       "dataVisual": "01/04/2026 19:30:33",
-      "likes": 88,
-      "favoritos": 30
+      "curtidas": 88,
+      "favoritos": 30,
+      "favorito": false
     },
     {
       "postId": 14,
@@ -228,8 +241,9 @@
       "comentarios": 1,
       "dataReal": "2026-03-20T09:00:00",
       "dataVisual": "20/03/2026 09:00:00",
-      "likes": 5,
-      "favoritos": 1
+      "curtidas": 5,
+      "favoritos": 1,
+      "favorito": false
     },
     {
       "postId": 15,
@@ -242,8 +256,9 @@
       "comentarios": 0,
       "dataReal": "2026-03-15T14:00:23",
       "dataVisual": "15/03/2026 14:00:23",
-      "likes": 12,
-      "favoritos": 2
+      "curtidas": 12,
+      "favoritos": 2,
+      "favorito": false
     },
     {
       "postId": 16,
@@ -257,8 +272,9 @@
       "comentarios": 7,
       "dataReal": "2026-02-25T16:00:00",
       "dataVisual": "25/02/2026 16:00:00",
-      "likes": 47,
-      "favoritos": 9
+      "curtidas": 47,
+      "favoritos": 9,
+      "favorito": false
     },
     {
       "postId": 17,
@@ -271,8 +287,9 @@
       "comentarios": 0,
       "dataReal": "2026-01-10T11:00:00",
       "dataVisual": "10/01/2026 11:00:00",
-      "likes": 3,
-      "favoritos": 0
+      "curtidas": 3,
+      "favoritos": 0,
+      "favorito": false
     },
     {
       "postId": 18,
@@ -285,8 +302,9 @@
       "comentarios": 2,
       "dataReal": "2025-12-05T13:00:00",
       "dataVisual": "05/12/2025 13:00:00",
-      "likes": 29,
-      "favoritos": 6
+      "curtidas": 29,
+      "favoritos": 6,
+      "favorito": false
     },
     {
       "postId": 19,
@@ -299,8 +317,9 @@
       "comentarios": 9,
       "dataReal": "2025-11-20T18:30:00",
       "dataVisual": "20/11/2025 18:30:00",
-      "likes": 55,
-      "favoritos": 14
+      "curtidas": 55,
+      "favoritos": 14,
+      "favorito": false
     },
     {
       "postId": 20,
@@ -314,8 +333,9 @@
       "comentarios": 4,
       "dataReal": "2025-10-01T09:00:04",
       "dataVisual": "01/10/2025 09:00:04",
-      "likes": 10,
-      "favoritos": 1
+      "curtidas": 10,
+      "favoritos": 1,
+      "favorito": false
     }
   ],
   "comentarios": [
