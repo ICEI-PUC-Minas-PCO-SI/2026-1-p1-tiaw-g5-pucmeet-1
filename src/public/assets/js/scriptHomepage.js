@@ -484,6 +484,7 @@ function iniciarCarrosselAutomatico() {
     }, 10000);
 }
 
+
 let listaPosts = getPostsLocalStorage();
 let filtrados = [];
 let pesquisaAtiva = false;
@@ -494,9 +495,98 @@ let postsSemana = getPostSemana();
 let i = 0;
 let carrosselInterval = null;
 
+const btnPublicar = document.getElementById('btn-publicar');
+if (btnPublicar) {
+    let categoriaSelecionada = [];
+    let esAnonimo = false;
+
+    const botoesCategoria = document.querySelectorAll('.btn-categoria');
+    botoesCategoria.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const categoria = btn.getAttribute('data-categoria');
+            const indiceCategoria = categoriaSelecionada.indexOf(categoria);
+
+            if (btn.classList.contains('active')) {
+                btn.classList.remove('active');
+
+                if (indiceCategoria !== -1) {
+                    categoriaSelecionada.splice(indiceCategoria, 1);
+                }
+                return;
+            }
+
+            btn.classList.add('active');
+
+            if (indiceCategoria === -1) {
+                categoriaSelecionada.push(categoria);
+            }
+        });
+    });
+
+    const btnAnonimo = document.getElementById('btn-anonimo');
+    if (btnAnonimo) {
+        btnAnonimo.addEventListener('click', () => {
+            esAnonimo = !esAnonimo;
+            const span = btnAnonimo.querySelector('span');
+            if (span) span.textContent = esAnonimo ? "Sim" : "Não";
+        });
+    }
+
+    btnPublicar.addEventListener('click', () => {
+        const titulo = document.getElementById('post-title').value.trim();
+        const conteudo = document.getElementById('post-content').value.trim();
+
+        if (!titulo || !conteudo || categoriaSelecionada.length === 0) {
+            alert("Por favor, preencha o título, o conteúdo e selecione uma categoria!");
+            return;
+        }
+
+        const btnAdicionar = document.getElementById("btnAdicionar");
+        const listaPosts = getPostsLocalStorage();
+
+        let data = new Date();
+
+        const novoPost = {
+            postId: data,
+            titulo: titulo,
+            conteudo: conteudo,
+            categorias: categoriaSelecionada,
+            autor: esAnonimo ? "Anônimo" : "Estudante123",
+            comentarios: 0,
+            dataReal: data,
+            dataVisual: formatarDataHora(data),
+            curtidas: 0,
+            favoritos: 0,
+            favorito: false
+        };
+
+        const btnAnonimi = document.getElementById('btn-anonimo');
+        if (btnAnonimi) {
+            const span = btnAnonimi.querySelector('span');
+            if (span) span.textContent = "Não";
+        }
+
+        listaPosts.push(novoPost);
+        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
+
+        document.getElementById('post-title').value = "";
+        document.getElementById('post-content').value = "";
+        categoriaSelecionada = [];
+        esAnonimo = false;
+
+        // Resetar UI
+        botoesCategoria.forEach(b => b.classList.remove('active'));
+
+        window.location.href = "../homepage/index.html";
+    });
+}
+
+const path = window.location.pathname;
+const estaNoIndex = path.endsWith("index.html") || path.endsWith("/");
+
 if (!localStorage.getItem("PucMeet-db")) {
     carregaJSONLocalStorage();
-} else {
+} else if (estaNoIndex) {
     ordenarPostsPorData(true);
     renderizarPost();
     postsSemana = getPostSemana();
