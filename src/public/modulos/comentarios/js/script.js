@@ -2,12 +2,27 @@ const campoComentario = document.getElementById("campoComentario");
 const btnResponder = document.getElementById("btnResponder");
 const listaComentarios = document.getElementById("listaComentarios");
 
-let comentarios = JSON.parse(localStorage.getItem("comentariosPucMeet")) || [
+const btnMostrarBusca = document.getElementById("btnMostrarBusca");
+const btnMostrarFiltro = document.getElementById("btnMostrarFiltro");
+const btnMostrarOrdenacao = document.getElementById("btnMostrarOrdenacao");
+
+const painelBusca = document.getElementById("painelBusca");
+const painelFiltro = document.getElementById("painelFiltro");
+const painelOrdenacao = document.getElementById("painelOrdenacao");
+
+const campoBusca = document.getElementById("campoBusca");
+const filtroAutor = document.getElementById("filtroAutor");
+const ordenacaoComentarios = document.getElementById("ordenacaoComentarios");
+const resumoFiltros = document.getElementById("resumoFiltros");
+
+const comentariosPadrao = [
   {
     id: 1,
     autor: "Maria Santos",
     conteudo: "Eu também tenho dificuldade! Podemos formar um grupo no Whatsapp?",
     data: "3 min atrás",
+    criadoEm: Date.now() - 3 * 60 * 1000,
+    curtidas: 5,
     postId: 10,
     dono: false
   },
@@ -16,26 +31,114 @@ let comentarios = JSON.parse(localStorage.getItem("comentariosPucMeet")) || [
     autor: "Carlos Silva",
     conteudo: "Posso ajudar com integrais, tive essa matéria no semestre passado 👍",
     data: "4 min atrás",
+    criadoEm: Date.now() - 4 * 60 * 1000,
+    curtidas: 3,
     postId: 10,
     dono: false
   }
 ];
 
+let comentarios = carregarComentarios();
+
+function carregarComentarios() {
+  const comentariosSalvos = localStorage.getItem("comentariosPucMeet");
+
+  if (comentariosSalvos) {
+    const comentariosConvertidos = JSON.parse(comentariosSalvos);
+
+    return comentariosConvertidos.map((comentario) => {
+      return {
+        ...comentario,
+
+        
+        curtidas: Number(comentario.curtidas) || 0,
+        criadoEm: comentario.criadoEm || Date.now()
+      };
+    });
+  }
+
+  return comentariosPadrao;
+}
+
 function salvarComentarios() {
   localStorage.setItem("comentariosPucMeet", JSON.stringify(comentarios));
 }
 
-function renderizarComentarios() {
+function mostrarOuOcultarPainel(painel) {
+  painel.classList.toggle("oculto");
+}
+
+function buscarFiltrarOrdenarComentarios() {
+  let resultado = [...comentarios];
+
+  const textoBusca = campoBusca.value.trim().toLowerCase();
+  const autorSelecionado = filtroAutor.value;
+  const ordenacaoSelecionada = ordenacaoComentarios.value;
+
+  if (textoBusca !== "") {
+    resultado = resultado.filter((comentario) => {
+      const autor = comentario.autor.toLowerCase();
+      const conteudo = comentario.conteudo.toLowerCase();
+
+      return autor.includes(textoBusca) || conteudo.includes(textoBusca);
+    });
+  }
+
+  if (autorSelecionado !== "todos") {
+    resultado = resultado.filter((comentario) => {
+      return comentario.autor === autorSelecionado;
+    });
+  }
+
+  if (ordenacaoSelecionada === "mais_recentes") {
+    resultado.sort((a, b) => b.criadoEm - a.criadoEm);
+  }
+
+  if (ordenacaoSelecionada === "mais_antigos") {
+    resultado.sort((a, b) => a.criadoEm - b.criadoEm);
+  }
+
+  if (ordenacaoSelecionada === "mais_curtidos") {
+    resultado.sort((a, b) => b.curtidas - a.curtidas);
+  }
+
+  atualizarResumoFiltros(resultado.length);
+  renderizarComentarios(resultado);
+}
+
+function atualizarResumoFiltros(total) {
+  const textoBusca = campoBusca.value.trim();
+  const autorSelecionado = filtroAutor.value;
+  const ordenacaoSelecionada = ordenacaoComentarios.value;
+
+  let textoOrdenacao = "";
+
+  if (ordenacaoSelecionada === "mais_recentes") {
+    textoOrdenacao = "mais recentes";
+  } else if (ordenacaoSelecionada === "mais_antigos") {
+    textoOrdenacao = "mais antigos";
+  } else {
+    textoOrdenacao = "mais curtidos";
+  }
+
+  const textoAutor = autorSelecionado === "todos" ? "todos os autores" : autorSelecionado;
+  const textoPesquisa = textoBusca === "" ? "sem busca ativa" : `busca: "${textoBusca}"`;
+
+  resumoFiltros.textContent =
+    `${total} comentário(s) exibido(s) | ${textoPesquisa} | autor: ${textoAutor} | ordenação: ${textoOrdenacao}`;
+}
+
+function renderizarComentarios(lista = comentarios) {
   listaComentarios.innerHTML = "";
 
-  if (comentarios.length === 0) {
+  if (lista.length === 0) {
     listaComentarios.innerHTML = `
-      <p class="sem-comentarios">Nenhum comentário publicado ainda.</p>
+      <p class="sem-comentarios">Nenhum comentário encontrado.</p>
     `;
     return;
   }
 
-  comentarios.forEach((comentario) => {
+  lista.forEach((comentario) => {
     const card = document.createElement("div");
     card.classList.add("comentario-card");
 
@@ -60,6 +163,11 @@ function renderizarComentarios() {
             : ""
         }
       </div>
+
+      <div class="info-comentario">
+        <span>❤ ${comentario.curtidas} curtida(s)</span>
+        <button class="btn-curtir" onclick="curtirComentario(${comentario.id})">Curtir</button>
+      </div>
     `;
 
     listaComentarios.appendChild(card);
@@ -79,14 +187,16 @@ function adicionarComentario() {
     autor: "Luiz Felipe",
     conteudo: texto,
     data: "agora",
+    criadoEm: Date.now(),
+    curtidas: 0,
     postId: 10,
     dono: true
   };
 
-  comentarios.unshift(novoComentario);
+  comentarios.push(novoComentario);
 
   salvarComentarios();
-  renderizarComentarios();
+  buscarFiltrarOrdenarComentarios();
 
   campoComentario.value = "";
 }
@@ -114,7 +224,7 @@ function editarComentario(id) {
   comentario.data = "editado agora";
 
   salvarComentarios();
-  renderizarComentarios();
+  buscarFiltrarOrdenarComentarios();
 }
 
 function excluirComentario(id) {
@@ -127,7 +237,21 @@ function excluirComentario(id) {
   comentarios = comentarios.filter((item) => item.id !== id);
 
   salvarComentarios();
-  renderizarComentarios();
+  buscarFiltrarOrdenarComentarios();
+}
+
+function curtirComentario(id) {
+  const comentario = comentarios.find((item) => item.id === id);
+
+  if (!comentario) {
+    alert("Comentário não encontrado.");
+    return;
+  }
+
+  comentario.curtidas++;
+
+  salvarComentarios();
+  buscarFiltrarOrdenarComentarios();
 }
 
 btnResponder.addEventListener("click", adicionarComentario);
@@ -138,5 +262,21 @@ campoComentario.addEventListener("keydown", function (event) {
   }
 });
 
+btnMostrarBusca.addEventListener("click", function () {
+  mostrarOuOcultarPainel(painelBusca);
+});
+
+btnMostrarFiltro.addEventListener("click", function () {
+  mostrarOuOcultarPainel(painelFiltro);
+});
+
+btnMostrarOrdenacao.addEventListener("click", function () {
+  mostrarOuOcultarPainel(painelOrdenacao);
+});
+
+campoBusca.addEventListener("input", buscarFiltrarOrdenarComentarios);
+filtroAutor.addEventListener("change", buscarFiltrarOrdenarComentarios);
+ordenacaoComentarios.addEventListener("change", buscarFiltrarOrdenarComentarios);
+
 salvarComentarios();
-renderizarComentarios();
+buscarFiltrarOrdenarComentarios();

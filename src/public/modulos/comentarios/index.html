@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PucMeet - CRUD de Comentários</title>
+  <title>PucMeet - Comentários</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -36,20 +36,52 @@
     <section class="comentario-form">
       <h2>💬 Adicionar Comentário</h2>
 
-      <textarea 
-        id="campoComentario" 
-        placeholder="Escreva seu comentário aqui... Seja respeitoso e acolhedor.">
-      </textarea>
+      <textarea
+        id="campoComentario"
+        placeholder="Escreva seu comentário aqui... Seja respeitoso e acolhedor."></textarea>
 
       <button id="btnResponder">➤ Responder</button>
     </section>
 
     <section class="comentarios-area">
+
       <div class="comentarios-topo">
-        <span>↕</span>
-        <span>⚗</span>
+        <button id="btnMostrarOrdenacao" class="botao-ferramenta" title="Ordenar comentários">↕</button>
+        <button id="btnMostrarFiltro" class="botao-ferramenta" title="Filtrar comentários">⚗</button>
         <strong>💬 Comentários</strong>
-        <span>🔎</span>
+        <button id="btnMostrarBusca" class="botao-ferramenta" title="Buscar comentários">🔎</button>
+      </div>
+
+      <div id="painelBusca" class="painel-controle oculto">
+        <label for="campoBusca">Buscar comentário:</label>
+        <input
+          type="text"
+          id="campoBusca"
+          placeholder="Digite autor ou palavra-chave..."
+        />
+      </div>
+
+      <div id="painelFiltro" class="painel-controle oculto">
+        <label for="filtroAutor">Filtrar por autor:</label>
+        <select id="filtroAutor">
+          <option value="todos">Todos os autores</option>
+          <option value="Maria Santos">Maria Santos</option>
+          <option value="Carlos Silva">Carlos Silva</option>
+          <option value="Luiz Felipe">Luiz Felipe</option>
+        </select>
+      </div>
+
+      <div id="painelOrdenacao" class="painel-controle oculto">
+        <label for="ordenacaoComentarios">Ordenar comentários:</label>
+        <select id="ordenacaoComentarios">
+          <option value="mais_recentes">Mais recentes</option>
+          <option value="mais_antigos">Mais antigos</option>
+          <option value="mais_curtidos">Mais curtidos</option>
+        </select>
+      </div>
+
+      <div id="resumoFiltros" class="resumo-filtros">
+        Exibindo todos os comentários.
       </div>
 
       <div id="listaComentarios"></div>
