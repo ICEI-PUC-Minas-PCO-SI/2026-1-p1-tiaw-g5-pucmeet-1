@@ -500,6 +500,30 @@ if (btnPublicar) {
     let categoriaSelecionada = [];
     let esAnonimo = false;
 
+    const queryParams = new URLSearchParams(window.location.search);
+    const postTitle = document.getElementById('post-title');
+    const postContent = document.getElementById('post-content');
+
+    switch (Number(queryParams.get("id"))) {
+        case 1:
+            postTitle.value = "Alguém pra grupo?";
+            postContent.value = "Alguém para fazer grupo de ";
+            break;
+        case 2:
+            postTitle.value = "Preciso de ajuda";
+            postContent.value = "Alguém pode me ajudar em ";
+            break;
+        case 3:
+            postTitle.value = "Quero fazer amigos";
+            postContent.value = "Alguém curte ";
+            break;
+        case 4:
+            postTitle.value = "Vamos estudar?";
+            postContent.value = "Alguém para fazer grupo de estudos de";
+            break;
+    }
+
+
     const botoesCategoria = document.querySelectorAll('.btn-categoria');
     botoesCategoria.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -533,8 +557,8 @@ if (btnPublicar) {
     }
 
     btnPublicar.addEventListener('click', () => {
-        const titulo = document.getElementById('post-title').value.trim();
-        const conteudo = document.getElementById('post-content').value.trim();
+        const titulo = postTitle.value.trim();
+        const conteudo = postContent.value.trim();
 
         if (!titulo || !conteudo || categoriaSelecionada.length === 0) {
             alert("Por favor, preencha o título, o conteúdo e selecione uma categoria!");
