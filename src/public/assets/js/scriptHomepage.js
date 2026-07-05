@@ -1,5 +1,5 @@
 function carregaJSONLocalStorage() {
-    fetch("../../../../db/PucMeet-db.json")
+    fetch("../../../db/PucMeet-db.json")
         .then(response => response.json())
         .then(data => {
             localStorage.setItem("PucMeet-db", JSON.stringify(data));
@@ -131,8 +131,8 @@ function formatarDataHora(data) {
 }
 
 function ordenarPostsPorData(desc) {
-    const posts = getPostsLocalStorage();
-    let alvo = pesquisaAtiva ? filtrados : posts;
+    const listaPosts = getPostsLocalStorage();
+    let alvo = pesquisaAtiva ? filtrados : listaPosts;
 
     alvo.sort((a, b) => {
         const tempoA = new Date(a.dataReal).getTime();
@@ -146,7 +146,7 @@ function ordenarPostsPorData(desc) {
     });
 
     if (!pesquisaAtiva) {
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts }));
+        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
     }
 
     renderizarPost(pesquisaAtiva ? filtrados : undefined);
@@ -173,8 +173,8 @@ function toggleOrdenarPostsPorData() {
 }
 
 function ordenarPostsPorNomeAutorAlfabeticamente(desc) {
-    const posts = getPostsLocalStorage();
-    let alvo = pesquisaAtiva ? filtrados : posts;
+    const listaPosts = getPostsLocalStorage();
+    let alvo = pesquisaAtiva ? filtrados : listaPosts;
 
     alvo.sort((a, b) => {
         const nomeA = (a.autor || "").toString().trim().toLocaleLowerCase('pt-BR');
@@ -188,7 +188,7 @@ function ordenarPostsPorNomeAutorAlfabeticamente(desc) {
     });
 
     if (!pesquisaAtiva) {
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts }));
+        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
     }
 
     renderizarPost(pesquisaAtiva ? filtrados : undefined);
@@ -215,8 +215,8 @@ function toggleOrdenarPostsPorNomeAutorAlfabeticamente() {
 }
 
 function ordenarPostsPorComentarios(desc) {
-    const posts = getPostsLocalStorage();
-    let alvo = pesquisaAtiva ? filtrados : posts;
+    const listaPosts = getPostsLocalStorage();
+    let alvo = pesquisaAtiva ? filtrados : listaPosts;
 
     alvo.sort((a, b) => {
         const qtdComentariosA = Number(a.comentarios) || 0;
@@ -230,7 +230,7 @@ function ordenarPostsPorComentarios(desc) {
     });
 
     if (!pesquisaAtiva) {
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts }));
+        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
     }
 
     renderizarPost(pesquisaAtiva ? filtrados : undefined);
@@ -610,7 +610,9 @@ const estaNoIndex = path.endsWith("index.html") || path.endsWith("/");
 
 if (!localStorage.getItem("PucMeet-db")) {
     carregaJSONLocalStorage();
-} else if (estaNoIndex) {
+}
+
+if (estaNoIndex) {
     ordenarPostsPorData(true);
     renderizarPost();
     postsSemana = getPostSemana();

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PucMeet - Comentários</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/stylePost.css" />
 </head>
+
 <body>
 
   <main class="container">
 
-    <a href="#" class="voltar">← Voltar</a>
+    <a href="../homepage/index.html" class="voltar">← Voltar</a>
 
     <h1>Post</h1>
     <h3>Posts Recentes</h3>
@@ -36,8 +38,7 @@
     <section class="comentario-form">
       <h2>💬 Adicionar Comentário</h2>
 
-      <textarea
-        id="campoComentario"
+      <textarea id="campoComentario"
         placeholder="Escreva seu comentário aqui... Seja respeitoso e acolhedor."></textarea>
 
       <button id="btnResponder">➤ Responder</button>
@@ -54,21 +55,12 @@
 
       <div id="painelBusca" class="painel-controle oculto">
         <label for="campoBusca">Buscar comentário:</label>
-        <input
-          type="text"
-          id="campoBusca"
-          placeholder="Digite autor ou palavra-chave..."
-        />
+        <input type="text" id="campoBusca" placeholder="Digite autor ou palavra-chave..." />
       </div>
 
       <div id="painelFiltro" class="painel-controle oculto">
         <label for="filtroAutor">Filtrar por autor:</label>
-        <select id="filtroAutor">
-          <option value="todos">Todos os autores</option>
-          <option value="Maria Santos">Maria Santos</option>
-          <option value="Carlos Silva">Carlos Silva</option>
-          <option value="Luiz Felipe">Luiz Felipe</option>
-        </select>
+        <select id="filtroAutor"></select>
       </div>
 
       <div id="painelOrdenacao" class="painel-controle oculto">
@@ -89,6 +81,7 @@
 
   </main>
 
-  <script src="js/script.js"></script>
+  <script src="../../assets/js/scriptPost.js"></script>
 </body>
+
 </html>

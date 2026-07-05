@@ -15,54 +15,113 @@ const filtroAutor = document.getElementById("filtroAutor");
 const ordenacaoComentarios = document.getElementById("ordenacaoComentarios");
 const resumoFiltros = document.getElementById("resumoFiltros");
 
-const comentariosPadrao = [
-  {
-    id: 1,
-    autor: "Maria Santos",
-    conteudo: "Eu também tenho dificuldade! Podemos formar um grupo no Whatsapp?",
-    data: "3 min atrás",
-    criadoEm: Date.now() - 3 * 60 * 1000,
-    curtidas: 5,
-    postId: 10,
-    dono: false
-  },
-  {
-    id: 2,
-    autor: "Carlos Silva",
-    conteudo: "Posso ajudar com integrais, tive essa matéria no semestre passado 👍",
-    data: "4 min atrás",
-    criadoEm: Date.now() - 4 * 60 * 1000,
-    curtidas: 3,
-    postId: 10,
-    dono: false
-  }
-];
+const queryParams = new URLSearchParams(window.location.search);
+
+function carregaJSONLocalStorage() {
+  fetch("../../../db/PucMeet-db.json")
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem("PucMeet-db", JSON.stringify(data));
+    })
+    .catch(error => console.error("Erro ao carregar posts:", error));
+}
+
+if (!localStorage.getItem("PucMeet-db")) {
+  carregaJSONLocalStorage();
+}
 
 let comentarios = carregarComentarios();
 
 function carregarComentarios() {
-  const comentariosSalvos = localStorage.getItem("comentariosPucMeet");
+  return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.comentarios || [];
+}
 
-  if (comentariosSalvos) {
-    const comentariosConvertidos = JSON.parse(comentariosSalvos);
-
-    return comentariosConvertidos.map((comentario) => {
-      return {
-        ...comentario,
-
-        
-        curtidas: Number(comentario.curtidas) || 0,
-        criadoEm: comentario.criadoEm || Date.now()
-      };
-    });
-  }
-
-  return comentariosPadrao;
+function toTimestamp(value) {
+  if (value === undefined || value === null) return 0;
+  if (typeof value === "number") return value;
+  const d = new Date(value);
+  return isNaN(d.getTime()) ? 0 : d.getTime();
 }
 
 function salvarComentarios() {
-  localStorage.setItem("comentariosPucMeet", JSON.stringify(comentarios));
+  const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+  db.comentarios = comentarios;
+  localStorage.setItem("PucMeet-db", JSON.stringify(db));
+  atualizarFiltroAutor();
+  atualizarContadorPost();
+  carregarPost();
 }
+
+function atualizarContadorPost() {
+  const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+  if (!db.posts) return;
+  const postId = Number(queryParams.get("id"));
+  if (Number.isNaN(postId)) return;
+  const total = comentarios.filter(c => c.postId === postId).length;
+  const post = db.posts.find(p => p.postId === postId);
+  if (post) {
+    post.comentarios = total;
+    localStorage.setItem("PucMeet-db", JSON.stringify(db));
+  }
+}
+
+function carregarPost() {
+  const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+  const posts = db.posts || [];
+  const postId = Number(queryParams.get("id"));
+  const container = document.querySelector(".post-card");
+  if (!container) return;
+
+  if (Number.isNaN(postId)) {
+    container.innerHTML = `<p>Post inválido.</p>`;
+    return;
+  }
+
+  const post = posts.find(p => p.postId === postId);
+  if (!post) {
+    container.innerHTML = `<h2>Post não encontrado</h2><p>Verifique o ID na URL.</p>`;
+    return;
+  }
+
+  const categorias = (post.categorias || []).map(c => `<span>${c}</span>`).join(" ");
+
+  container.innerHTML = `
+    <h2>${post.titulo}</h2>
+
+    <p>${post.conteudo}</p>
+
+    <div class="post-info">
+      ${categorias}
+      <span>${post.autor || 'Anônimo'}</span>
+      <span>❤ ${post.curtidas || 0}</span>
+      <span>${post.dataVisual || ''}</span>
+    </div>
+  `;
+}
+
+function atualizarFiltroAutor() {
+  const postId = Number(queryParams.get("id"));
+  const autores = comentarios
+    .filter(c => Number.isNaN(postId) ? true : c.postId === postId)
+    .map(c => c.autor)
+    .filter(Boolean);
+
+  const autoresUnicos = Array.from(new Set(autores)).sort((a, b) => a.localeCompare(b));
+
+  filtroAutor.innerHTML = "";
+  const opcTodos = document.createElement("option");
+  opcTodos.value = "todos";
+  opcTodos.textContent = "Todos os Autores";
+  filtroAutor.appendChild(opcTodos);
+
+  autoresUnicos.forEach((autor) => {
+    const opt = document.createElement("option");
+    opt.value = autor;
+    opt.textContent = autor;
+    filtroAutor.appendChild(opt);
+  });
+}
+atualizarFiltroAutor();
 
 function mostrarOuOcultarPainel(painel) {
   painel.classList.toggle("oculto");
@@ -70,6 +129,11 @@ function mostrarOuOcultarPainel(painel) {
 
 function buscarFiltrarOrdenarComentarios() {
   let resultado = [...comentarios];
+
+  const postId = Number(queryParams.get("id"));
+  if (!Number.isNaN(postId)) {
+    resultado = resultado.filter((comentario) => comentario.postId === postId);
+  }
 
   const textoBusca = campoBusca.value.trim().toLowerCase();
   const autorSelecionado = filtroAutor.value;
@@ -91,11 +155,11 @@ function buscarFiltrarOrdenarComentarios() {
   }
 
   if (ordenacaoSelecionada === "mais_recentes") {
-    resultado.sort((a, b) => b.criadoEm - a.criadoEm);
+    resultado.sort((a, b) => toTimestamp(b.dataReal) - toTimestamp(a.dataReal));
   }
 
   if (ordenacaoSelecionada === "mais_antigos") {
-    resultado.sort((a, b) => a.criadoEm - b.criadoEm);
+    resultado.sort((a, b) => toTimestamp(a.dataReal) - toTimestamp(b.dataReal));
   }
 
   if (ordenacaoSelecionada === "mais_curtidos") {
@@ -128,7 +192,7 @@ function atualizarResumoFiltros(total) {
     `${total} comentário(s) exibido(s) | ${textoPesquisa} | autor: ${textoAutor} | ordenação: ${textoOrdenacao}`;
 }
 
-function renderizarComentarios(lista = comentarios) {
+function renderizarComentarios(lista = comentarios.filter(comentario => comentario.postId === Number(queryParams.get("id")))) {
   listaComentarios.innerHTML = "";
 
   if (lista.length === 0) {
@@ -144,7 +208,7 @@ function renderizarComentarios(lista = comentarios) {
 
     card.innerHTML = `
       <div class="comentario-header">
-        ${comentario.autor} · ${comentario.data}
+        ${comentario.autor} · ${comentario.dataVisual}
       </div>
 
       <div class="comentario-conteudo">
@@ -152,26 +216,41 @@ function renderizarComentarios(lista = comentarios) {
 
         <p class="comentario-texto">${comentario.conteudo}</p>
 
-        ${
-          comentario.dono
-            ? `
+        ${comentario.dono
+        ? `
               <div class="acoes">
                 <button class="btn-editar" onclick="editarComentario(${comentario.id})">✏️</button>
                 <button class="btn-excluir" onclick="excluirComentario(${comentario.id})">🗑️</button>
               </div>
             `
-            : ""
-        }
+        : ""
+      }
       </div>
 
       <div class="info-comentario">
         <span>❤ ${comentario.curtidas} curtida(s)</span>
-        <button class="btn-curtir" onclick="curtirComentario(${comentario.id})">Curtir</button>
+
+        ${comentario.jaCurtiu
+        ? `<button class="btn-curtir" style="background-color: #0077cc; color: white;" onclick="curtirComentario(${comentario.id})">Curtir</button>`
+        : `<button class="btn-curtir" onclick="curtirComentario(${comentario.id})">Curtir</button>`
+      }
+
       </div>
     `;
 
     listaComentarios.appendChild(card);
   });
+}
+
+function formatarDataHora(data) {
+  const dia = String(data.getDate()).padStart(2, "0");
+  const mes = String(data.getMonth() + 1).padStart(2, "0");
+  const ano = data.getFullYear();
+  const hora = String(data.getHours()).padStart(2, "0");
+  const minuto = String(data.getMinutes()).padStart(2, "0");
+  const segundo = String(data.getSeconds()).padStart(2, "0");
+
+  return dia + "/" + mes + "/" + ano + " às " + hora + ":" + minuto + ":" + segundo;
 }
 
 function adicionarComentario() {
@@ -182,14 +261,16 @@ function adicionarComentario() {
     return;
   }
 
+  let data = new Date();
+
   const novoComentario = {
     id: Date.now(),
     autor: "Luiz Felipe",
     conteudo: texto,
-    data: "agora",
-    criadoEm: Date.now(),
+    dataReal: data.toISOString(),
+    dataVisual: formatarDataHora(data),
     curtidas: 0,
-    postId: 10,
+    postId: Number(queryParams.get("id")),
     dono: true
   };
 
@@ -243,12 +324,19 @@ function excluirComentario(id) {
 function curtirComentario(id) {
   const comentario = comentarios.find((item) => item.id === id);
 
-  if (!comentario) {
-    alert("Comentário não encontrado.");
-    return;
-  }
+  if (comentario) {
+    if (comentario.jaCurtiu === undefined) comentario.jaCurtiu = false;
+    if (comentario.curtidas === undefined) comentario.curtidas = 0;
 
-  comentario.curtidas++;
+    if (comentario.jaCurtiu === false) {
+      comentario.curtidas++;
+      comentario.jaCurtiu = true;
+    }
+    else {
+      comentario.curtidas--;
+      comentario.jaCurtiu = false;
+    }
+  }
 
   salvarComentarios();
   buscarFiltrarOrdenarComentarios();

@@ -236,6 +236,12 @@ button {
   background-color: #dcdcdc;
 }
 
+.btn-curtir:active{
+  transform: scale(1.2);
+  background-color: #0077cc;
+  color: white;
+}
+
 .acoes {
   display: flex;
   flex-direction: column;
