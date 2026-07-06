@@ -126,7 +126,7 @@ function carregarPost() {
   }
 
   const categorias = (post.categorias || []).map(c => `<span>${c}</span>`).join(" ");
-  const podeEditar = post.autor === usuarioAtual;
+  const podeEditar = post.autor === usuarioAtual.nome;
   const acoesHtml = podeEditar
     ? `
       <div class="acoes-post" style="text-align: center; margin-bottom: 8px; margin-top: 8px">
@@ -168,7 +168,7 @@ function editarPost(postId) {
     return;
   }
 
-  if (post.autor !== usuarioAtual) {
+  if (post.autor !== usuarioAtual.nome) {
     alert("Você não tem permissão para editar este post.");
     return;
   }
@@ -199,7 +199,7 @@ function excluirPost(postId) {
   if (postIndex === -1) return;
 
   const post = db.posts[postIndex];
-  if (post.autor !== usuarioAtual) {
+  if (post.autor !== usuarioAtual.nome) {
     alert("Você não tem permissão para excluir este post.");
     return;
   }
