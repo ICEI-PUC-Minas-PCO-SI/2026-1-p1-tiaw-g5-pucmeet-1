@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login - PucMeet</title>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="loginName">Nome</label>
+                <input type="text" id="loginName" placeholder="Digite seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="loginEmail">E-mail</label>
+                <input type="email" id="loginEmail" placeholder="Digite seu e-mail" required>
+            </div>
+            <button type="submit">Entrar</button>
+            <p class="login-message" id="loginMessage"></p>
+            <div class="login-footer">
+                <span>Não tem cadastro?</span>
+                <a href="cadastro.html">Criar conta</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginNameInput = document.getElementById('loginName');
+        const loginEmailInput = document.getElementById('loginEmail');
+        const loginMessage = document.getElementById('loginMessage');
+
+        function getUsers() {
+            try {
+                return JSON.parse(localStorage.getItem('users')) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function getLoggedInUser() {
+            try {
+                return JSON.parse(localStorage.getItem('loggedInUser')) || null;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function setLoggedInUser(user) {
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+        }
+
+        loginForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = loginNameInput.value.trim();
+            const email = loginEmailInput.value.trim().toLowerCase();
+
+            if (!name || !email) {
+                loginMessage.textContent = 'Preencha nome e e-mail.';
+                return;
+            }
+
+            const users = getUsers();
+            const user = users.find(item => item.name === name && item.email.toLowerCase() === email);
+            if (!user) {
+                loginMessage.textContent = 'Usuário não encontrado. Faça cadastro primeiro.';
+                return;
+            }
+
+            setLoggedInUser(user);
+            window.location.href = 'index.html';
+        });
+
+        const existingUser = getLoggedInUser();
+        if (existingUser) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

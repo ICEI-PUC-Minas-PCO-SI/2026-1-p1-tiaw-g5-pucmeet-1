@@ -1,0 +1,455 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #222;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+.voltar {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.post-card {
+  background: white;
+  border: 8px solid #ddd;
+  padding: 25px;
+  margin-bottom: 18px;
+}
+
+.post-card h2 {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.post-card p {
+  font-size: 15px;
+  line-height: 1.3;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.post-info {
+  border-top: 2px solid #333;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.comentario-form {
+  background: white;
+  border: 8px solid #ddd;
+  padding: 12px;
+  margin-bottom: 18px;
+}
+
+.comentario-form h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 130px;
+  resize: none;
+  padding: 15px;
+  border: 10px solid #ddd;
+  font-size: 15px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: bold;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+#btnResponder {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #b8c3ee;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+}
+
+#btnResponder:hover {
+  background-color: #9faee4;
+}
+
+.comentarios-area {
+  background: #ddd;
+  padding: 10px;
+}
+
+.comentarios-topo {
+  background: #eee;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.comentario-card {
+  background: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.comentario-header {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.comentario-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background: #111;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comentario-texto {
+  font-size: 14px;
+  font-weight: bold;
+  flex: 1;
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn-editar,
+.btn-excluir {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-editar {
+  color: #0077cc;
+}
+
+.btn-excluir {
+  color: #cc3333;
+}
+
+.sem-comentarios {
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* CSS homepage */
+
+header {
+  border-bottom: 1px solid black;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo-img {
+  width: 35px;
+}
+
+#linkAvatar {
+  display: inline-flex;
+}
+
+#linkAvatar img {
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#btnLogin {
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#btnLogin:hover {
+  background-color: #245a91;
+}
+
+.user-greeting {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 40px auto;
+  background: white;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #2b6cb0;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.login-form button:hover {
+  background-color: #245a91;
+}
+
+.login-message {
+  margin-top: 12px;
+  color: #c53030;
+  font-weight: bold;
+}
+
+.login-footer {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  color: #444;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.login-footer a {
+  color: #2b6cb0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+#barraPesquisa {
+  background: white;
+  border: 14px solid #ddd;
+  padding: 10px;
+  margin-bottom: 18px;
+  width: 100%;
+  max-width: 100%;
+}
+
+#barraPesquisa input {
+  border: 0;
+  font-size: larger;
+  outline: none;
+}
+
+#postSuggestions {
+  background: white;
+  border: 8px solid #ddd;
+  padding: 10px;
+  margin-bottom: 18px;
+}
+
+#postSuggestions div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 5%;
+}
+
+#postSuggestions button {
+  outline: 0;
+  border: 0;
+  padding: 10%;
+  font-size: medium;
+}
+
+#btnCriarPost {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #ddd;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  animation: btnCriarPost 3s infinite;
+}
+
+@keyframes btnCriarPost {
+  50% {
+    background: #9faee4;
+  }
+}
+
+#miniPostsSection {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#miniPostsList {
+  padding-inline: 5%;
+  margin: 2%;
+}
+
+.miniPost {
+  border: 5px #ddd solid;
+  background: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.miniPost p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.miniPost div {
+  margin-top: 2%;
+}
+
+.miniPostFooter {
+  margin-top: 10px;
+  display: flex;
+  gap: 5%;
+  width: 100%;
+}
+
+.miniPostCategorias {
+  margin-top: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  justify-content: center;
+}
+
+.miniPostCategorias div {
+  background-color: #b39a9a;
+  border: 2px black solid;
+  margin: 1%;
+}
+
+#postSectionTitle {
+  text-align: center;
+  margin-top: 5%;
+}
+
+#filtrosPosts {
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  justify-content: center;
+}
+
+#filtrosPosts button {
+  background-color: #c7c7c7;
+  border: 2px black solid;
+  margin: 1%;
+}
+
+#btnAdicionar{
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #ddd;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  animation: btnCriarPost 3s infinite;
+}

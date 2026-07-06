@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PucMeet</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-brand">
+            <h1>
+                <img id="logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect width='36' height='36' rx='8' fill='%232b6cb0'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Segoe UI, sans-serif' font-size='16' fill='white'%3EPUC%3C/text%3E%3C/svg%3E" alt="Logo PucMeet">
+                PucMeet
+            </h1>
+            <p>Fórum universitário</p>
+            <span id="userGreeting" class="user-greeting"></span>
+        </div>
+        <div class="header-actions">
+            <a href="login.html" id="linkAvatar">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='24' cy='18' r='14' fill='%239faee4'/%3E%3Crect x='12' y='28' width='24' height='12' rx='6' fill='%239faee4'/%3E%3C/svg%3E" alt="Avatar perfil">
+            </a>
+            <button id="btnLogin" type="button">Login</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="barraPesquisa">
+            <form onsubmit="pesquisarPost(event)">
+                <label for="pesquisa">🔍</label>
+                <input type="text" id="pesquisa" name="fPesquisa" placeholder="Títulos, autores, categorias...">
+            </form>
+        </section>
+
+        <section id="postSuggestions">
+            <h2>💡 Sugestões para começar</h2>
+            <div>
+                <button onclick="window.location.href='index.html'">Alguém pra grupo?</button>
+                <button onclick="window.location.href='index.html'">Preciso de ajuda...</button>
+                <button onclick="window.location.href='index.html'">Quero fazer amigos</button>
+                <button onclick="window.location.href='index.html'">Vamos estudar?</button>
+            </div>
+        </section>
+
+        <!-- <button onclick="window.location.href='../../index.html'" id="btnCriarPost">+ Criar Post</button> -->
+
+        <button id="btnAdicionar" onclick="adicionarPost()">+ Criar Post Debug</button>
+
+        <section id="miniPostsSection">
+            <h2 id="postSectionTitle">Post Recentes</h2>
+            <div id="filtrosPosts">
+                <button id="filtroData" onclick="toggleOrdenarPostsPorData()">⏳</button>
+                <button id="filtroAlfabeticoNomeAutor" onclick="toggleOrdenarPostsPorNomeAutorAlfabeticamente()">👤
+                    ABC</button>
+                <button id="filtroQtdComentarios" onclick="toggleOrdenarPostsPorComentarios()">💬</button>
+            </div>
+
+
+            <div id="miniPostsList"></div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
