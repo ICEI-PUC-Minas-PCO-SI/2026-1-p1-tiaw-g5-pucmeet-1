@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PucMeet - Perfil e Configurações</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="container">
+        
+        <section id="tela-perfil">
+            <header class="header-perfil">
+                <a href="../Homepage/index.html" class="voltar">← Voltar</a>
+                <button class="icone-acao" title="Sair">➦</button>
+            </header>
+
+            <div class="titulo-secao">
+                <h1>Meu Perfil</h1>
+                <h3>Gerencie suas informações</h3>
+            </div>
+            
+            <hr class="linha-divisoria">
+
+            <div class="perfil-card-info">
+                <div class="avatar-perfil" id="foto-preview-principal">
+                    <span>👤</span>
+                </div>
+                <div class="dados-usuario">
+                    <h2 id="nome-exibicao">Carregando...</h2>
+                    <p id="email-exibicao">carregando...</p> </div>
+            </div>
+
+            <div class="painel-conteudo">
+                <div class="bloco-secao">
+                    <h4 class="titulo-destaque">Interesses</h4>
+                    <div class="tags-container" id="lista-interesses-perfil">
+                        </div>
+                </div>
+
+                <div class="area-estatisticas">
+                    <div class="estatistica-card">
+                        <div class="info-numero">
+                            <span class="numero" id="meu-num-comentarios">4</span>
+                            <span class="texto">Comentários</span>
+                        </div>
+                    </div>
+                    <div class="estatistica-card">
+                        <div class="info-numero">
+                            <span class="numero" id="meu-num-posts">7</span>
+                            <span class="texto">Posts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bloco-secao">
+                    <h4 class="titulo-destaque">Configurações</h4>
+                    <div class="lista-botoes">
+                        <button class="btn-bloco" onclick="irPara('tela-editar')">Editar Perfil</button>
+                        <button class="btn-bloco" onclick="irPara('tela-senha')">Alterar Senha</button>
+                        <button class="btn-bloco" onclick="irPara('tela-interesses')">Gerenciar Interesses</button>
+                        <button class="btn-bloco" onclick="irPara('tela-visualizar-outro')" style="background-color: #eaeaea;">👁️ Simular Ver Outro Perfil</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="area-rodape">
+                <button class="btn-sair" onclick="logout()">⚙️ Sair da conta</button>
+            </div>
+        </section>
+
+        <section id="tela-editar" class="oculto">
+            <header class="header-perfil">
+                <a href="#" class="voltar" onclick="irPara('tela-perfil')">← Cancelar</a>
+            </header>
+            <div class="titulo-secao">
+                <h1>Editar Perfil</h1>
+            </div>
+
+            <div class="form-container">
+                <label>Foto de Perfil</label>
+                <div class="upload-foto">
+                    <div class="avatar-perfil preview" id="foto-preview-edit"><span>👤</span></div>
+                    <input type="file" id="input-foto" accept="image/*">
+                </div>
+
+                <label>Nome Completo</label>
+                <input type="text" id="input-nome" placeholder="Seu nome...">
+
+                <label>E-mail</label>
+                <input type="email" id="input-email" placeholder="Seu e-mail...">
+
+                <button class="btn-salvar" onclick="salvarPerfil()">Salvar Alterações</button>
+            </div>
+        </section>
+
+        <section id="tela-senha" class="oculto">
+            <header class="header-perfil">
+                <a href="#" class="voltar" onclick="irPara('tela-perfil')">← Voltar</a>
+            </header>
+            <div class="titulo-secao">
+                <h1>Alterar Senha</h1>
+            </div>
+
+            <div class="form-container">
+                <label>Senha Atual</label>
+                <input type="password" id="senha-atual" placeholder="********">
+
+                <label>Nova Senha</label>
+                <input type="password" id="senha-nova" placeholder="Mínimo 6 caracteres">
+
+                <label>Confirmar Nova Senha</label>
+                <input type="password" id="senha-confirma" placeholder="Repita a senha">
+
+                <button class="btn-salvar" onclick="validarEAlterarSenha()">Atualizar Senha</button>
+            </div>
+        </section>
+
+        <section id="tela-interesses" class="oculto">
+            <header class="header-perfil">
+                <a href="#" class="voltar" onclick="irPara('tela-perfil')">← Voltar</a>
+            </header>
+            <div class="titulo-secao">
+                <h1>Interesses</h1>
+            </div>
+
+            <div class="bloco-secao">
+                <h4 class="titulo-destaque">Adicionar Novo</h4>
+                <div class="input-grupo">
+                    <input type="text" id="novo-interesse" placeholder="Ex: Programação">
+                    <button class="btn-add" onclick="adicionarInteresse()">+</button>
+                </div>
+            </div>
+
+            <div class="bloco-secao">
+                <h4 class="titulo-destaque">Meus Interesses</h4>
+                <div class="lista-gerenciável" id="gerenciar-lista-interesses">
+                    </div>
+            </div>
+        </section>
+
+        <section id="tela-visualizar-outro" class="oculto">
+            <header class="header-perfil">
+                <a href="#" class="voltar" onclick="irPara('tela-perfil')">← Voltar</a>
+                <button class="icone-acao" title="Mais opções">⋮</button>
+            </header>
+
+            <div class="titulo-secao">
+                <h1 id="outro-nome-titulo">Perfil do Usuário</h1>
+                <h3>Informações do membro</h3>
+            </div>
+            
+            <hr class="linha-divisoria">
+
+            <div class="perfil-card-info">
+                <div class="avatar-perfil" id="outro-foto-exibicao">
+                    <span>👤</span>
+                </div>
+                <div class="dados-usuario">
+                    <h2 id="outro-nome-exibicao">Maria Santos</h2>
+                    </div>
+            </div>
+
+            <div class="painel-conteudo">
+                <div class="bloco-secao">
+                    <h4 class="titulo-destaque">Interesses</h4>
+                    <div class="tags-container" id="outro-lista-interesses">
+                        </div>
+                </div>
+
+                <div class="area-estatisticas">
+                    <div class="estatistica-card">
+                        <div class="info-numero">
+                            <span class="numero" id="outro-num-comentarios">12</span>
+                            <span class="texto">Comentários</span>
+                        </div>
+                    </div>
+                    <div class="estatistica-card">
+                        <div class="info-numero">
+                            <span class="numero" id="outro-num-posts">5</span>
+                            <span class="texto">Posts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bloco-secao">
+                    <div class="card-membro-desde">
+                        <span class="icone-calendario">📅</span> 
+                        <span id="outro-membro-desde">Membro desde: Junho 2024</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/scriptPerfil.js"></script>
+</body>
+</html>

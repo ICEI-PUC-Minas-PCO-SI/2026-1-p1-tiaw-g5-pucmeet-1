@@ -1,3 +1,23 @@
+function carregaUsuarios() {
+    return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
+}
+
+function getUsuarioSessionStorage() {
+    return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
+}
+
+const usuarios = carregaUsuarios();
+let usuarioAtual = JSON.parse(sessionStorage.getItem("usuarioCorrente") || "null") || usuarios[3] || null;
+
+
+if (usuarioAtual && !usuarioAtual.estatisticas) {
+    usuarioAtual.estatisticas = { posts: 0, comentarios: 0 };
+}
+
+if (usuarioAtual) {
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioAtual));
+}
+
 function carregaJSONLocalStorage() {
     fetch("../../../db/PucMeet-db.json")
         .then(response => response.json())
@@ -594,7 +614,7 @@ if (btnPublicar) {
             titulo: titulo,
             conteudo: conteudo,
             categorias: categoriaSelecionada,
-            autor: esAnonimo ? "Anônimo" : "Luiz Felipe",
+            autor: esAnonimo ? "Anônimo" : usuarioAtual.nome,
             comentarios: 0,
             dataReal: data,
             dataVisual: formatarDataHora(data),
@@ -622,8 +642,22 @@ if (btnPublicar) {
 
         botoesCategoria.forEach(b => b.classList.remove('active'));
 
+        if (usuarioAtual) {
+            usuarioAtual.estatisticas = usuarioAtual.estatisticas || { posts: 0, comentarios: 0 };
+            usuarioAtual.estatisticas.posts = (usuarioAtual.estatisticas.posts || 0) + 1;
+            salvarDadosLocais(usuarioAtual);
+        } else {
+            console.warn('Nenhum usuário logado; estatísticas não atualizadas.');
+        }
         window.location.href = "../homepage/index.html";
     });
+}
+
+function salvarDadosLocais(dados) {
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(dados));
+    const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+    db.usuarios = dados;
+    localStorage.setItem("PucMeet-db", JSON.stringify(db));
 }
 
 const path = window.location.pathname;
@@ -640,4 +674,3 @@ if (estaNoIndex) {
     renderizarCarrossel(i);
     iniciarCarrosselAutomatico();
 }
-

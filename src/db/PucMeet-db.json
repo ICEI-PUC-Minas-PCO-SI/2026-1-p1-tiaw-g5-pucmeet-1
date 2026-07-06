@@ -5,28 +5,76 @@
       "login": "admin",
       "senha": "123",
       "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "email": "admin@abc.com",
+      "foto": "",
+      "interesses": [
+        "Programação",
+        "Videogame",
+        "Calistenia",
+        "Desenvolvimento"
+      ],
+      "estatisticas": {
+        "posts": 0,
+        "comentarios": 0
+      },
+      "membroDesde": "Março 2026"
     },
     {
       "id": 2,
       "login": "user",
       "senha": "123",
       "nome": "Usuario Comum",
-      "email": "user@abc.com"
+      "email": "user@abc.com",
+      "foto": "",
+      "interesses": [
+        "Programação",
+        "Videogame",
+        "Calistenia",
+        "Desenvolvimento"
+      ],
+      "estatisticas": {
+        "posts": 0,
+        "comentarios": 0
+      },
+      "membroDesde": "Março 2026"
     },
     {
       "id": 3,
       "login": "rommel",
       "senha": "123",
       "nome": "Rommel",
-      "email": "rommel@gmail.com"
+      "email": "rommel@gmail.com",
+      "foto": "",
+      "interesses": [
+        "Programação",
+        "Videogame",
+        "Calistenia",
+        "Desenvolvimento"
+      ],
+      "estatisticas": {
+        "posts": 0,
+        "comentarios": 0
+      },
+      "membroDesde": "Março 2026"
     },
     {
       "id": 4,
       "login": "Alessandro",
-      "senha": "123",
+      "senha": "123456",
       "nome": "Alessandro Kennedy",
-      "email": "alessandro@gmail.com"
+      "email": "alessandro@gmail.com",
+      "foto": "https://yellowstonewildlifesanctuary.org/wp-content/uploads/2022/11/Raccoon-Cooper-1000W.jpg",
+      "interesses": [
+        "Programação",
+        "Videogame",
+        "Calistenia",
+        "Desenvolvimento"
+      ],
+      "estatisticas": {
+        "posts": 0,
+        "comentarios": 0
+      },
+      "membroDesde": "Março 2026"
     }
   ],
   "posts": [

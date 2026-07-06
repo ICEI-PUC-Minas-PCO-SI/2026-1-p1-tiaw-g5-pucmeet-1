@@ -1,3 +1,11 @@
+function carregaUsuarios() {
+  return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
+}
+
+function getUsuarioSessionStorage() {
+  return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
+}
+
 const campoComentario = document.getElementById("campoComentario");
 const btnResponder = document.getElementById("btnResponder");
 const listaComentarios = document.getElementById("listaComentarios");
@@ -9,8 +17,6 @@ const btnMostrarOrdenacao = document.getElementById("btnMostrarOrdenacao");
 const painelBusca = document.getElementById("painelBusca");
 const painelFiltro = document.getElementById("painelFiltro");
 const painelOrdenacao = document.getElementById("painelOrdenacao");
-
-const usuarioAtual = "Luiz Felipe";
 
 const campoBusca = document.getElementById("campoBusca");
 const filtroAutor = document.getElementById("filtroAutor");
@@ -32,6 +38,7 @@ if (!localStorage.getItem("PucMeet-db")) {
   carregaJSONLocalStorage();
 }
 
+const usuarioAtual = getUsuarioSessionStorage();
 let comentarios = carregarComentarios();
 
 function carregarComentarios() {
@@ -175,6 +182,13 @@ function excluirPost(postId) {
 
   localStorage.setItem("PucMeet-db", JSON.stringify(db));
 
+  if (usuarioAtual) {
+    usuarioAtual.estatisticas = usuarioAtual.estatisticas || { posts: 0, comentarios: 0 };
+    usuarioAtual.estatisticas.posts = (usuarioAtual.estatisticas.posts || 0) - 1;
+    salvarDadosLocais(usuarioAtual);
+  } else {
+    console.warn('Nenhum usuário logado; estatísticas não atualizadas.');
+  }
   window.location.href = "../homepage/index.html";
 }
 
@@ -344,7 +358,7 @@ function adicionarComentario() {
 
   const novoComentario = {
     id: comentarios.length + 1,
-    autor: "Luiz Felipe",
+    autor: usuarioAtual.nome,
     conteudo: texto,
     dataReal: data.toISOString(),
     dataVisual: formatarDataHora(data),
@@ -355,6 +369,13 @@ function adicionarComentario() {
 
   comentarios.push(novoComentario);
 
+  if (usuarioAtual) {
+    usuarioAtual.estatisticas = usuarioAtual.estatisticas || { posts: 0, comentarios: 0 };
+    usuarioAtual.estatisticas.comentarios = (usuarioAtual.estatisticas.comentarios || 0) + 1;
+    salvarDadosLocais(usuarioAtual);
+  } else {
+    console.warn('Nenhum usuário logado; estatísticas não atualizadas.');
+  }
   salvarComentarios();
   buscarFiltrarOrdenarComentarios();
 
@@ -395,6 +416,14 @@ function excluirComentario(id) {
   }
 
   comentarios = comentarios.filter((item) => item.id !== id);
+
+  if (usuarioAtual) {
+    usuarioAtual.estatisticas = usuarioAtual.estatisticas || { posts: 0, comentarios: 0 };
+    usuarioAtual.estatisticas.comentarios = (usuarioAtual.estatisticas.comentarios || 0) - 1;
+    salvarDadosLocais(usuarioAtual);
+  } else {
+    console.warn('Nenhum usuário logado; estatísticas não atualizadas.');
+  }
 
   salvarComentarios();
   buscarFiltrarOrdenarComentarios();
@@ -469,6 +498,13 @@ function favoritarPost(postId) {
   }
 }
 
+function salvarDadosLocais(dados) {
+  sessionStorage.setItem("usuarioCorrente", JSON.stringify(dados));
+  const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+  db.usuarios = dados;
+  localStorage.setItem("PucMeet-db", JSON.stringify(db));
+}
+
 btnResponder.addEventListener("click", adicionarComentario);
 
 campoComentario.addEventListener("keydown", function (event) {
@@ -495,3 +531,4 @@ ordenacaoComentarios.addEventListener("change", buscarFiltrarOrdenarComentarios)
 
 salvarComentarios();
 buscarFiltrarOrdenarComentarios();
+
