@@ -61,7 +61,15 @@ function carregaJSONLocalStorage() {
 function salvarDadosLocais(dados) {
     sessionStorage.setItem("usuarioCorrente", JSON.stringify(dados));
     const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
-    db.usuarios = dados;
+    if (!Array.isArray(db.usuarios)) {
+        db.usuarios = [];
+    }
+    const index = db.usuarios.findIndex(u => u.email === dados.email);
+    if (index >= 0) {
+        db.usuarios[index] = dados;
+    } else {
+        db.usuarios.push(dados);
+    }
     localStorage.setItem("PucMeet-db", JSON.stringify(db));
 }
 
@@ -215,7 +223,7 @@ function renderizarTagsPrincipal() {
     container.innerHTML = "";
 
     if (usuarioAtual.interesses.length === 0) {
-        container.innerHTML = "<span class='tag' style='background: #ccc;'>Sem interesses</span>";
+        container.innerHTML = "<span class='tag'>Sem interesses</span>";
         return;
     }
 

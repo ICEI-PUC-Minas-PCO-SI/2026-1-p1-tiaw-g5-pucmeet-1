@@ -1,10 +1,3 @@
-.colors {
-  background-color: #011320;
-  background-color: rgba(40, 44, 53, 0.527);
-  background-color: #108669;
-  background-color: #003775;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -14,22 +7,9 @@
 body {
   background-color: #000000;
   font-family: Georgia, 'Times New Roman', serif;
-  color: #222;
+  color: #ffffff;
   margin: 0;
   overflow-x: hidden;
-}
-
-div {
-  border-radius: 8px;
-}
-
-section {
-  border-radius: 8px;
-}
-
-button {
-  border-radius: 8px;
-  padding: 1.5%;
 }
 
 .container {
@@ -37,10 +17,6 @@ button {
   max-width: 420px;
   margin: 30px auto;
   padding: 10px;
-  background-color: #011320;
-  color: white;
-  border: solid 5px;
-  border-radius: 8px;
 }
 
 .voltar {
@@ -61,11 +37,9 @@ h3 {
   margin-bottom: 18px;
 }
 
-
-
 .post-card {
   background: white;
-  border: 8px solid #ffffff;
+  border: 8px solid #ddd;
   padding: 25px;
   margin-bottom: 18px;
 }
@@ -218,19 +192,24 @@ button {
 /* CSS homepage */
 
 header {
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid black;
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-  max-width: 420px;
-  margin: auto;
-  margin-bottom: 5%;
 }
 
-header div {
+.header-brand {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 header h2 {
@@ -240,36 +219,113 @@ header h2 {
   gap: 8px;
 }
 
-#userGreeting {
-  margin-top: 3%;
-}
-#btnLogin{
-  margin-left: 3%;
-  background-color: rgb(175, 0, 0);
-  color: white;
-  border-color: white;
-}
-
-#logo {
-  width: 40px;
+#logo-img {
+  width: 35px;
 }
 
 #linkAvatar {
-  margin-left: auto;
+  display: inline-flex;
 }
 
 #linkAvatar img {
   width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-#fotoPerfil {
-  border-radius: 100%;
+#btnLogin {
+  background-color: #2b6cb0;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
   border: white solid 4px;
+  border-radius: 8px;
+}
+
+#btnLogin:hover {
+  background-color: #245a91;
+}
+
+.user-greeting {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 10px;
+  background-color: #011320;
+  color: white;
+  border: solid 5px;
+  border-radius: 8px;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #2b6cb0;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: white solid 4px;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #011320;
+  color: #ffffff;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2b6cb0;
+  color: white;
+  border: white solid 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.login-form button:hover {
+  background-color: #245a91;
+}
+
+.login-message {
+  margin-top: 12px;
+  color: #c53030;
+  font-weight: bold;
+}
+
+.login-footer {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  color: #ffffff;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.login-footer a {
+  color: #2b6cb0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
 }
 
 #barraPesquisa {
-  background: #011320;
-  border: 8px solid #ffffff;
+  background: white;
+  border: 14px solid #ddd;
   padding: 10px;
   margin-bottom: 18px;
   width: 100%;
@@ -277,23 +333,19 @@ header h2 {
 }
 
 #barraPesquisa input {
-  background-color: #011320;
-  ;
   border: 0;
   font-size: larger;
   outline: none;
-  color: white;
 }
 
 #postSuggestions {
-  background: #011320;
-  border: 8px solid #ffffff;
+  background: white;
+  border: 8px solid #ddd;
   padding: 10px;
   margin-bottom: 18px;
 }
 
 #postSuggestions div {
-  background: #011320;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -301,24 +353,21 @@ header h2 {
 }
 
 #postSuggestions button {
-  background: #108669;
-  border: 4px solid #ffffff;
   outline: 0;
+  border: 0;
   padding: 10%;
   font-size: medium;
-  color: white;
 }
 
 #btnCriarPost {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
-  background-color: #108669;
-  ;
-  border: solid 4px white;
+  background-color: #ddd;
+  border: none;
   font-size: 24px;
   font-weight: bold;
-  color: #ffffff;
+  color: #222;
   animation: btnCriarPost 3s infinite;
 }
 
@@ -340,14 +389,13 @@ header h2 {
 
 .miniPost {
   border: 5px #ddd solid;
-  background: rgba(40, 44, 53, 0.527);
+  background: white;
   padding: 12px;
   margin-bottom: 12px;
   position: relative;
 }
 
-.miniPost p,
-h3 {
+.miniPost p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -373,13 +421,9 @@ h3 {
 }
 
 .miniPostCategorias div {
-  background-color: #003775;
+  background-color: #b39a9a;
   border: 2px black solid;
   margin: 1%;
-  margin-top: 2%;
-  align-self: flex-end;
-  border-radius: 5%;
-  padding: 1.5%;
 }
 
 #postSectionTitle {
@@ -396,7 +440,7 @@ h3 {
 }
 
 #filtrosPosts button {
-  background-color: white;
+  background-color: #c7c7c7;
   border: 2px black solid;
   margin: 1%;
 }
@@ -407,117 +451,8 @@ h3 {
   margin-top: 8px;
   background-color: #ddd;
   border: none;
-  border-radius: 2%;
   font-size: 24px;
   font-weight: bold;
   color: #222;
   animation: btnCriarPost 3s infinite;
-}
-
-#carrosselPosts {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 18px;
-  flex-direction: column;
-  max-width: 100%;
-}
-
-#carrosselPosts h2 {
-  text-align: center;
-  margin: 3% auto;
-  width: 100%;
-}
-
-#postSemana {
-  background: rgba(40, 44, 53, 0.527);
-  border: 8px solid #ffffff;
-  padding: 10px;
-  margin-bottom: 18px;
-  max-width: 100%;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-#postSemana::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, #111 0%, #666 35%, #ddd 70%, #111 100%);
-  background-size: 200% 100%;
-  opacity: 0;
-  pointer-events: none;
-}
-
-#postSemana.carrossel-animado {
-  animation: carrosselAnimation 0.45s ease-out;
-}
-
-@keyframes carrosselAnimation {
-  0% {
-    opacity: 0;
-    transform: translateX(18px) scale(0.96);
-    filter: blur(2px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-#carrosselDiv {
-  flex-direction: row;
-  display: flex;
-  width: 100%;
-  align-items: baseline;
-  gap: 0;
-}
-
-#setaEsquerda,
-#setaDireita {
-  font-size: 50px;
-  animation: btnPulse 3s infinite ease-in-out;
-}
-
-@keyframes btnPulse {
-  50% {
-    transform: scaleY(1.5);
-  }
-}
-
-.topBar {
-  width: 40%;
-  margin: 4% auto;
-  text-align: center;
-  border-radius: 5%;
-  border: 2px solid rgba(255, 243, 173, 0.788);
-  font-size: larger;
-  font-weight: 500;
-
-  background: linear-gradient(120deg,
-      #b8860b 0%,
-      #ffd700 25%,
-      #fff8b0 50%,
-      #ffd700 75%,
-      #cf980d 100%);
-
-  background-size: 200% 100%;
-  animation: brilhoOuro 3s linear infinite;
-}
-
-@keyframes brilhoOuro {
-  from {
-    background-position: -100% 0;
-  }
-
-  to {
-    background-position: 100% 0;
-  }
 }

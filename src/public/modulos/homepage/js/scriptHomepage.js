@@ -1,6 +1,6 @@
 const usuarios = carregaUsuarios();
 
-let usuarioAtual = JSON.parse(sessionStorage.getItem("usuarioCorrente") || "null") || usuarios[3] || null;
+let usuarioAtual = JSON.parse(sessionStorage.getItem("usuarioCorrente") || "null");
 const pesquisaInput = document.getElementById('pesquisa');
 const btnPublicar = document.getElementById('btn-publicar');
 
@@ -94,6 +94,8 @@ if (btnPublicar) {
     }
 
     btnPublicar.addEventListener('click', () => {
+        redirecionarUsuario();
+
         const titulo = postTitle.value.trim();
         const conteudo = postContent.value.trim();
 
@@ -163,9 +165,19 @@ if (estaNoIndex) {
     iniciarCarrosselAutomatico();
 }
 
-if (usuarioAtual.foto && fotoPerfil) {
+if (usuarioAtual && usuarioAtual.foto && fotoPerfil) {
     fotoPerfil.src = usuarioAtual.foto;
 }
+
+function toLogin() {
+    if (!usuarioAtual) {
+        window.location.href = "../Login e Cadastro/login.html"
+    }
+    else {
+        window.location.href = "../TelaDoPerfil/perfil.html"
+    }
+}
+renderLoginButton();
 
 function carregaUsuarios() {
     return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
@@ -189,6 +201,16 @@ function carregaJSONLocalStorage() {
         })
         .catch(error => console.error("Erro ao carregar posts:", error));
 }
+
+function redirecionarUsuario() {
+    usuarioAtual = getUsuarioSessionStorage()
+    if (!usuarioAtual.id) {
+        alert("Faça Login!");
+        window.location.href = "../Login e Cadastro/login.html";
+        sessionStorage.clear();
+    }
+}
+
 
 function renderizarPost(postsRenderizados) {
     postsSemana = getPostSemana();
@@ -679,7 +701,15 @@ function iniciarCarrosselAutomatico() {
 function salvarDadosLocais(dados) {
     sessionStorage.setItem("usuarioCorrente", JSON.stringify(dados));
     const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
-    db.usuarios = dados;
+    if (!Array.isArray(db.usuarios)) {
+        db.usuarios = [];
+    }
+    const index = db.usuarios.findIndex(u => u.email === dados.email);
+    if (index >= 0) {
+        db.usuarios[index] = dados;
+    } else {
+        db.usuarios.push(dados);
+    }
     localStorage.setItem("PucMeet-db", JSON.stringify(db));
 }
 
@@ -728,6 +758,42 @@ function toggleOrdenarPostsPorCurtidas() {
         else {
             btnCurtidas.textContent = '👍 ▼';
             btnCurtidas.title = 'Ordenar: Menos curtidas primeiro';
+        }
+    }
+}
+
+
+function setLoggedInUser(user) {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+}
+
+function logoutUser() {
+    sessionStorage.clear();
+    window.location.href = "../homepage/index.html";
+}
+
+function renderLoginButton() {
+    const loginButton = document.getElementById("btnLogin");
+    const userGreeting = document.getElementById("userGreeting");
+    const user = usuarioAtual;
+
+    if (!loginButton) {
+        return;
+    }
+
+    if (user) {
+        loginButton.textContent = "Sair";
+        loginButton.onclick = logoutUser;
+        if (userGreeting) {
+            userGreeting.textContent = `Olá, ${user.nome}`;
+        }
+    } else {
+        loginButton.textContent = "Login";
+        loginButton.onclick = function () {
+            window.location.href = "../Login e Cadastro/login.html";
+        };
+        if (userGreeting) {
+            userGreeting.textContent = "";
         }
     }
 }
