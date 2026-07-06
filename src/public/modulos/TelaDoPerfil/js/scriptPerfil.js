@@ -1,24 +1,3 @@
-function getUsuarioSessionStorage() {
-    return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
-}
-
-function carregaJSONLocalStorage() {
-    fetch("../../../db/PucMeet-db.json")
-        .then(response => response.json())
-        .then(data => {
-            localStorage.setItem("PucMeet-db", JSON.stringify(data));
-        })
-        .catch(error => console.error("Erro ao carregar posts:", error));
-}
-
-if (!localStorage.getItem("PucMeet-db")) {
-    carregaJSONLocalStorage();
-}
-
-function carregaUsuarios() {
-    return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
-}
-
 const DADOS_PADRAO = {
     nome: "João Silva",
     email: "joao.silva@gmail.com",
@@ -36,12 +15,47 @@ const outroUsuarioMock = {
 
 let usuarioAtual = getUsuarioSessionStorage();
 
-function carregarDadosLocais() {
-    const salvos = localStorage.getItem("dadosPerfilPucMeet");
-    if (salvos) {
-        return JSON.parse(salvos);
+document.getElementById('input-foto').addEventListener('change', function (e) {
+    const reader = new FileReader();
+    reader.onload = function () {
+        usuarioAtual.foto = reader.result;
+        document.getElementById('foto-preview-edit').innerHTML = `<img src="${reader.result}">`;
+    };
+    if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0]);
     }
-    return DADOS_PADRAO;
+});
+
+document.getElementById("novo-interesse").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        adicionarInteresse();
+    }
+});
+
+if (!localStorage.getItem("PucMeet-db")) {
+    carregaJSONLocalStorage();
+}
+
+atualizarTelaPrincipal();
+renderizarTagsPrincipal();
+atualizarEstatisticasUsuario();
+
+function getUsuarioSessionStorage() {
+    return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
+}
+
+function carregaUsuarios() {
+    return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
+}
+
+function carregaJSONLocalStorage() {
+    fetch("../../../db/PucMeet-db.json")
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem("PucMeet-db", JSON.stringify(data));
+        })
+        .catch(error => console.error("Erro ao carregar posts:", error));
 }
 
 function salvarDadosLocais(dados) {
@@ -73,17 +87,6 @@ function irPara(idTela) {
         carregarPerfilOutro(outroUsuarioMock);
     }
 }
-
-document.getElementById('input-foto').addEventListener('change', function (e) {
-    const reader = new FileReader();
-    reader.onload = function () {
-        usuarioAtual.foto = reader.result;
-        document.getElementById('foto-preview-edit').innerHTML = `<img src="${reader.result}">`;
-    };
-    if (e.target.files[0]) {
-        reader.readAsDataURL(e.target.files[0]);
-    }
-});
 
 function salvarPerfil() {
     const nomeInput = document.getElementById('input-nome').value.trim();
@@ -146,13 +149,6 @@ function adicionarInteresse() {
         renderizarTagsPrincipal();
     }
 }
-
-document.getElementById("novo-interesse").addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        adicionarInteresse();
-    }
-});
 
 function removerInteresse(index) {
     const confirmar = confirm("Tem certeza que deseja remover este interesse?");
@@ -233,9 +229,6 @@ function logout() {
     window.location.href = "../homepage/index.html";
 }
 
-atualizarTelaPrincipal();
-renderizarTagsPrincipal();
-
 function atualizarEstatisticasUsuario() {
     if (!usuarioAtual || !usuarioAtual.nome) return;
 
@@ -244,5 +237,3 @@ function atualizarEstatisticasUsuario() {
     if (qtdComentarios) qtdComentarios.innerText = usuarioAtual.estatisticas.comentarios;
     if (qtdPosts) qtdPosts.innerText = usuarioAtual.estatisticas.posts;
 }
-atualizarEstatisticasUsuario();
-

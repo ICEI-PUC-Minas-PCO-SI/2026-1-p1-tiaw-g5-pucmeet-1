@@ -1,14 +1,23 @@
-function carregaUsuarios() {
-    return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
-}
-
-function getUsuarioSessionStorage() {
-    return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
-}
-
 const usuarios = carregaUsuarios();
-let usuarioAtual = JSON.parse(sessionStorage.getItem("usuarioCorrente") || "null") || usuarios[3] || null;
 
+let usuarioAtual = JSON.parse(sessionStorage.getItem("usuarioCorrente") || "null") || usuarios[3] || null;
+const pesquisaInput = document.getElementById('pesquisa');
+const btnPublicar = document.getElementById('btn-publicar');
+
+let listaPosts = getPostsLocalStorage();
+let filtrados = [];
+let pesquisaAtiva = false;
+let postsOrdenacaoDataDesc = false;
+let postsOrdenacaoNomeDesc = false;
+let postsOrdenacaoComentariosDesc = false;
+let postsOrdenacaoCurtidasDesc = false;
+let postsSemana = getPostSemana();
+let i = 0;
+let carrosselInterval = null;
+
+const path = window.location.pathname;
+const estaNoIndex = path.endsWith("index.html") || path.endsWith("/");
+const fotoPerfil = document.getElementById('fotoPerfil');
 
 if (usuarioAtual && !usuarioAtual.estatisticas) {
     usuarioAtual.estatisticas = { posts: 0, comentarios: 0 };
@@ -16,6 +25,154 @@ if (usuarioAtual && !usuarioAtual.estatisticas) {
 
 if (usuarioAtual) {
     sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioAtual));
+}
+
+if (pesquisaInput) {
+    pesquisaInput.addEventListener('input', function (event) {
+        pesquisarPost();
+    });
+}
+
+if (btnPublicar) {
+    let categoriaSelecionada = [];
+    let esAnonimo = false;
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const postTitle = document.getElementById('post-title');
+    const postContent = document.getElementById('post-content');
+
+    switch (Number(queryParams.get("id"))) {
+        case 1:
+            postTitle.value = "Alguém pra grupo?";
+            postContent.value = "Alguém para fazer grupo de ";
+            break;
+        case 2:
+            postTitle.value = "Preciso de ajuda";
+            postContent.value = "Alguém pode me ajudar em ";
+            break;
+        case 3:
+            postTitle.value = "Quero fazer amigos";
+            postContent.value = "Alguém curte ";
+            break;
+        case 4:
+            postTitle.value = "Vamos estudar?";
+            postContent.value = "Alguém para fazer grupo de estudos de";
+            break;
+    }
+
+
+    const botoesCategoria = document.querySelectorAll('.btn-categoria');
+    botoesCategoria.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const categoria = btn.getAttribute('data-categoria');
+            const indiceCategoria = categoriaSelecionada.indexOf(categoria);
+
+            if (btn.classList.contains('active')) {
+                btn.classList.remove('active');
+
+                if (indiceCategoria !== -1) {
+                    categoriaSelecionada.splice(indiceCategoria, 1);
+                }
+                return;
+            }
+
+            btn.classList.add('active');
+
+            if (indiceCategoria === -1) {
+                categoriaSelecionada.push(categoria);
+            }
+        });
+    });
+
+    const btnAnonimo = document.getElementById('btn-anonimo');
+    if (btnAnonimo) {
+        btnAnonimo.addEventListener('click', () => {
+            esAnonimo = !esAnonimo;
+            const span = btnAnonimo.querySelector('span');
+            if (span) span.textContent = esAnonimo ? "Sim" : "Não";
+        });
+    }
+
+    btnPublicar.addEventListener('click', () => {
+        const titulo = postTitle.value.trim();
+        const conteudo = postContent.value.trim();
+
+        if (!titulo || !conteudo || categoriaSelecionada.length === 0) {
+            alert("Por favor, preencha o título, o conteúdo e selecione uma categoria!");
+            return;
+        }
+
+        const btnAdicionar = document.getElementById("btnAdicionar");
+        const listaPosts = getPostsLocalStorage();
+
+        let data = new Date();
+
+        const novoPost = {
+            postId: listaPosts.length + 1,
+            titulo: titulo,
+            conteudo: conteudo,
+            categorias: categoriaSelecionada,
+            autor: esAnonimo ? "Anônimo" : usuarioAtual.nome,
+            comentarios: 0,
+            dataReal: data,
+            dataVisual: formatarDataHora(data),
+            curtidas: 0,
+            favoritos: 0,
+            favorito: false
+        };
+
+        const btnAnonimi = document.getElementById('btn-anonimo');
+        if (btnAnonimi) {
+            const span = btnAnonimi.querySelector('span');
+            if (span) span.textContent = "Não";
+        }
+
+        listaPosts.push(novoPost);
+
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
+
+        document.getElementById('post-title').value = "";
+        document.getElementById('post-content').value = "";
+        categoriaSelecionada = [];
+        esAnonimo = false;
+
+        botoesCategoria.forEach(b => b.classList.remove('active'));
+
+        if (usuarioAtual) {
+            usuarioAtual.estatisticas = usuarioAtual.estatisticas || { posts: 0, comentarios: 0 };
+            usuarioAtual.estatisticas.posts = (usuarioAtual.estatisticas.posts || 0) + 1;
+            salvarDadosLocais(usuarioAtual);
+        } else {
+            console.warn('Nenhum usuário logado; estatísticas não atualizadas.');
+        }
+        window.location.href = "../homepage/index.html";
+    });
+}
+
+if (!localStorage.getItem("PucMeet-db")) {
+    carregaJSONLocalStorage();
+}
+
+if (estaNoIndex) {
+    ordenarPostsPorData(true);
+    renderizarPost();
+    postsSemana = getPostSemana();
+    renderizarCarrossel(i);
+    iniciarCarrosselAutomatico();
+}
+
+if (usuarioAtual.foto && fotoPerfil) {
+    fotoPerfil.src = usuarioAtual.foto;
+}
+
+function carregaUsuarios() {
+    return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
+}
+
+function getUsuarioSessionStorage() {
+    return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
 }
 
 function carregaJSONLocalStorage() {
@@ -413,7 +570,8 @@ function renderizarCarrossel(id) {
 
     const miniCurtidasPost = document.createElement("button");
     miniCurtidasPost.classList.add("miniCurtidasPost");
-    miniCurtidasPost.textContent = "👍" + " " + (postAtual.curtidas || 0);
+    miniCurtidasPost.textContent = (postsSemana[id].jaCurtiu ? "👍" : "🤜") + " " + (postsSemana[id].curtidas || 0);
+    miniCurtidasPost.style = postsSemana[id].jaCurtiu ? "background-color: #0077cc;" : ""
 
     miniCurtidasPost.onclick = function (event) {
         event.stopPropagation();
@@ -422,7 +580,8 @@ function renderizarCarrossel(id) {
 
     const miniFavoritarPost = document.createElement("button");
     miniFavoritarPost.classList.add("miniFavoritarPost");
-    miniFavoritarPost.textContent = postAtual.favorito ? "⭐" : "☆";
+    miniFavoritarPost.textContent = postsSemana[id].favorito ? "⭐" : "☆";
+    miniFavoritarPost.style = postsSemana[id].favorito ? "background-color: #ccb800;" : ""
 
     miniFavoritarPost.onclick = function (event) {
         event.stopPropagation();
@@ -457,13 +616,6 @@ function renderizarCarrossel(id) {
     void postSemanaDiv.offsetWidth;
     postSemanaDiv.classList.add("carrossel-animado");
 
-}
-
-const pesquisaInput = document.getElementById('pesquisa');
-if (pesquisaInput) {
-    pesquisaInput.addEventListener('input', function (event) {
-        pesquisarPost();
-    });
 }
 
 function getPostsLocalStorage() {
@@ -524,136 +676,6 @@ function iniciarCarrosselAutomatico() {
     }, 10000);
 }
 
-
-let listaPosts = getPostsLocalStorage();
-let filtrados = [];
-let pesquisaAtiva = false;
-let postsOrdenacaoDataDesc = false;
-let postsOrdenacaoNomeDesc = false;
-let postsOrdenacaoComentariosDesc = false;
-let postsSemana = getPostSemana();
-let i = 0;
-let carrosselInterval = null;
-
-const btnPublicar = document.getElementById('btn-publicar');
-if (btnPublicar) {
-    let categoriaSelecionada = [];
-    let esAnonimo = false;
-
-    const queryParams = new URLSearchParams(window.location.search);
-    const postTitle = document.getElementById('post-title');
-    const postContent = document.getElementById('post-content');
-
-    switch (Number(queryParams.get("id"))) {
-        case 1:
-            postTitle.value = "Alguém pra grupo?";
-            postContent.value = "Alguém para fazer grupo de ";
-            break;
-        case 2:
-            postTitle.value = "Preciso de ajuda";
-            postContent.value = "Alguém pode me ajudar em ";
-            break;
-        case 3:
-            postTitle.value = "Quero fazer amigos";
-            postContent.value = "Alguém curte ";
-            break;
-        case 4:
-            postTitle.value = "Vamos estudar?";
-            postContent.value = "Alguém para fazer grupo de estudos de";
-            break;
-    }
-
-
-    const botoesCategoria = document.querySelectorAll('.btn-categoria');
-    botoesCategoria.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const categoria = btn.getAttribute('data-categoria');
-            const indiceCategoria = categoriaSelecionada.indexOf(categoria);
-
-            if (btn.classList.contains('active')) {
-                btn.classList.remove('active');
-
-                if (indiceCategoria !== -1) {
-                    categoriaSelecionada.splice(indiceCategoria, 1);
-                }
-                return;
-            }
-
-            btn.classList.add('active');
-
-            if (indiceCategoria === -1) {
-                categoriaSelecionada.push(categoria);
-            }
-        });
-    });
-
-    const btnAnonimo = document.getElementById('btn-anonimo');
-    if (btnAnonimo) {
-        btnAnonimo.addEventListener('click', () => {
-            esAnonimo = !esAnonimo;
-            const span = btnAnonimo.querySelector('span');
-            if (span) span.textContent = esAnonimo ? "Sim" : "Não";
-        });
-    }
-
-    btnPublicar.addEventListener('click', () => {
-        const titulo = postTitle.value.trim();
-        const conteudo = postContent.value.trim();
-
-        if (!titulo || !conteudo || categoriaSelecionada.length === 0) {
-            alert("Por favor, preencha o título, o conteúdo e selecione uma categoria!");
-            return;
-        }
-
-        const btnAdicionar = document.getElementById("btnAdicionar");
-        const listaPosts = getPostsLocalStorage();
-
-        let data = new Date();
-
-        const novoPost = {
-            postId: listaPosts.length + 1,
-            titulo: titulo,
-            conteudo: conteudo,
-            categorias: categoriaSelecionada,
-            autor: esAnonimo ? "Anônimo" : usuarioAtual.nome,
-            comentarios: 0,
-            dataReal: data,
-            dataVisual: formatarDataHora(data),
-            curtidas: 0,
-            favoritos: 0,
-            favorito: false
-        };
-
-        const btnAnonimi = document.getElementById('btn-anonimo');
-        if (btnAnonimi) {
-            const span = btnAnonimi.querySelector('span');
-            if (span) span.textContent = "Não";
-        }
-
-        listaPosts.push(novoPost);
-
-        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
-        db.posts = listaPosts;
-        localStorage.setItem("PucMeet-db", JSON.stringify(db));
-
-        document.getElementById('post-title').value = "";
-        document.getElementById('post-content').value = "";
-        categoriaSelecionada = [];
-        esAnonimo = false;
-
-        botoesCategoria.forEach(b => b.classList.remove('active'));
-
-        if (usuarioAtual) {
-            usuarioAtual.estatisticas = usuarioAtual.estatisticas || { posts: 0, comentarios: 0 };
-            usuarioAtual.estatisticas.posts = (usuarioAtual.estatisticas.posts || 0) + 1;
-            salvarDadosLocais(usuarioAtual);
-        } else {
-            console.warn('Nenhum usuário logado; estatísticas não atualizadas.');
-        }
-        window.location.href = "../homepage/index.html";
-    });
-}
-
 function salvarDadosLocais(dados) {
     sessionStorage.setItem("usuarioCorrente", JSON.stringify(dados));
     const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
@@ -661,23 +683,51 @@ function salvarDadosLocais(dados) {
     localStorage.setItem("PucMeet-db", JSON.stringify(db));
 }
 
-const path = window.location.pathname;
-const estaNoIndex = path.endsWith("index.html") || path.endsWith("/");
+function ordenarPostsPorCurtidas(desc) {
+    const listaPosts = getPostsLocalStorage();
+    let alvo = pesquisaAtiva ? filtrados : listaPosts;
 
-if (!localStorage.getItem("PucMeet-db")) {
-    carregaJSONLocalStorage();
+    alvo.sort((a, b) => {
+        const curtidasA = Number(a.curtidas) || 0;
+        const curtidasB = Number(b.curtidas) || 0;
+        if (desc) {
+            return curtidasB - curtidasA;
+        }
+        else {
+            return curtidasA - curtidasB;
+        }
+    });
+
+    if (!pesquisaAtiva) {
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
+    }
+
+    renderizarPost(pesquisaAtiva ? filtrados : undefined);
 }
 
-if (estaNoIndex) {
-    ordenarPostsPorData(true);
-    renderizarPost();
-    postsSemana = getPostSemana();
-    renderizarCarrossel(i);
-    iniciarCarrosselAutomatico();
-}
+function toggleOrdenarPostsPorCurtidas() {
+    postsOrdenacaoCurtidasDesc = !postsOrdenacaoCurtidasDesc;
+    ordenarPostsPorCurtidas(postsOrdenacaoCurtidasDesc);
 
-const fotoPerfil = document.getElementById('fotoPerfil');
-if (usuarioAtual.foto && fotoPerfil) {
+    const btnData = document.getElementById('filtroData');
+    const btnAutor = document.getElementById('filtroAlfabeticoNomeAutor');
+    const btnComentarios = document.getElementById('filtroQtdComentarios');
+    const btnCurtidas = document.getElementById('filtroCurtidas');
 
-    fotoPerfil.src = usuarioAtual.foto;
+    if (btnCurtidas) {
+        if (btnData) { btnData.textContent = '⏳'; }
+        if (btnAutor) { btnAutor.textContent = '👤 ABC'; }
+        if (btnComentarios) { btnComentarios.textContent = '💬'; }
+
+        if (postsOrdenacaoCurtidasDesc) {
+            btnCurtidas.textContent = '👍 ▲';
+            btnCurtidas.title = 'Ordenar: Mais curtidas primeiro';
+        }
+        else {
+            btnCurtidas.textContent = '👍 ▼';
+            btnCurtidas.title = 'Ordenar: Menos curtidas primeiro';
+        }
+    }
 }

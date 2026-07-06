@@ -1,10 +1,3 @@
-function carregaUsuarios() {
-  return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
-}
-
-function getUsuarioSessionStorage() {
-  return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
-}
 
 const campoComentario = document.getElementById("campoComentario");
 const btnResponder = document.getElementById("btnResponder");
@@ -25,6 +18,49 @@ const resumoFiltros = document.getElementById("resumoFiltros");
 
 const queryParams = new URLSearchParams(window.location.search);
 
+const usuarioAtual = getUsuarioSessionStorage();
+let comentarios = carregarComentarios();
+
+btnResponder.addEventListener("click", adicionarComentario);
+
+campoComentario.addEventListener("keydown", function (event) {
+  if (event.key === "Enter" && event.ctrlKey) {
+    adicionarComentario();
+  }
+});
+
+btnMostrarBusca.addEventListener("click", function () {
+  mostrarOuOcultarPainel(painelBusca);
+});
+
+btnMostrarFiltro.addEventListener("click", function () {
+  mostrarOuOcultarPainel(painelFiltro);
+});
+
+btnMostrarOrdenacao.addEventListener("click", function () {
+  mostrarOuOcultarPainel(painelOrdenacao);
+});
+
+campoBusca.addEventListener("input", buscarFiltrarOrdenarComentarios);
+filtroAutor.addEventListener("change", buscarFiltrarOrdenarComentarios);
+ordenacaoComentarios.addEventListener("change", buscarFiltrarOrdenarComentarios);
+
+if (!localStorage.getItem("PucMeet-db")) {
+  carregaJSONLocalStorage();
+}
+
+salvarComentarios();
+buscarFiltrarOrdenarComentarios();
+atualizarFiltroAutor();
+
+function carregaUsuarios() {
+  return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.usuarios || [];
+}
+
+function getUsuarioSessionStorage() {
+  return JSON.parse(sessionStorage.getItem("usuarioCorrente") || "{}");
+}
+
 function carregaJSONLocalStorage() {
   fetch("../../../db/PucMeet-db.json")
     .then(response => response.json())
@@ -33,13 +69,6 @@ function carregaJSONLocalStorage() {
     })
     .catch(error => console.error("Erro ao carregar posts:", error));
 }
-
-if (!localStorage.getItem("PucMeet-db")) {
-  carregaJSONLocalStorage();
-}
-
-const usuarioAtual = getUsuarioSessionStorage();
-let comentarios = carregarComentarios();
 
 function carregarComentarios() {
   return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.comentarios || [];
@@ -214,7 +243,6 @@ function atualizarFiltroAutor() {
     filtroAutor.appendChild(opt);
   });
 }
-atualizarFiltroAutor();
 
 function mostrarOuOcultarPainel(painel) {
   painel.classList.toggle("oculto");
@@ -504,31 +532,3 @@ function salvarDadosLocais(dados) {
   db.usuarios = dados;
   localStorage.setItem("PucMeet-db", JSON.stringify(db));
 }
-
-btnResponder.addEventListener("click", adicionarComentario);
-
-campoComentario.addEventListener("keydown", function (event) {
-  if (event.key === "Enter" && event.ctrlKey) {
-    adicionarComentario();
-  }
-});
-
-btnMostrarBusca.addEventListener("click", function () {
-  mostrarOuOcultarPainel(painelBusca);
-});
-
-btnMostrarFiltro.addEventListener("click", function () {
-  mostrarOuOcultarPainel(painelFiltro);
-});
-
-btnMostrarOrdenacao.addEventListener("click", function () {
-  mostrarOuOcultarPainel(painelOrdenacao);
-});
-
-campoBusca.addEventListener("input", buscarFiltrarOrdenarComentarios);
-filtroAutor.addEventListener("change", buscarFiltrarOrdenarComentarios);
-ordenacaoComentarios.addEventListener("change", buscarFiltrarOrdenarComentarios);
-
-salvarComentarios();
-buscarFiltrarOrdenarComentarios();
-
