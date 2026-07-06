@@ -46,7 +46,8 @@ function renderizarPost(postsRenderizados) {
 
         const miniCurtidasPost = document.createElement("button");
         miniCurtidasPost.classList.add("miniCurtidasPost");
-        miniCurtidasPost.textContent = "👍" + " " + (post.curtidas || 0);
+        miniCurtidasPost.textContent = (post.jaCurtiu ? "👍" : "🤜") + " " + (post.curtidas || 0);
+        miniCurtidasPost.style = post.jaCurtiu ? "background-color: #0077cc;" : ""
 
         miniCurtidasPost.onclick = function (event) {
             event.stopPropagation();
@@ -589,11 +590,11 @@ if (btnPublicar) {
         let data = new Date();
 
         const novoPost = {
-            postId: data,
+            postId: listaPosts.length + 1,
             titulo: titulo,
             conteudo: conteudo,
             categorias: categoriaSelecionada,
-            autor: esAnonimo ? "Anônimo" : "Estudante123",
+            autor: esAnonimo ? "Anônimo" : "Luiz Felipe",
             comentarios: 0,
             dataReal: data,
             dataVisual: formatarDataHora(data),
@@ -609,7 +610,7 @@ if (btnPublicar) {
         }
 
         listaPosts.push(novoPost);
-        
+
         const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
         db.posts = listaPosts;
         localStorage.setItem("PucMeet-db", JSON.stringify(db));
@@ -619,7 +620,6 @@ if (btnPublicar) {
         categoriaSelecionada = [];
         esAnonimo = false;
 
-        // Resetar UI
         botoesCategoria.forEach(b => b.classList.remove('active'));
 
         window.location.href = "../homepage/index.html";

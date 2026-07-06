@@ -10,6 +10,8 @@ const painelBusca = document.getElementById("painelBusca");
 const painelFiltro = document.getElementById("painelFiltro");
 const painelOrdenacao = document.getElementById("painelOrdenacao");
 
+const usuarioAtual = "Luiz Felipe";
+
 const campoBusca = document.getElementById("campoBusca");
 const filtroAutor = document.getElementById("filtroAutor");
 const ordenacaoComentarios = document.getElementById("ordenacaoComentarios");
@@ -34,6 +36,10 @@ let comentarios = carregarComentarios();
 
 function carregarComentarios() {
   return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.comentarios || [];
+}
+
+function getPostsLocalStorage() {
+  return JSON.parse(localStorage.getItem("PucMeet-db") || "{}")?.posts || [];
 }
 
 function toTimestamp(value) {
@@ -84,19 +90,92 @@ function carregarPost() {
   }
 
   const categorias = (post.categorias || []).map(c => `<span>${c}</span>`).join(" ");
+  const podeEditar = post.autor === usuarioAtual;
+  const acoesHtml = podeEditar
+    ? `
+      <div class="acoes-post" style="text-align: center; margin-bottom: 8px; margin-top: 8px">
+        <button class="btn-editar-post" onclick="editarPost(${post.postId})">✏️ Editar</button>
+        <button class="btn-excluir-post" onclick="excluirPost(${post.postId})">🗑️ Excluir</button>
+      </div>
+    `
+    : "";
 
   container.innerHTML = `
-    <h2>${post.titulo}</h2>
-
-    <p>${post.conteudo}</p>
+    <h2 style="white-space: normal; overflow-wrap: break-word; word-break: break-word;">${post.titulo}</h2>
+    <p style="white-space: normal; overflow-wrap: break-word; word-break: break-word;">${post.conteudo}</p>
 
     <div class="post-info">
       <span>${post.autor || 'Anônimo'}</span>
       <span>❤ ${post.curtidas || 0}</span>
       <span>${post.dataVisual || ''}</span>
     </div>
-     <div style="text-align: center; margin: 2%;">${categorias}</div>
+    <div style="text-align: center; margin: 2%;">${categorias}</div>
+    <div style="text-align: center; margin: 2%; gap: 2%;">
+    ${post.jaCurtiu
+      ? `<button class="btn-curtir" style="background-color: #0077cc; color: white; font-size: large;" onclick="curtirPost(${post.postId})">👍</button>`
+      : `<button class="btn-curtir" style="font-size: large;" onclick="curtirPost(${post.postId})">🤜</button>`
+    }
+    ${post.favorito
+      ? `<button class="btn-curtir" style="background-color: #0077cc; color: white; font-size: large;" onclick="favoritarPost(${post.postId})">⭐</button>`
+      : `<button class="btn-curtir" style="font-size: large;" onclick="favoritarPost(${post.postId})">☆</button>`
+    }</div>
+
+    ${acoesHtml}
   `;
+}
+
+function editarPost(postId) {
+  const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+  const post = db.posts && db.posts.find(p => p.postId === postId);
+  if (!post) {
+    alert("Post não encontrado.");
+    return;
+  }
+
+  if (post.autor !== usuarioAtual) {
+    alert("Você não tem permissão para editar este post.");
+    return;
+  }
+
+  const novoTitulo = prompt("Edite o título do post:", post.titulo);
+  if (novoTitulo === null) return;
+  const novoConteudo = prompt("Edite o conteúdo do post:", post.conteudo);
+  if (novoConteudo === null) return;
+
+  post.titulo = novoTitulo.trim() || post.titulo;
+  post.conteudo = novoConteudo.trim() || post.conteudo;
+  const agora = new Date();
+  post.dataReal = agora.toISOString();
+  post.dataVisual = formatarDataHora(agora);
+
+  localStorage.setItem("PucMeet-db", JSON.stringify(db));
+  carregarPost();
+}
+
+function excluirPost(postId) {
+  const confirmar = confirm("Tem certeza que deseja excluir este post? Isso também removerá todos os comentários relacionados.");
+  if (!confirmar) return;
+
+  const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+  if (!db.posts) return;
+
+  const postIndex = db.posts.findIndex(p => p.postId === postId);
+  if (postIndex === -1) return;
+
+  const post = db.posts[postIndex];
+  if (post.autor !== usuarioAtual) {
+    alert("Você não tem permissão para excluir este post.");
+    return;
+  }
+
+  db.posts.splice(postIndex, 1);
+
+  db.comentarios = (db.comentarios || []).filter(c => c.postId !== postId);
+  comentarios = db.comentarios || [];
+
+  localStorage.setItem("PucMeet-db", JSON.stringify(db));
+
+  window.location.href = "../homepage/index.html";
 }
 
 function atualizarFiltroAutor() {
@@ -231,8 +310,8 @@ function renderizarComentarios(lista = comentarios.filter(comentario => comentar
         <span>❤ ${comentario.curtidas} curtida(s)</span>
 
         ${comentario.jaCurtiu
-        ? `<button class="btn-curtir" style="background-color: #0077cc; color: white;" onclick="curtirComentario(${comentario.id})">Curtir</button>`
-        : `<button class="btn-curtir" onclick="curtirComentario(${comentario.id})">Curtir</button>`
+        ? `<button class="btn-curtir" style="background-color: #0077cc; color: white; font-size: large;" onclick="curtirComentario(${comentario.id})">👍</button>`
+        : `<button class="btn-curtir" style="font-size: large;" onclick="curtirComentario(${comentario.id})">🤜</button>`
       }
 
       </div>
@@ -264,7 +343,7 @@ function adicionarComentario() {
   let data = new Date();
 
   const novoComentario = {
-    id: Date.now(),
+    id: comentarios.length + 1,
     autor: "Luiz Felipe",
     conteudo: texto,
     dataReal: data.toISOString(),
@@ -340,6 +419,54 @@ function curtirComentario(id) {
 
   salvarComentarios();
   buscarFiltrarOrdenarComentarios();
+}
+
+function curtirPost(postId) {
+  let listaPosts = getPostsLocalStorage();
+  let post = listaPosts.find(post => post.postId === postId);
+
+  if (post) {
+    if (post.jaCurtiu === undefined) post.jaCurtiu = false;
+    if (post.curtidas === undefined) post.curtidas = 0;
+
+    if (post.jaCurtiu === false) {
+      post.curtidas++;
+      post.jaCurtiu = true;
+    }
+    else {
+      post.curtidas--;
+      post.jaCurtiu = false;
+    }
+
+    const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+    db.posts = listaPosts;
+    localStorage.setItem("PucMeet-db", JSON.stringify(db));
+    carregarPost();
+  }
+}
+
+function favoritarPost(postId) {
+  let listaPosts = getPostsLocalStorage();
+  let post = listaPosts.find(post => post.postId === postId);
+
+  if (post) {
+    if (post.favorito === undefined) post.favorito = false;
+    if (post.favoritos === undefined) post.favoritos = 0;
+
+    if (post.favorito === false) {
+      post.favoritos++;
+      post.favorito = true;
+    }
+    else {
+      post.favoritos--;
+      post.favorito = false;
+    }
+
+    const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+    db.posts = listaPosts;
+    localStorage.setItem("PucMeet-db", JSON.stringify(db));
+    carregarPost();
+  }
 }
 
 btnResponder.addEventListener("click", adicionarComentario);
