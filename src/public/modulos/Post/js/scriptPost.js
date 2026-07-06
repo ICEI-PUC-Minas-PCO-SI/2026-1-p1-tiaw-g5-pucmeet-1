@@ -378,7 +378,7 @@ function redirecionarUsuario() {
   usuarioAtual = getUsuarioSessionStorage()
   if (!usuarioAtual.id) {
     alert("Faça Login!");
-    window.location.href = "../Login e Cadastro/login.html";
+    window.location.href = "../login/login.html";
     sessionStorage.clear();
   }
 }

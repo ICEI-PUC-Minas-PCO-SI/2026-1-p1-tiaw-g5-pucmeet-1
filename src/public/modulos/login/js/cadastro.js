@@ -80,7 +80,7 @@ if (loginForm) {
         }
 
         sessionStorage.setItem("usuarioCorrente", JSON.stringify(user));
-        window.location.href = '../Homepage/index.html';
+        window.location.href = '../homepage/index.html';
     });
 }
 

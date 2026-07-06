@@ -171,10 +171,10 @@ if (usuarioAtual && usuarioAtual.foto && fotoPerfil) {
 
 function toLogin() {
     if (!usuarioAtual) {
-        window.location.href = "../Login e Cadastro/login.html"
+        window.location.href = "../login/login.html"
     }
     else {
-        window.location.href = "../TelaDoPerfil/perfil.html"
+        window.location.href = "../perfil/perfil.html"
     }
 }
 renderLoginButton();
@@ -206,7 +206,7 @@ function redirecionarUsuario() {
     usuarioAtual = getUsuarioSessionStorage()
     if (!usuarioAtual.id) {
         alert("Faça Login!");
-        window.location.href = "../Login e Cadastro/login.html";
+        window.location.href = "../login/login.html";
         sessionStorage.clear();
     }
 }
@@ -223,7 +223,7 @@ function renderizarPost(postsRenderizados) {
         const miniPost = document.createElement("div");
         miniPost.classList.add("miniPost")
         miniPost.onclick = function () {
-            window.location.href = "../Post/post.html?id=" + encodeURIComponent(post.postId);
+            window.location.href = "../post/post.html?id=" + encodeURIComponent(post.postId);
         };
 
         const h3MiniPost = document.createElement("h3");
@@ -566,7 +566,7 @@ function renderizarCarrossel(id) {
 
     const postSemanaDiv = document.getElementById("postSemana");
     postSemanaDiv.onclick = function () {
-        window.location.href = "../Post/post.html?id=" + encodeURIComponent(postsSemana[id].postId);
+        window.location.href = "../post/post.html?id=" + encodeURIComponent(postsSemana[id].postId);
     };
 
     if (!postSemanaDiv || !postsSemana.length) return;
@@ -790,7 +790,7 @@ function renderLoginButton() {
     } else {
         loginButton.textContent = "Login";
         loginButton.onclick = function () {
-            window.location.href = "../Login e Cadastro/login.html";
+            window.location.href = "../login/login.html";
         };
         if (userGreeting) {
             userGreeting.textContent = "";
