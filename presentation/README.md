@@ -3,7 +3,7 @@
 
 Consulte os slides de apresentação logo abaixo:
 
-[Slides de apresentação do projeto](../docs/files/g5-PucMeet-Apresentacao.pdf)
+[Slides de apresentação do projeto](../docs/files/g5-PucMeet-Apresentacao-Mostra-TI-Pitch.pdf)
 
 ## Vídeo
 
@@ -13,9 +13,6 @@ Podem utilizar quaisquer recursos na produção do vídeo, mas certifiquem-se de
 
 A seguir, estão as especificações técnicas que devem ser seguidas na criação do vídeo:
 
-> - tamanho do arquivo limitado a 90Mb
-> - taxa de FPS limitada a 30 quadros por segundo
-> - resolução HD (720p) ou Full HD (1080p)
-> - formato mp4.
+[Pitch PucMeet](../docs/files/Pitch-PucMeet.mp4)
 
 
