@@ -40,7 +40,7 @@
         "Ciência"
       ],
       "autor": "João",
-      "comentarios": 2,
+      "comentarios": 4,
       "dataReal": "2025-12-25T16:50:33",
       "dataVisual": "25/12/2025 16:50:33",
       "curtidas": 27,
@@ -55,7 +55,7 @@
         "Ciência"
       ],
       "autor": "Maria",
-      "comentarios": 5,
+      "comentarios": 2,
       "dataReal": "2025-05-20T10:30:00",
       "dataVisual": "20/05/2025 10:30:00",
       "curtidas": 64,
@@ -70,7 +70,7 @@
         "Tecnologia"
       ],
       "autor": "Carlos",
-      "comentarios": 0,
+      "comentarios": 2,
       "dataReal": "2026-05-19T14:00:00",
       "dataVisual": "19/05/2026 14:00:00",
       "curtidas": 9,
@@ -86,7 +86,7 @@
         "Programação"
       ],
       "autor": "Ana",
-      "comentarios": 3,
+      "comentarios": 2,
       "dataReal": "2026-05-18T09:15:00",
       "dataVisual": "18/05/2026 09:15:00",
       "curtidas": 43,
@@ -101,7 +101,7 @@
         "Ciência"
       ],
       "autor": "Bruno",
-      "comentarios": 1,
+      "comentarios": 2,
       "dataReal": "2026-05-17T11:45:00",
       "dataVisual": "17/05/2026 11:45:00",
       "curtidas": 2,
@@ -116,7 +116,7 @@
         "Tecnologia"
       ],
       "autor": "Laura",
-      "comentarios": 4,
+      "comentarios": 2,
       "dataReal": "2026-05-16T18:20:00",
       "dataVisual": "16/05/2026 18:20:00",
       "curtidas": 51,
@@ -147,7 +147,7 @@
         "Gastronomia"
       ],
       "autor": "Pedro",
-      "comentarios": 6,
+      "comentarios": 2,
       "dataReal": "2026-05-14T12:30:00",
       "dataVisual": "14/05/2026 12:30:00",
       "curtidas": 78,
@@ -162,7 +162,7 @@
         "Esportes"
       ],
       "autor": "Rafael",
-      "comentarios": 8,
+      "comentarios": 2,
       "dataReal": "2026-05-13T20:00:23",
       "dataVisual": "13/05/2026 20:00:23",
       "curtidas": 34,
@@ -177,7 +177,7 @@
         "Moda"
       ],
       "autor": "Sofia",
-      "comentarios": 0,
+      "comentarios": 2,
       "dataReal": "2026-05-12T15:10:45",
       "dataVisual": "12/05/2026 15:10:45",
       "curtidas": 0,
@@ -207,7 +207,7 @@
         "Economia"
       ],
       "autor": "Patrícia",
-      "comentarios": 3,
+      "comentarios": 2,
       "dataReal": "2026-04-28T10:00:00",
       "dataVisual": "28/04/2026 10:00:00",
       "curtidas": 6,
@@ -223,7 +223,7 @@
         "Entretenimento"
       ],
       "autor": "Felipe",
-      "comentarios": 5,
+      "comentarios": 2,
       "dataReal": "2026-04-01T19:30:33",
       "dataVisual": "01/04/2026 19:30:33",
       "curtidas": 88,
@@ -238,7 +238,7 @@
         "Meio Ambiente"
       ],
       "autor": "Clara",
-      "comentarios": 1,
+      "comentarios": 2,
       "dataReal": "2026-03-20T09:00:00",
       "dataVisual": "20/03/2026 09:00:00",
       "curtidas": 5,
@@ -253,7 +253,7 @@
         "História"
       ],
       "autor": "Luiz",
-      "comentarios": 0,
+      "comentarios": 2,
       "dataReal": "2026-03-15T14:00:23",
       "dataVisual": "15/03/2026 14:00:23",
       "curtidas": 12,
@@ -269,7 +269,7 @@
         "Educação"
       ],
       "autor": "Isabela",
-      "comentarios": 7,
+      "comentarios": 2,
       "dataReal": "2026-02-25T16:00:00",
       "dataVisual": "25/02/2026 16:00:00",
       "curtidas": 47,
@@ -284,7 +284,7 @@
         "Filosofia"
       ],
       "autor": "Eduardo",
-      "comentarios": 0,
+      "comentarios": 2,
       "dataReal": "2026-01-10T11:00:00",
       "dataVisual": "10/01/2026 11:00:00",
       "curtidas": 3,
@@ -314,7 +314,7 @@
         "Música"
       ],
       "autor": "Vitor",
-      "comentarios": 9,
+      "comentarios": 2,
       "dataReal": "2025-11-20T18:30:00",
       "dataVisual": "20/11/2025 18:30:00",
       "curtidas": 55,
@@ -330,7 +330,7 @@
         "Educação"
       ],
       "autor": "Fernanda",
-      "comentarios": 4,
+      "comentarios": 2,
       "dataReal": "2025-10-01T09:00:04",
       "dataVisual": "01/10/2025 09:00:04",
       "curtidas": 10,
@@ -353,7 +353,7 @@
     {
       "id": 2,
       "autor": "Carlos Silva",
-      "conteudo": "Posso ajudar com integrais, tive essa matéria no semestre passado 👍",
+      "conteudo": "Posso ajudar, tive essa matéria no semestre passado 👍",
       "dataReal": "2025-12-25T17:50:33",
       "dataVisual": "25/12/2025 17:50:33",
       "postId": 1,

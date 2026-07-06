@@ -12,6 +12,18 @@ body {
   overflow-x: hidden;
 }
 
+div {
+  border-radius: 5%;
+}
+
+section {
+  border-radius: 5%;
+}
+
+button {
+  border-radius: 5%;
+}
+
 .container {
   width: 100%;
   max-width: 420px;
@@ -330,6 +342,7 @@ header h2 {
   margin: 1%;
   margin-top: 2%;
   align-self: flex-end;
+  border-radius: 5%;
 }
 
 #postSectionTitle {
@@ -357,6 +370,7 @@ header h2 {
   margin-top: 8px;
   background-color: #ddd;
   border: none;
+  border-radius: 2%;
   font-size: 24px;
   font-weight: bold;
   color: #222;

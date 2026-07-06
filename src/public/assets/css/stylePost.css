@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+div {
+  border-radius: 2%;
+}
+
+section {
+  border-radius: 2%;
+}
+
 body {
   background-color: #f5f5f5;
   font-family: Georgia, 'Times New Roman', serif;
@@ -236,7 +244,7 @@ button {
   background-color: #dcdcdc;
 }
 
-.btn-curtir:active{
+.btn-curtir:active {
   transform: scale(1.2);
   background-color: #0077cc;
   color: white;

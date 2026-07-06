@@ -91,11 +91,11 @@ function carregarPost() {
     <p>${post.conteudo}</p>
 
     <div class="post-info">
-      ${categorias}
       <span>${post.autor || 'Anônimo'}</span>
       <span>❤ ${post.curtidas || 0}</span>
       <span>${post.dataVisual || ''}</span>
     </div>
+     <div style="text-align: center; margin: 2%;">${categorias}</div>
   `;
 }
 

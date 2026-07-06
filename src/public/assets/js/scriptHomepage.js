@@ -24,7 +24,7 @@ function renderizarPost(postsRenderizados) {
         const miniPost = document.createElement("div");
         miniPost.classList.add("miniPost")
         miniPost.onclick = function () {
-            window.location.href = "teste.html?postId=" + encodeURIComponent(post.postId);
+            window.location.href = "../Post/post.html?id=" + encodeURIComponent(post.postId);
         };
 
         const h3MiniPost = document.createElement("h3");
@@ -109,7 +109,10 @@ function adicionarPost() { // Função somente de teste
     };
 
     listaPosts.push(novoPost);
-    localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
+
+    const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+    db.posts = listaPosts;
+    localStorage.setItem("PucMeet-db", JSON.stringify(db));
 
     if (pesquisaAtiva) {
         pesquisarPost();
@@ -146,7 +149,9 @@ function ordenarPostsPorData(desc) {
     });
 
     if (!pesquisaAtiva) {
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
     }
 
     renderizarPost(pesquisaAtiva ? filtrados : undefined);
@@ -188,7 +193,9 @@ function ordenarPostsPorNomeAutorAlfabeticamente(desc) {
     });
 
     if (!pesquisaAtiva) {
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
     }
 
     renderizarPost(pesquisaAtiva ? filtrados : undefined);
@@ -230,7 +237,9 @@ function ordenarPostsPorComentarios(desc) {
     });
 
     if (!pesquisaAtiva) {
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
     }
 
     renderizarPost(pesquisaAtiva ? filtrados : undefined);
@@ -355,6 +364,9 @@ function renderizarCarrossel(id) {
     idPost.textContent = "Top: " + (id + 1);
 
     const postSemanaDiv = document.getElementById("postSemana");
+    postSemanaDiv.onclick = function () {
+        window.location.href = "../Post/post.html?id=" + encodeURIComponent(postsSemana[id].postId);
+    };
 
     if (!postSemanaDiv || !postsSemana.length) return;
 
@@ -437,8 +449,8 @@ function getPostsLocalStorage() {
 }
 
 function curtirPost(postId) {
-    let postsAtuais = getPostsLocalStorage();
-    let post = postsAtuais.find(post => post.postId === postId);
+    let listaPosts = getPostsLocalStorage();
+    let post = listaPosts.find(post => post.postId === postId);
 
     if (post) {
         if (post.jaCurtiu === undefined) post.jaCurtiu = false;
@@ -452,7 +464,11 @@ function curtirPost(postId) {
             post.curtidas--;
             post.jaCurtiu = false;
         }
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: postsAtuais }));
+
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
+
         renderizarPost();
         postsSemana = getPostSemana();
         renderizarCarrossel(i);
@@ -460,12 +476,14 @@ function curtirPost(postId) {
 }
 
 function favoritarPost(postId) {
-    let postsAtuais = getPostsLocalStorage();
-    let post = postsAtuais.find(post => post.postId === postId);
+    let listaPosts = getPostsLocalStorage();
+    let post = listaPosts.find(post => post.postId === postId);
 
     if (post) {
         post.favorito = !post.favorito;
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: postsAtuais }));
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
         renderizarPost();
         postsSemana = getPostSemana();
         renderizarCarrossel(i);
@@ -591,7 +609,10 @@ if (btnPublicar) {
         }
 
         listaPosts.push(novoPost);
-        localStorage.setItem("PucMeet-db", JSON.stringify({ posts: listaPosts }));
+        
+        const db = JSON.parse(localStorage.getItem("PucMeet-db") || "{}");
+        db.posts = listaPosts;
+        localStorage.setItem("PucMeet-db", JSON.stringify(db));
 
         document.getElementById('post-title').value = "";
         document.getElementById('post-content').value = "";
@@ -619,3 +640,4 @@ if (estaNoIndex) {
     renderizarCarrossel(i);
     iniciarCarrosselAutomatico();
 }
+
