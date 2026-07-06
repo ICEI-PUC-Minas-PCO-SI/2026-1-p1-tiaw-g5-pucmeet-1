@@ -123,7 +123,7 @@ function carregarPost() {
       : `<button class="btn-curtir" style="font-size: large;" onclick="curtirPost(${post.postId})">🤜</button>`
     }
     ${post.favorito
-      ? `<button class="btn-curtir" style="background-color: #0077cc; color: white; font-size: large;" onclick="favoritarPost(${post.postId})">⭐</button>`
+      ? `<button class="btn-curtir" style=" background-color: #ccb800;; color: white; font-size: large;" onclick="favoritarPost(${post.postId})">⭐</button>`
       : `<button class="btn-curtir" style="font-size: large;" onclick="favoritarPost(${post.postId})">☆</button>`
     }</div>
 

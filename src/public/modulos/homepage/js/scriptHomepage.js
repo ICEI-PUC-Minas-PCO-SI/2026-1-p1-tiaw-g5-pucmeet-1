@@ -77,6 +77,7 @@ function renderizarPost(postsRenderizados) {
         const miniFavoritarPost = document.createElement("button");
         miniFavoritarPost.classList.add("miniFavoritarPost");
         miniFavoritarPost.textContent = post.favorito ? "⭐" : "☆";
+        miniFavoritarPost.style = post.favorito ? "background-color: #ccb800;" : ""
 
         miniFavoritarPost.onclick = function (event) {
             event.stopPropagation();
@@ -673,4 +674,10 @@ if (estaNoIndex) {
     postsSemana = getPostSemana();
     renderizarCarrossel(i);
     iniciarCarrosselAutomatico();
+}
+
+const fotoPerfil = document.getElementById('fotoPerfil');
+if (usuarioAtual.foto && fotoPerfil) {
+
+    fotoPerfil.src = usuarioAtual.foto;
 }

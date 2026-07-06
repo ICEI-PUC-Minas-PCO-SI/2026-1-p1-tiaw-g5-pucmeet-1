@@ -1,32 +1,35 @@
 :root {
-    --bg-color: #f9f9f9;
-    --card-bg: #ffffff;
-    --border-color: #cccccc;
-    --gray-light: #e0e0e0;
-    --text-main: #333333;
-    --text-subtitle: #666666;
+    --bg-color: #011320;
+    --card-bg: #011320;
+    --border-color: #ffffff;
+    --gray-light: #ffffff;
+    --text-main: #ffffff;
+    --text-subtitle: #ffffff;
     --accent-color: #b3c2f2;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #111; /* Fundo escuro simulando o Instagram */
+    background-color: #000000;
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 420px;
     background-color: var(--bg-color);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: solid white 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.btn-voltar, .btn-criar-post {
+.btn-voltar,
+.btn-criar-post {
     text-decoration: none;
     color: var(--text-main);
     font-weight: bold;
@@ -58,10 +61,12 @@ h2 {
     margin-top: 0;
     font-size: 16px;
 }
+
 .card-dicas ul {
     padding-left: 20px;
     margin: 10px 0 0 0;
 }
+
 .card-dicas li {
     margin-bottom: 5px;
     color: var(--text-subtitle);
@@ -72,7 +77,8 @@ h2 {
 .form-container {
     background-color: var(--gray-light);
     border-radius: 6px;
-    padding: 15px;
+    padding: 8px;
+    border: solid 4px white;
 }
 
 .input-group {
@@ -89,7 +95,8 @@ h2 {
     margin-bottom: 5px;
 }
 
-.input-group input, .input-group textarea {
+.input-group input,
+.input-group textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid var(--border-color);
@@ -111,6 +118,7 @@ h2 {
     margin: 0 0 10px 0;
     font-size: 14px;
 }
+
 .categorias-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -118,38 +126,53 @@ h2 {
 }
 
 .btn-categoria {
-    background-color: #f0e6e6;
+    background-color: #003775;
     border: none;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
+    border: white solid 4px;
     cursor: pointer;
     font-weight: 500;
+    color: white;
 }
+
 .btn-categoria.active {
     background-color: #d1c4e9;
     outline: 2px solid #9575cd;
 }
 
-.btn-anônimo {
+.btn-anonimo {
     width: 100%;
-    background: var(--card-bg);
+    background-color: #00694f;
     border: 1px solid var(--border-color);
     padding: 10px;
     font-weight: bold;
     cursor: pointer;
+    color: white;
     border-radius: 4px;
 }
 
 .btn-publicar {
     width: 100%;
-    background-color: var(--card-color);
+    background-color: #108669;;
     border: 3px solid var(--gray-light);
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
     margin-top: 15px;
     cursor: pointer;
+    color: white;
     border-radius: 6px;
+}
+
+input {
+    background-color: #011320;
+    color: white;
+}
+
+textarea {
+    background-color: #011320;
+    color: white;
 }
 
 /* Estilos do Feed / Posts */
@@ -160,6 +183,7 @@ h2 {
     padding: 15px;
     margin-bottom: 25px;
 }
+
 .post-footer {
     border-top: 1px solid var(--text-main);
     padding-top: 10px;
@@ -175,11 +199,13 @@ h2 {
     border-radius: 6px;
     margin-top: 10px;
 }
+
 .comment-input-area {
     background: var(--card-bg);
     padding: 10px;
     border-radius: 4px;
 }
+
 .comment-input-area textarea {
     width: 100%;
     border: 1px solid var(--border-color);
@@ -187,6 +213,7 @@ h2 {
     box-sizing: border-box;
     resize: none;
 }
+
 .btn-responder {
     width: 100%;
     background-color: var(--accent-color);
@@ -197,9 +224,11 @@ h2 {
     cursor: pointer;
     border-radius: 4px;
 }
+
 .comment-list {
     margin-top: 15px;
 }
+
 .comment-item {
     background: var(--card-bg);
     padding: 10px;
@@ -207,15 +236,15 @@ h2 {
     margin-bottom: 8px;
     font-size: 14px;
 }
+
 .comment-user {
     font-weight: bold;
     font-size: 12px;
     color: var(--text-main);
 }
+
 .comment-time {
     font-size: 11px;
     color: var(--text-subtitle);
     font-weight: normal;
 }
-
-   

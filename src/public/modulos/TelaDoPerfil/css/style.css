@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +5,20 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #000000;
     font-family: Georgia, 'Times New Roman', serif;
-    color: #222;
+    color: white;
 }
 
 .container {
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     margin: 30px auto;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #333;
+    padding: 10px;
+    background-color: #011320;
+    color: white;
+    border: solid 5px;
+    border-radius: 8px;
 }
 
 .oculto {
@@ -32,7 +34,7 @@ body {
 }
 
 .voltar {
-    color: #333;
+    color: #ffffff;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
@@ -46,14 +48,28 @@ body {
 }
 
 
-h1 { font-size: 26px; margin-bottom: 5px; }
-h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
-.linha-divisoria { border: 0; border-top: 1px solid #777; margin-bottom: 20px; }
+h1 {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.linha-divisoria {
+    border: 0;
+    border-top: 1px solid #777;
+    margin-bottom: 20px;
+}
 
 
 .perfil-card-info {
-    background: #f8f8f8;
-    border: 8px solid #ddd;
+    background: #011320;
+    border: 8px solid #ffffff;
+    border-radius: 8px;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -64,7 +80,7 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 .avatar-perfil {
     width: 70px;
     height: 70px;
-    border: 2px solid #222;
+    border: 4px solid #ffffff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -79,20 +95,29 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
     object-fit: cover;
 }
 
-.dados-usuario h2 { font-size: 22px; }
-.dados-usuario p { font-size: 13px; font-weight: bold; }
+.dados-usuario h2 {
+    font-size: 22px;
+}
+
+.dados-usuario p {
+    font-size: 13px;
+    font-weight: bold;
+}
 
 
 .painel-conteudo {
-    border: 8px solid #ddd;
+    border: 8px solid #ffffff;
+    border-radius: 8px;
     padding: 12px;
 }
 
 .titulo-destaque {
-    background-color: #b5b5b5;
+    background-color: rgba(40, 44, 53, 0.527);
     padding: 6px;
     font-size: 14px;
     margin-bottom: 10px;
+    border: 2px solid white;
+    border-radius: 8px;
 }
 
 .tags-container {
@@ -103,7 +128,7 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 }
 
 .tag {
-    background-color: #f2e1e1;
+    background-color: #003775;
     padding: 4px 10px;
     font-size: 12px;
     font-weight: bold;
@@ -111,44 +136,61 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 
 
 .area-estatisticas {
-    background-color: #d1dad1;
+    background-color: rgba(40, 44, 53, 0.527);
     padding: 12px;
     margin-bottom: 15px;
+    border: 2px solid white;
+    border-radius: 8px;
 }
 
 .estatistica-card {
-    background-color: #f5f5f5;
-    border: 6px solid #ddd;
+    background-color: rgba(40, 44, 53, 0.527);
+    border: 6px solid #ffffff;
+    border-radius: 8px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.info-numero .numero { font-size: 22px; font-weight: bold; font-style: italic; }
-.info-numero .texto { font-size: 16px; font-weight: bold; margin-left: 10px; }
+.info-numero .numero {
+    font-size: 22px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.info-numero .texto {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
 
 
 .btn-bloco {
     width: 100%;
     text-align: left;
     padding: 10px;
-    background-color: #ddd;
+    background-color: #108669;
     border: none;
     margin-bottom: 8px;
     font-family: Georgia;
     font-weight: bold;
     cursor: pointer;
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
 }
 
 .btn-sair {
     width: 100%;
     padding: 10px;
-    background-color: #f9f9f9;
-    border: 2px solid #ccc;
+    background-color: #ac0000;
+    border: 8px solid #ffffff;
+    border-radius: 8px;
     font-family: Georgia;
     font-weight: bold;
     margin-top: 15px;
+    color: white;
 }
 
 
@@ -166,9 +208,12 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 .form-container input {
     width: 100%;
     padding: 10px;
-    border: 4px solid #ddd;
+    border: 4px solid #ffffff;
+    border-radius: 8px;
     font-family: Georgia;
     margin-bottom: 15px;
+    background-color: #011320;
+    color: white;
 }
 
 .upload-foto {
@@ -181,17 +226,20 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 .btn-salvar {
     width: 100%;
     padding: 15px;
-    background-color: #b8c3ee;
+    background-color: #05aa81;
     border: none;
     font-weight: bold;
     font-size: 18px;
     cursor: pointer;
+    border: 4px solid #ffffff;
+    border-radius: 8px;
 }
 
 
 .input-grupo {
     display: flex;
     gap: 5px;
+    margin: 5%;
 }
 
 .btn-add {
@@ -211,9 +259,10 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 .item-interesse {
     display: flex;
     justify-content: space-between;
-    background: #f8f8f8;
+    background: #108669;
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
     font-size: 14px;
 }
 
@@ -231,22 +280,22 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
     .container {
         width: 100%;
         margin: 10px auto;
-        padding: 15px; 
+        padding: 15px;
     }
 
-    
+
     .perfil-card-info {
-        flex-direction: column; 
+        flex-direction: column;
         text-align: center;
         gap: 10px;
         padding: 15px;
     }
 
     .dados-usuario h2 {
-        font-size: 20px; 
+        font-size: 20px;
     }
 
-   
+
     .area-estatisticas {
         padding: 10px;
         gap: 10px;
@@ -257,28 +306,29 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
     }
 
     .info-numero .texto {
-        font-size: 14px; 
+        font-size: 14px;
         margin-left: 8px;
     }
 
-   
-    .form-container input, 
+
+    .form-container input,
     .btn-salvar {
-        font-size: 16px; 
+        font-size: 16px;
     }
 
     .upload-foto {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
         text-align: center;
     }
 }
+
 .btn-bloco:hover {
-    background-color: #ccc; 
+    background-color: #ccc;
 }
 
 .btn-salvar:hover {
-    background-color: #9faee4; 
+    background-color: #9faee4;
 }
 
 .btn-add:hover {
@@ -286,13 +336,14 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 }
 
 .card-membro-desde {
-    background-color: #f8f8f8;
-    border: 2px solid #ccc;
+    background-color: #011320;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    color: white;
     padding: 12px;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
-    color: #555;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -301,4 +352,11 @@ h3 { font-size: 14px; color: #555; margin-bottom: 10px; font-weight: normal; }
 
 .icone-calendario {
     font-size: 16px;
+}
+
+#novo-interesse {
+    background-color: #108669;
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 2px;
 }

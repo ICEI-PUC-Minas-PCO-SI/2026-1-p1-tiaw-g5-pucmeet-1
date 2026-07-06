@@ -13,21 +13,24 @@ section {
 }
 
 body {
-  background-color: #f5f5f5;
   font-family: Georgia, 'Times New Roman', serif;
-  color: #222;
+  background-color: black;
+  color: white;
 }
 
 .container {
   width: 420px;
   margin: 30px auto;
   padding: 10px;
+  background-color: #011320;
+  border-radius: 8px;
+  border: solid white 8px;
 }
 
 .voltar {
   display: inline-block;
   margin-bottom: 25px;
-  color: #333;
+  color: white;
   text-decoration: none;
   font-size: 14px;
 }
@@ -43,9 +46,9 @@ h3 {
 }
 
 .post-card {
-  background: white;
-  border: 8px solid #ddd;
-  padding: 25px;
+  background: #011320;
+  border: 4px solid #ddd;
+  padding: 15px;
   margin-bottom: 18px;
 }
 
@@ -71,8 +74,8 @@ h3 {
 }
 
 .comentario-form {
-  background: white;
-  border: 8px solid #ddd;
+  background: #011320;
+  border: 4px solid #ffffff;
   padding: 12px;
   margin-bottom: 18px;
 }
@@ -87,11 +90,14 @@ textarea {
   height: 130px;
   resize: none;
   padding: 15px;
-  border: 10px solid #ddd;
+  border: 4px solid #ffffff;
+  border-radius: 8px;
   font-size: 15px;
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: bold;
   outline: none;
+  color: white;
+  background-color: #011320;
 }
 
 button {
@@ -103,11 +109,13 @@ button {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
-  background-color: #b8c3ee;
+  background-color: #108669;
   border: none;
   font-size: 24px;
   font-weight: bold;
-  color: #222;
+  color: #ffffff;
+  border-radius: 8px;
+  border: 4px solid white;
 }
 
 #btnResponder:hover {
@@ -115,18 +123,23 @@ button {
 }
 
 .comentarios-area {
-  background: #ddd;
+  background: #011320;
   padding: 10px;
+  border-radius: 8px;
+  border: solid 4px white;
 }
 
 .comentarios-topo {
-  background: #eee;
+  background: rgb(103, 109, 122);
   padding: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 17px;
   margin-bottom: 10px;
+  color: white;
+  border: solid white 4px;
+  border-radius: 4px;
 }
 
 .botao-ferramenta {
@@ -143,8 +156,8 @@ button {
 }
 
 .painel-controle {
-  background: white;
-  border: 4px solid #ccc;
+  background: #011320;
+  border: 4px solid #ffffff;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -158,17 +171,19 @@ button {
 
 .painel-controle input,
 .painel-controle select {
+  background-color: #108669;
   width: 100%;
   padding: 8px;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 14px;
-  border: 2px solid #ccc;
+  border: 2px solid #ffffff;
   outline: none;
+  color: white;
 }
 
 .painel-controle input:focus,
 .painel-controle select:focus {
-  border-color: #9faee4;
+  border-color: #ffffff;
 }
 
 .oculto {
@@ -176,8 +191,8 @@ button {
 }
 
 .resumo-filtros {
-  background: #f8f8f8;
-  border: 2px solid #ccc;
+  background: rgba(40, 44, 53, 0.527);
+  border: 2px solid #ffffff;
   padding: 8px;
   margin-bottom: 10px;
   font-size: 13px;
@@ -186,10 +201,13 @@ button {
 }
 
 .comentario-card {
-  background: white;
+  background: rgba(40, 44, 53, 0.527);
   padding: 12px;
   margin-bottom: 12px;
   position: relative;
+  color: white;
+  border-radius: 8px;
+  border: solid white 4px;
 }
 
 .comentario-header {
@@ -207,7 +225,7 @@ button {
 .avatar {
   width: 32px;
   height: 32px;
-  background: #111;
+  background: #ffffff;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -228,16 +246,17 @@ button {
   margin-top: 10px;
   font-size: 12px;
   font-weight: bold;
-  color: #555;
+  color: rgb(255, 255, 255)
 }
 
 .btn-curtir {
   padding: 6px 10px;
-  background-color: #eee;
-  border: 2px solid #ccc;
+  background-color: rgba(40, 44, 53, 0.527);
+  border: 2px solid #ffffff;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: bold;
-  color: #222;
+  color: #ffffff;
   border-radius: 5%;
 }
 
@@ -277,8 +296,8 @@ button {
   text-align: center;
   padding: 15px;
   font-weight: bold;
-  color: #555;
-  background: white;
+  color: #ffffff;
+  background: #011320;
 }
 
 @media (max-width: 480px) {
