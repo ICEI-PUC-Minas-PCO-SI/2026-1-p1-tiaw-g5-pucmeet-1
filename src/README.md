@@ -1,93 +1,217 @@
-# Código-fonte
+# Código-fonte - PucMeet
 
+Esta é a pasta destinada à manutenção do programa **PucMeet**, uma plataforma social desenvolvida para facilitar a integração e interação entre alunos da Pontifícia Universidade Católica (PUC).
 
-Esta é a pasta destinada à manutenção do programa que será desenvolvido no contexto desta disciplina.
+## Descrição do projeto
 
-Se necessário, deve-se descrever neste arquivo os aspectos relevantes da estrutura de diretórios criada para a organização do código.
+O PucMeet é uma aplicação web responsiva que permite aos usuários:
+- Criar e compartilhar postagens no fórum
+- Interagir com postagens de outros usuários (curtir e comentar)
+- Gerenciar seu perfil pessoal
+- Consultar histórico de postagens
+- Conectar-se com colegas que possuem interesses semelhantes
 
-Uma sugestão para a estrutura de diretórios do projeto é a seguinte:
+A estrutura de diretórios foi organizada para facilitar o desenvolvimento e manutenção do código. Segue abaixo a estrutura utilizada:
 
 ```plaintext
-src/  (esta pasta aqui)
+src/  (esta pasta aqui - código-fonte do PucMeet)
 │
 ├── db/
-│   └── db.json (estruturas de dados)
+│   └── dados.json (dados iniciais/mock - usuários, postagens, comentários)
 │
-├── public/ (seu site - front-end)
+├── public/ (site - front-end)
 │   ├── assets/
-│   │   ├── css/
-│   │   │   ├── styles.css
-│   │   │   └── (outros arquivos .css)
-│   │   │
-│   │   ├── js/
-│   │   │   ├── app.js
-│   │   │   └── (outros arquivos .js)
-│   │   │
-│   │   ├── images/
-│   │   │   ├── logo.png
-│   │   │   └── (outras imagens)
-│   │   │
-│   │   └── fonts/
-│   │       ├── font1.ttf
-│   │       └── (outras fontes)
+│   │   └── images/
+│   │       └── (imagens utilizadas na interface)
 │   │
 │   ├── modulos/
-│   │   ├── modulo-1/
-│   │   │   └── (arquivos do módulo)
+│   │   ├── login/
+│   │   │   ├── login.html (página de login)
+│   │   │   ├── cadastro.html (página de cadastro)
+│   │   │   ├── css/
+│   │   │   │   ├── style.css (estilos da página de login)
+│   │   │   │   └── cadastro.css (estilos da página de cadastro)
+│   │   │   └── js/
+│   │   │       └── cadastro.js (lógica de cadastro)
 │   │   │
-│   │   └── modulo-2/
-│   │       └── (arquivos do módulo)
+│   │   ├── homepage/
+│   │   │   ├── index.html (página principal com feed de postagens)
+│   │   │   ├── css/
+│   │   │   │   └── styleHomepage.css (estilos da homepage)
+│   │   │   └── js/
+│   │   │       └── scriptHomepage.js (lógica da homepage)
+│   │   │
+│   │   ├── criar-post/
+│   │   │   ├── criarPost.html (formulário para criar postagem)
+│   │   │   └── css/
+│   │   │       └── styleCriarPost.css (estilos do formulário)
+│   │   │
+│   │   ├── post/
+│   │   │   ├── post.html (página de detalhes da postagem)
+│   │   │   ├── css/
+│   │   │   │   └── stylePost.css (estilos da página de postagem)
+│   │   │   └── js/
+│   │   │       └── scriptPost.js (lógica de interações na postagem)
+│   │   │
+│   │   └── perfil/
+│   │       ├── perfil.html (página de perfil do usuário)
+│   │       ├── css/
+│   │       │   └── style.css (estilos do perfil)
+│   │       └── js/
+│   │           └── scriptPerfil.js (lógica do perfil)
 │   │
-│   ├── index.html (página inicial front-end)
-│   ├── about.html
-│   ├── contact.html
-│   └── (outras páginas)
+│   └── index.html (página inicial que redireciona para login/homepage)
 │
-│── index.js (app back-end)
-│── package.json (configuração back-end)
-└── README.md (este arquivo aqui)
+|
+└── README.md (este arquivo)
 ```
 
 ## Parte front-end
 
-Para a montagem do site, devem ser editados os arquivos existentes e criados novos arquivos na pasta `public`, que abriga todos os componentes da interface do front-end, visíveis ao usuário no navegador.
+A interface do PucMeet foi desenvolvida utilizando HTML5, CSS3 e JavaScript vanilla (com ES Modules), organizada em módulos para melhor manutenção e escalabilidade.
 
-Na pasta `public`, sugere-se a seguinte organização dos arquivos do site:
+### Estrutura dos módulos
 
-* Pasta `assets`: destinada aos arquivos de formatação (CSS), scripts (JS), imagens utilizadas no site (JPG, PNG, GIF, SVG etc.), fontes (TTF) e outros arquivos gerais utilizados por todo o site.
-* Pasta `modulos`: onde devem ser armazenados os arquivos relacionados à implementação das funcionalidades do site. Recomenda-se criar uma subpasta para cada novo módulo ou funcionalidade, o que também pode facilitar a divisão do trabalho entre os membros do grupo.
-* Arquivo `index.html`: arquivo que representa a "home page" do site.
+* **Pasta `assets`**: Contém imagens utilizadas na interface do PucMeet (logos, ícones, fotos de perfil, etc.)
 
-## Parte back-end
+* **Pasta `modulos`**: Cada funcionalidade principal do PucMeet está organizada em uma subpasta específica:
+  - **`login/`**: Módulo de autenticação e cadastro de usuários
+    - `login.html`: Formulário de login
+    - `cadastro.html`: Formulário de cadastro de novo usuário
+    - Estilos CSS específicos para cada página
+    - Lógica JavaScript para validação de formulários e autenticação via `localStorage`
+  
+  - **`homepage/`**: Módulo principal com feed de postagens
+    - Exibe todas as postagens carregadas a partir dos dados salvos em `localStorage`
+    - Permite navegação e interação
+  
+  - **`criar-post/`**: Módulo para criação de novas postagens
+    - Formulário para escrever e publicar postagens, persistidas diretamente no `localStorage`
+  
+  - **`post/`**: Módulo para visualizar detalhes de uma postagem
+    - Exibe postagem completa com comentários e curtidas
+    - Lógica para curtir e comentar, atualizando os dados no `localStorage`
+  
+  - **`perfil/`**: Módulo de gerenciamento de perfil
+    - Visualizar informações do usuário
+    - Editar perfil (nome, foto, etc.)
+    - Histórico de postagens do usuário
 
-Para este projeto, será utilizado o ambiente de execução **[Node.js](https://nodejs.org/)** para montar um back-end simplificado, porém eficaz, que utiliza o módulo **[JSON Server](https://github.com/typicode/json-server#readme)**. Não se preocupe, não é necessário ter conhecimento em programação para o ambiente Node.js, nem é preciso alterar esses arquivos para que seu site funcione adequadamente.
+* **Arquivo `index.html`**: Página de entrada da aplicação que realiza redirecionamentos conforme o estado de autenticação do usuário (verificado via `sessionStorage`/`localStorage`)
 
-Na estrutura de arquivos encontram-se, além disso, outra pasta e alguns arquivos, os quais são:
+## Parte de persistência de dados
 
-* Pasta `db`: local onde é armazenado o arquivo contendo as estruturas de dados utilizadas pela aplicação. O conteúdo dessa pasta é composto exclusivamente pelo arquivo `db.json`.
-* Arquivo `index.js`: arquivo responsável por inicializar o servidor web e a aplicação de back-end no ambiente Node.js, fornecendo uma API RESTful a partir do arquivo `db.json`. Recomenda-se evitar alterações nesse arquivo.
-* Arquivo `package.js`: arquivo que contém as configurações da aplicação de back-end.
+Diferente de uma aplicação com back-end tradicional, o PucMeet **não utiliza servidor (Node.js) nem JSON Server**. Toda a persistência de dados é feita no navegador, através das APIs `localStorage` e `sessionStorage`.
+
+### Componentes da persistência
+
+* **Arquivo `dados.json`**: Contém a massa de dados inicial (mock) da aplicação — usuários, postagens e comentários. Esse arquivo é carregado uma única vez (geralmente no primeiro acesso) e seu conteúdo é copiado para o `localStorage`, que passa a ser a fonte de verdade dos dados durante o uso da aplicação:
+  - Usuários cadastrados (nome, email, senha, foto de perfil, etc.)
+  - Postagens (conteúdo, autor, data, curtidas, comentários)
+  - Comentários em postagens
+  - Informações de interações entre usuários
+
+* **`localStorage`**: Utilizado para persistir os dados da aplicação (usuários, postagens, comentários) entre sessões do navegador, já que não há um servidor/back-end armazenando essas informações.
+
+* **`sessionStorage`**: Utilizado para controlar o estado de autenticação (usuário logado) durante a sessão atual do navegador.
+
+> **Importante**: como os dados ficam salvos apenas no navegador do usuário, cada pessoa que acessar a aplicação terá sua própria "base de dados" local. Não há sincronização entre diferentes usuários/dispositivos.
 
 ## Setup e execução do ambiente
 
-Para executar a aplicação de back-end e permitir o acesso ao seu site, é necessário instalar o Node.js em seu computador. Para isso, siga as instruções disponíveis no site do [**Node.js**](https://nodejs.org/), realizando o download da versão LTS (a versão mais estável do ambiente).
+### Pré-requisitos
 
-Assim que o Node.js estiver instalado em seu computador, deve-se abrir o terminal na pasta do seu projeto e executar o seguinte comando:
+- Um navegador atualizado (Chrome, Firefox, Edge, etc.)
+- **Git** para controle de versão (opcional)
+- Alguma forma de servir os arquivos estáticos, já que módulos ES (`import`/`export`) não funcionam abrindo o `.html` diretamente via `file://`. Algumas opções:
+  - Extensão **Live Server** do VS Code
+  - Pacote `live-server` via npm (`npx live-server`)
+  - Qualquer outro servidor estático de sua preferência
 
+### Instalação e execução
+
+1. **Abra o projeto** na pasta raiz (onde está este README), de preferência no VS Code.
+
+2. **Inicie um servidor estático local**, por exemplo:
+   - Usando a extensão Live Server do VS Code: clique com o botão direito em `public/index.html` e selecione "Open with Live Server"; ou
+   - Usando npx: 
+     ```
+     npx live-server public
+     ```
+
+3. **Acesse a aplicação** pela URL fornecida (geralmente algo como `http://127.0.0.1:5500`).
+
+4. **Primeiro acesso**: na primeira vez que a aplicação for aberta, os dados de `dados.json` serão carregados e salvos no `localStorage` do navegador. Nos acessos seguintes, os dados já estarão disponíveis localmente.
+
+### Estrutura de dados (dados.json / localStorage)
+
+O arquivo `db/dados.json` (e, posteriormente, o `localStorage`) deve conter as seguintes coleções de dados:
+
+```json
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Nome do Usuário",
+      "email": "usuario@puc.br",
+      "senha": "senha_criptografada",
+      "fotoPerfil": "url_da_foto",
+      "dataCadastro": "2026-01-01"
+    }
+  ],
+  "postagens": [
+    {
+      "id": 1,
+      "autorId": 1,
+      "titulo": "Título da postagem",
+      "conteudo": "Conteúdo da postagem",
+      "dataCriacao": "2026-01-01T10:30:00",
+      "curtidas": 5,
+      "comentarios": []
+    }
+  ]
+}
 ```
-$> npm install
-```
 
-Isso permitirá que o NPM instale todos os pacotes necessários para a execução do back-end. O NPM é o aplicativo responsável por gerenciar as dependências de um projeto e instalar os pacotes do Node.js.
+### Resolução de problemas
 
-Em seguida, com os pacotes já instalados, basta executar o seguinte comando:
+**A aplicação não carrega os módulos JavaScript (erro de CORS/módulo)?**
+- Verifique se está acessando a aplicação através de um servidor local (Live Server, `live-server`, etc.) e não abrindo o arquivo `.html` diretamente pelo navegador (`file://`)
+- ES Modules exigem que os arquivos sejam servidos via `http://`
 
-```
-$> npm start
-```
+**Os dados não aparecem ou parecem "resetados"?**
+- Verifique se o `localStorage` do navegador não foi limpo (aba anônima, limpeza de cache, etc.)
+- Confirme, pelo DevTools (F12 → Application → Local Storage), se as chaves esperadas estão presentes
+- Se necessário, limpe o `localStorage` manualmente e recarregue a página para que os dados de `dados.json` sejam recarregados
 
-Isso fará com que o Node.js execute a aplicação de back-end, iniciando o servidor web e a API RESTful fornecida pelo JSON Server a partir do arquivo `db.json`.
+**O login não persiste entre páginas?**
+- Verifique se o `sessionStorage` está sendo corretamente definido no momento do login
+- Confirme que todas as páginas verificam o `sessionStorage` da mesma forma (mesma chave/nome)
+
+## Equipe de desenvolvimento
+
+O PucMeet foi desenvolvido pela **Turma G5** da disciplina de TIAW (Tecnologia da Informação para Aplicações Web) no 1º Período de 2026 na PUC.
+
+### Componentes do projeto
+
+O projeto está organizado em três partes principais:
+
+1. **Documentação** (pasta `/docs`): Contém toda a especificação do projeto, design, testes e metodologia
+2. **Código-fonte** (pasta `/src`): Contém o código front-end e a lógica de persistência via `localStorage`
+3. **Apresentação** (pasta `/presentation`): Recursos para apresentação do projeto
+
+Para mais informações sobre as fases do projeto, consulte:
+- [Contexto do projeto](../docs/01-Contexto.md)
+- [Especificação de requisitos](../docs/03-Product-design.md)
+- [Design da interface](../docs/05-Projeto-interface.md)
+- [Plano de testes](../docs/08-Plano-testes-software.md)
 
 ## Dúvidas e suporte
 
-Caso tenha dúvidas, recomenda-se procurar a monitoria, que estará disponível para auxiliá-lo(a) a compreender todo o ambiente e a apoiá-lo(a) na implementação do seu projeto.
+Caso tenha dúvidas sobre:
+- **Servidor estático local (Live Server, etc.)**: Consulte a documentação da extensão/ferramenta escolhida
+- **Estrutura do projeto**: Revise a documentação na pasta `/docs`
+- **Funcionalidades do PucMeet**: Consulte a especificação de requisitos em [03-Product-design.md](../docs/03-Product-design.md)
+- **Problemas técnicos**: Procure a monitoria ou entre em contato com a equipe de desenvolvimento
+
+**Última atualização**: Julho de 2026

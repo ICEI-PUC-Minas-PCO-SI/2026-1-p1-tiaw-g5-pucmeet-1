@@ -9,21 +9,21 @@ Definição de como o software é estruturado em termos dos componentes que faze
 ┌─────────────────────────────────────────────────────┐
 │         Navegador do Usuário (Cliente)              │
 ├─────────────────────────────────────────────────────┤
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ │
-│  │   HTML/CSS   │  │ JavaScript   │  │   DOM    │ │
-│  │   (Layout)   │  │   (Lógica)   │  │(Interface)│ │
-│  └──────────────┘  └──────────────┘  └──────────┘ │
+│  ┌──────────────┐  ┌──────────────┐  ┌───────────┐  │
+│  │   HTML/CSS   │  │ JavaScript   │  │   DOM     │  │
+│  │   (Layout)   │  │   (Lógica)   │  │(Interface)│  │
+│  └──────────────┘  └──────────────┘  └───────────┘  │
 │         ↓                ↓                  ↓       │
-│  ┌─────────────────────────────────────────────┐  │
-│  │   localStorage & sessionStorage (Dados)     │  │
-│  └─────────────────────────────────────────────┘  │
+│  ┌─────────────────────────────────────────────┐    │
+│  │   localStorage & sessionStorage (Dados)     │    │ 
+│  └─────────────────────────────────────────────┘    │
 └──────────────────────┬──────────────────────────────┘
                        │
           ┌────────────┴────────────┐
           ↓                         ↓
    ┌─────────────┐         ┌──────────────┐
-   │ PucMeet-db  │         │   GitHub    │
-   │   (JSON)    │         │   (Versão)  │
+   │ PucMeet-db  │         │    GitHub    │
+   │   (JSON)    │         │   (Versão)   │
    └─────────────┘         └──────────────┘
 ```
 
@@ -195,9 +195,9 @@ A plataforma PucMeet é desenvolvida como uma aplicação web estática (SPA - S
 
 **Execução:**
 A aplicação pode ser executada:
-1. Diretamente no navegador abrindo `src/public/modulos/Homepage/index.html`
-2. Em um servidor local (ex: Live Server no VS Code)
-3. Publicada em plataformas como GitHub Pages para acesso remoto
+1. https://pucmeet.onrender.com
+2. Diretamente no navegador abrindo `src/public/modulos/Homepage/index.html`
+3. Em um servidor local (ex: Live Server no VS Code)
 
 **Navegadores Suportados:**
 - Chrome/Edge (versões modernas)
